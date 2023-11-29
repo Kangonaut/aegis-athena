@@ -1,5 +1,5 @@
 <div align="center">
-<img src="assets/mission-badge/mission-badge.png" alt="Aegis Athena mission badge" width="128"/>
+<img src="assets/mission-badge/mission-badge.png" alt="Aegis Athena mission badge" width="512"/>
 
 # Aegis Athena: Project "Shielded Wisdom"
 
