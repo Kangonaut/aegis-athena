@@ -27,7 +27,7 @@ class FuelCell(BasePart):
     @oxygen_fuel_tank.setter
     def oxygen_fuel_tank(self, value: FuelTank) -> None:
         if value.fuel_type != FuelType.LIQUID_OXYGEN:
-            raise ValueError("fuel tank must have fuel-type hydrogen")
+            raise ValueError("fuel tank must have fuel-type oxygen")
         self.__oxygen_fuel_tank = value
         event.send(event.EventType.PART_CONFIG_UPDATED, None)
 

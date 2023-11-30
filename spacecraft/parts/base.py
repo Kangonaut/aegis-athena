@@ -2,37 +2,7 @@ import abc
 import enum
 import random
 from typing import Self
-
-
-class _PartsManager:
-    def __init__(self):
-        self.parts: dict[str, "BasePart"] = dict()
-
-    @staticmethod
-    def __generate_random_part_id() -> str:
-        # generate random 2 byte number
-        rand_number: int = random.randint(0, 2 ** 16 - 1)
-
-        # convert to hex string with two digits
-        rand_hex: str = "{:04x}".format(rand_number)
-        return rand_hex
-
-    def __generate_unique_part_id(self):
-        # generate part IDs until a unique one is found
-        while (part_id := self.__generate_random_part_id()) in self.parts:
-            pass
-        return part_id
-
-    def add(self, part: "BasePart"):
-        # assign part id
-        part._part_id = self.__generate_unique_part_id()
-
-        # add part
-        self.parts[part.part_id] = part
-
-
-# singleton
-parts_manager = _PartsManager()
+from spacecraft import parts_manager
 
 
 class PartStatus(enum.Enum):
