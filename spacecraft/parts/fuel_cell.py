@@ -17,6 +17,7 @@ class FuelCell(BasePart):
         if self.__hydrogen_fuel_tank.fuel_type != FuelType.LIQUID_HYDROGEN:
             raise ValueError("the hydrogen fuel tank must have fuel-type hydrogen")
 
+    @property
     def dependencies(self) -> set[Self]:
         return {self.__oxygen_fuel_tank, self.__hydrogen_fuel_tank}
 

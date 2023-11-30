@@ -12,6 +12,9 @@ class PartsManager:
         else:
             raise KeyError(f"the part with ID={part_id} does not exist")
 
+    def get_all(self) -> set["BasePart"]:
+        return set(self.__parts.values())
+
     @staticmethod
     def __generate_random_part_id() -> str:
         # generate random 2 byte number

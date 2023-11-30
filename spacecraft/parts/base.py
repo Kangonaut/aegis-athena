@@ -24,6 +24,9 @@ class PartStatus(enum.Enum):
     def __lt__(self, other: Self) -> bool:
         return self.value < other.value
 
+    def __str__(self):
+        return self.name
+
     @property
     def color(self) -> str:
         return self.__COLORS[self.value]
@@ -55,9 +58,8 @@ class BasePart(abc.ABC):
         return self._part_id
 
     @property
-    @abc.abstractmethod
     def dependencies(self) -> set[Self]:
-        pass
+        return set()
 
     @property
     def __power_status(self) -> PartStatus:

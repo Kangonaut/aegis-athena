@@ -41,8 +41,9 @@ class FuelTank(BasePart):
     def __str__(self) -> str:
         return f"{self.part_id} - {self.name}"
 
+    @property
     def dependencies(self) -> set[Self]:
-        return set({})
+        return set()
 
     @property
     def capacity(self) -> float:
