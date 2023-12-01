@@ -24,7 +24,6 @@ class ListProgram(BaseProgram):
 
     def __handle_list_parts(self) -> None:
         parts: set[BasePart] = self._parts_manager.get_all()
-        print(f"{'ID':<10} {'NAME':<30} {'STATUS':<10}")
         for part in parts:
             self._display.print(f"{part.part_id:<10} {part.name:<30} [[ {part.status:<7} ]]")
 
