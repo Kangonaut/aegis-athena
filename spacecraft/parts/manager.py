@@ -1,4 +1,5 @@
 import random
+import hashlib
 
 from spacecraft.parts.base import BasePart
 
@@ -22,15 +23,28 @@ class PartsManager:
         rand_hex: str = "{:04x}".format(rand_number)
         return rand_hex
 
-    def __generate_unique_part_id(self):
+    def __generate_random_unique_part_id(self):
         # generate part IDs until a unique one is found
         while (part_id := self.__generate_random_part_id()) in self.__parts:
             pass
         return part_id
 
+    @staticmethod
+    def __generate_hash_based_id(part: BasePart, x: int):
+        return hashlib.sha1(
+            f"{part.name}{x}".encode("utf-8"),
+            usedforsecurity=False
+        ).hexdigest()[:4]
+
+    def __generate_unique_hash_based_id(self, part: BasePart) -> str:
+        x: int = 0
+        while (part_id := self.__generate_hash_based_id(part, x)) in self.__parts:
+            x += 1
+        return part_id
+
     def add(self, part: BasePart):
         # assign part id
-        part._part_id = self.__generate_unique_part_id()
+        part._part_id = self.__generate_unique_hash_based_id(part)
 
         # add part
         self.__parts[part.part_id] = part

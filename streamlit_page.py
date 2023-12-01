@@ -1,6 +1,4 @@
-import time
 import streamlit as st
-import io
 from utils import shell_utils
 from test import display, spacecraft
 
