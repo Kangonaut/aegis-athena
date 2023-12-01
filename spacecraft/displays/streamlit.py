@@ -7,6 +7,7 @@ class StreamlitDisplay(BaseDisplay):
     __KEYWORD_COLORS: dict[str, str] = {
         "ERROR": "red",
         "OFFLINE": "red",
+        "MALFUNC": "orange",
         "MALFUNCTION": "orange",
         "NOMINAL": "green",
     }

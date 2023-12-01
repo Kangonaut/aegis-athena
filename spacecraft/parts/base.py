@@ -21,22 +21,19 @@ class PartStatus(enum.Enum):
     MALFUNCTION = 2
     NOMINAL = 3
 
-    _ignore_ = ["__COLORS"]
-    __COLORS: dict[int, str] = {
-        NOMINAL: "green",
-        MALFUNCTION: "orange",
-        OFFLINE: "red",
+    _ignore_ = ["__DISPLAY_NAMES"]
+    __DISPLAY_NAMES: dict[Self, str] = {
+        OFFLINE: "OFFLINE",
+        NOMINAL: "NOMINAL",
+        MALFUNCTION: "MALFUNC",
     }
 
     def __lt__(self, other: Self) -> bool:
         return self.value < other.value
 
     def __str__(self):
-        return self.name
+        return self.__DISPLAY_NAMES[self.value]
 
-    @property
-    def color(self) -> str:
-        return self.__COLORS[self.value]
 
 
 class BasePart(abc.ABC):
