@@ -1,6 +1,7 @@
 from typing import Callable, Type, Self
 
 from spacecraft.displays.base import BaseDisplay
+from spacecraft.parts.antenna import Antenna
 from spacecraft.parts.base import BasePart
 from spacecraft.parts.fuel import FuelTank
 from spacecraft.parts.fuel_cell import FuelCell
@@ -35,7 +36,10 @@ class SetProgram(BaseProgram):
                 "lox": self.__handle_fuel_cell_set_oxygen,
                 "lh2": self.__handle_fuel_cell_set_hydrogen,
             },
-            FuelTank: {}
+            FuelTank: {},
+            Antenna: {
+                "hz": self.__handle_antenna_set_frequency,
+            }
         }
 
     def __get_part_by_id(self, part_id: str) -> BasePart:
@@ -63,6 +67,13 @@ class SetProgram(BaseProgram):
     def __handle_fuel_cell_set_hydrogen(self, part: FuelCell, value: str):
         tank = self.__get_part_by_id(value)
         part.hydrogen_fuel_tank = tank
+
+    def __handle_antenna_set_frequency(self, part: Antenna, value: str):
+        try:
+            value = int(value)
+        except ValueError:
+            raise ProgramValueError("frequency must be an integer")
+        part.frequency = value
 
     def exec(self, arguments: list[str]) -> None:
         # set 0ab3 power 0
