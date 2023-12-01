@@ -88,9 +88,7 @@ class SetProgram(BaseProgram):
         # call handler
         if key in self.__HANDLERS:
             self.__HANDLERS[key](part, value)
-        elif type(part) in self.__PART_SPECIFIC_HANDLERS:
-            specific_handlers = self.__PART_SPECIFIC_HANDLERS[type(part)]
-            if key in specific_handlers:
-                specific_handlers[key](part, value)
-            else:
-                raise ProgramSyntaxError(f"invalid key: {key}")
+        elif (specific_handlers := self.__PART_SPECIFIC_HANDLERS.get(type(part))) and key in specific_handlers:
+            specific_handlers[key](part, value)
+        else:
+            raise ProgramSyntaxError(f"invalid key: {key}")
