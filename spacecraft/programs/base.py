@@ -17,6 +17,14 @@ class ProgramUnsupportedOperation(ProgramException):
     pass
 
 
+class ProgramKeyError(ProgramException):
+    pass
+
+
+class ProgramValueError(ProgramException):
+    pass
+
+
 class ProgramArgumentParser(argparse.ArgumentParser):
     def error(self, message):
         raise ProgramSyntaxError(message)

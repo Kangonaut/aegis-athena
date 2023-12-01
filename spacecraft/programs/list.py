@@ -23,9 +23,10 @@ class ListProgram(BaseProgram):
 
     def exec(self, arguments: list[str]) -> None:
         arguments = self.__PARSER.parse_args(arguments)
+        subject: str = arguments.subject
 
         handlers: dict[str, Callable[[], None]] = {
             "parts": self.__handle_list_parts,
             "systems": self.__handle_list_systems,
         }
-        handlers[arguments.subject]()
+        handlers[subject]()

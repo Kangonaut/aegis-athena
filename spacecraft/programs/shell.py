@@ -4,6 +4,7 @@ from spacecraft.displays.base import BaseDisplay
 from spacecraft.parts.manager import PartsManager
 from spacecraft.programs.base import BaseProgram, ProgramException, ProgramSyntaxError
 from spacecraft.programs.list import ListProgram
+from spacecraft.programs.set import SetProgram
 
 
 class Shell(BaseProgram):
@@ -12,6 +13,7 @@ class Shell(BaseProgram):
 
         self.__programs: dict[str, BaseProgram] = {
             "list": ListProgram(parts_manager, display),
+            "set": SetProgram(parts_manager, display),
         }
 
     @staticmethod
