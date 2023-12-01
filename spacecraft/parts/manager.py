@@ -1,18 +1,20 @@
 import random
 
+from spacecraft.parts.base import BasePart
+
 
 class PartsManager:
     def __init__(self):
-        self.__parts: dict[str, "BasePart"] = dict()
+        self.__parts: dict[str, BasePart] = dict()
 
-    def get(self, part_id: str) -> "BasePart | None":
+    def get(self, part_id: str) -> BasePart | None:
         part = self.__parts.get(part_id, None)
         if part is not None:
             return part
         else:
             raise KeyError(f"the part with ID={part_id} does not exist")
 
-    def get_all(self) -> set["BasePart"]:
+    def get_all(self) -> set[BasePart]:
         return set(self.__parts.values())
 
     @staticmethod
@@ -30,7 +32,7 @@ class PartsManager:
             pass
         return part_id
 
-    def add(self, part: "BasePart"):
+    def add(self, part: BasePart):
         # assign part id
         part._part_id = self.__generate_unique_part_id()
 

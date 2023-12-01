@@ -2,7 +2,6 @@ import abc
 import enum
 import random
 from typing import Self
-from spacecraft import parts_manager
 
 
 class PartStatus(enum.Enum):
@@ -11,14 +10,14 @@ class PartStatus(enum.Enum):
     """
 
     OFFLINE = 1
-    ERROR = 2
+    MALFUNCTION = 2
     NOMINAL = 3
 
     _ignore_ = ["__COLORS"]
     __COLORS: dict[int, str] = {
         NOMINAL: "green",
-        ERROR: "red",
-        OFFLINE: "gray",
+        MALFUNCTION: "orange",
+        OFFLINE: "red",
     }
 
     def __lt__(self, other: Self) -> bool:
@@ -39,7 +38,6 @@ class BasePart(abc.ABC):
 
         # part_id is assigned by the parts manager
         self._part_id: str = ""
-        parts_manager.add(self)
 
     def validate(self) -> None:
         """
@@ -74,11 +72,11 @@ class BasePart(abc.ABC):
     def __dependency_status(self) -> PartStatus:
         """
         The part status solely based on the dependencies.
-        If any of the dependencies are in a non-nominal state, the device itself is in state :code:`PartStatus.ERROR`.
+        If any of the dependencies are in a non-nominal state, the device itself is in state :code:`PartStatus.MALFUNCTION`.
         """
         for dependency in self.dependencies:
             if dependency.status != PartStatus.NOMINAL:
-                return PartStatus.ERROR
+                return PartStatus.MALFUNCTION
         return PartStatus.NOMINAL
 
     @property
