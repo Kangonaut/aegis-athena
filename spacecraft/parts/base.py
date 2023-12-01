@@ -35,7 +35,6 @@ class PartStatus(enum.Enum):
         return self.__DISPLAY_NAMES[self.value]
 
 
-
 class BasePart(abc.ABC):
     def __init__(self, name: str):
         self.__name: str = name
