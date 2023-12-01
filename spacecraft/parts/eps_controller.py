@@ -14,3 +14,11 @@ class EpsController(BasePart):
     @property
     def dependencies(self) -> set[Self]:
         return {self.__battery, self.__fuel_cell}
+
+    @property
+    def battery(self) -> Battery:
+        return self.__battery
+
+    @property
+    def fuel_cell(self) -> FuelCell:
+        return self.__fuel_cell

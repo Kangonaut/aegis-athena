@@ -9,6 +9,15 @@ class RangeType(enum.Enum):
     SHORT_RANGE = 1
     LONG_RANGE = 2
 
+    _ignore_ = ["__DISPLAY_NAMES"]
+    __DISPLAY_NAMES: dict[Self, str] = {
+        SHORT_RANGE: "short range",
+        LONG_RANGE: "long range",
+    }
+
+    def __str__(self):
+        return self.__DISPLAY_NAMES[self.value]
+
 
 @dataclass
 class FrequencyRange:
