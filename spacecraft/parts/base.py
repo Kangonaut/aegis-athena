@@ -4,6 +4,14 @@ import random
 from typing import Self
 
 
+class PartException(Exception):
+    pass
+
+
+class PartInvalidConfiguration(PartException):
+    pass
+
+
 class PartStatus(enum.Enum):
     """
     the status ID are in descending order according to the severity level (0 is the most severe)
