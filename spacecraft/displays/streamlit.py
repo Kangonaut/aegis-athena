@@ -34,8 +34,7 @@ class StreamlitDisplay(BaseDisplay):
         return content
 
     def print(self, content: str) -> None:
-        content = self.__transform_input(content)
-        print(content, file=self.__out_stream)
+        print(content, file=self.__out_stream, end="\n")
 
     def read_recent(self) -> str:
         # go back to last read position
@@ -43,6 +42,7 @@ class StreamlitDisplay(BaseDisplay):
 
         # read
         content = self.__out_stream.read()
+        content = self.__transform_input(content)
 
         # update last read position
         self.__last_read_pos = self.__out_stream.tell()

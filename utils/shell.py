@@ -21,3 +21,4 @@ def init_shell_interactions_memory() -> list[ShellInteraction]:
 def display_shell_interactions(shell_interactions: list[ShellInteraction], display_elem: DeltaGenerator) -> None:
     for interaction in shell_interactions:
         interaction.display(display_elem)
+        display_elem.markdown("#")
