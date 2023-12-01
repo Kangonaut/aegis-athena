@@ -16,7 +16,7 @@ class ListProgram(BaseProgram):
         parts: set[BasePart] = self._parts_manager.get_all()
         print(f"{'ID':<10} {'NAME':<30} {'STATUS':<10}")
         for part in parts:
-            self._display.print(f"{part.part_id:<10} {part.name:<30} {part.status:<10}")
+            self._display.print(f"{part.part_id:<10} {part.name:<30} [[ {part.status:<7} ]]")
 
     def __handle_list_systems(self) -> None:
         raise ProgramUnsupportedOperation("listing all systems is not yet supported")

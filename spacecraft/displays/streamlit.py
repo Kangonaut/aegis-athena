@@ -17,7 +17,7 @@ class StreamlitDisplay(BaseDisplay):
 
     def __highlight_keywords(self, content: str) -> str:
         for keyword, color in self.__KEYWORD_COLORS.items():
-            content = content.replace(keyword, f":{color}:[{keyword}]")
+            content = content.replace(keyword, f":{color}[{keyword}]")
         return content
 
     def __transform_input(self, content: str) -> str:
