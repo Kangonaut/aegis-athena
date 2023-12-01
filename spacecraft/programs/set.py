@@ -1,8 +1,12 @@
-from typing import Callable
+from typing import Callable, Type, Self
 
+from spacecraft.displays.base import BaseDisplay
 from spacecraft.parts.base import BasePart
+from spacecraft.parts.fuel import FuelTank
+from spacecraft.parts.fuel_cell import FuelCell
+from spacecraft.parts.manager import PartsManager
 from spacecraft.programs.base import BaseProgram, ProgramArgumentParser, ProgramUnsupportedOperation, ProgramValueError, \
-    ProgramKeyError
+    ProgramKeyError, ProgramSyntaxError
 
 
 class SetProgram(BaseProgram):
@@ -20,6 +24,26 @@ class SetProgram(BaseProgram):
         type=str,
     )
 
+    def __init__(self, parts_manager: PartsManager, display: BaseDisplay):
+        super().__init__(parts_manager, display)
+
+        self.__HANDLERS: dict[str, Callable[[BasePart, str], None]] = {
+            "power": self.__handle_set_power,
+        }
+        self.__PART_SPECIFIC_HANDLERS: dict[Type, dict[str, Callable[[any, str], None]]] = {
+            FuelCell: {
+                "lox": self.__handle_fuel_cell_set_oxygen,
+                "lh2": self.__handle_fuel_cell_set_hydrogen,
+            },
+            FuelTank: {}
+        }
+
+    def __get_part_by_id(self, part_id: str) -> BasePart:
+        part = self._parts_manager.get(part_id)
+        if part is None:
+            raise ProgramKeyError(f"{part_id} is not a valid part ID")
+        return part
+
     def __handle_set_power(self, part: BasePart, value: str) -> None:
         try:
             value = int(value)
@@ -32,6 +56,14 @@ class SetProgram(BaseProgram):
         except ValueError:
             raise ProgramValueError("value must be a valid integer")
 
+    def __handle_fuel_cell_set_oxygen(self, part: FuelCell, value: str):
+        tank = self.__get_part_by_id(value)
+        part.oxygen_fuel_tank = tank
+
+    def __handle_fuel_cell_set_hydrogen(self, part: FuelCell, value: str):
+        tank = self.__get_part_by_id(value)
+        part.hydrogen_fuel_tank = tank
+
     def exec(self, arguments: list[str]) -> None:
         # set 0ab3 power 0
         arguments = self.__PARSER.parse_args(arguments)
@@ -40,14 +72,13 @@ class SetProgram(BaseProgram):
         value: str = arguments.value
 
         # retrieve part
-        part = self._parts_manager.get(part_id)
-        if part is None:
-            raise ProgramKeyError(f"{part_id} is not a valid part ID")
-
-        print(type(part))
+        part = self.__get_part_by_id(part_id)
 
         # call handler
-        handlers: dict[str, Callable[[BasePart, str], None]] = {
-            "power": self.__handle_set_power,
-        }
-        handlers[key](part, value)
+        specific_handlers = self.__PART_SPECIFIC_HANDLERS[type(part)]
+        if key in self.__HANDLERS:
+            self.__HANDLERS[key](part, value)
+        elif key in specific_handlers:
+            specific_handlers[key](part, value)
+        else:
+            raise ProgramSyntaxError(f"invalid key: {key}")

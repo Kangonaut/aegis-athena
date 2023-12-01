@@ -8,11 +8,7 @@ class PartsManager:
         self.__parts: dict[str, BasePart] = dict()
 
     def get(self, part_id: str) -> BasePart | None:
-        part = self.__parts.get(part_id, None)
-        if part is not None:
-            return part
-        else:
-            raise KeyError(f"the part with ID={part_id} does not exist")
+        return self.__parts.get(part_id, None)
 
     def get_all(self) -> set[BasePart]:
         return set(self.__parts.values())

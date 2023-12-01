@@ -1,6 +1,8 @@
 from typing import Callable
 
+from spacecraft.displays.base import BaseDisplay
 from spacecraft.parts.base import BasePart
+from spacecraft.parts.manager import PartsManager
 from spacecraft.programs.base import BaseProgram, ProgramArgumentParser, ProgramUnsupportedOperation
 
 
@@ -11,6 +13,14 @@ class ListProgram(BaseProgram):
         choices=["parts", "systems"],
         type=str,
     )
+
+    def __init__(self, parts_manager: PartsManager, display: BaseDisplay):
+        super().__init__(parts_manager, display)
+
+        self.__HANDLERS: dict[str, Callable[[], None]] = {
+            "parts": self.__handle_list_parts,
+            "systems": self.__handle_list_systems,
+        }
 
     def __handle_list_parts(self) -> None:
         parts: set[BasePart] = self._parts_manager.get_all()
@@ -25,8 +35,5 @@ class ListProgram(BaseProgram):
         arguments = self.__PARSER.parse_args(arguments)
         subject: str = arguments.subject
 
-        handlers: dict[str, Callable[[], None]] = {
-            "parts": self.__handle_list_parts,
-            "systems": self.__handle_list_systems,
-        }
-        handlers[subject]()
+        # call handler
+        self.__HANDLERS[subject]()

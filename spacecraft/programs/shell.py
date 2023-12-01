@@ -1,6 +1,7 @@
 from typing import Callable
 
 from spacecraft.displays.base import BaseDisplay
+from spacecraft.parts.base import PartInvalidConfiguration
 from spacecraft.parts.manager import PartsManager
 from spacecraft.programs.base import BaseProgram, ProgramException, ProgramSyntaxError
 from spacecraft.programs.list import ListProgram
@@ -21,7 +22,7 @@ class Shell(BaseProgram):
         def wrapper(*args: any, **kwargs: any):
             try:
                 func(*args, **kwargs)
-            except ProgramException as ex:
+            except (ProgramException, PartInvalidConfiguration) as ex:
                 # args[0] = self
                 args[0].__output_error(ex)
 
