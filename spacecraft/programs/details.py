@@ -3,7 +3,8 @@ from typing import Callable, Type, Self
 from spacecraft.displays.base import BaseDisplay
 from spacecraft.parts.antenna import Antenna
 from spacecraft.parts.base import BasePart
-from spacecraft.parts.eps_controller import PowerController
+from spacecraft.parts.environment_controller import EnvironmentController
+from spacecraft.parts.power_controller import PowerController
 from spacecraft.parts.fuel import FuelTank
 from spacecraft.parts.fuel_cell import FuelCell
 from spacecraft.parts.manager import PartsManager
@@ -30,6 +31,7 @@ class DetailsProgram(BaseProgram):
             FuelTank: self.__handle_tank,
             PowerController: self.__handle_power_controller,
             TemperatureController: self.__handle_temperature_controller,
+            EnvironmentController: self.__handle_environment_controller,
         }
 
     def __get_part_by_id(self, part_id: str) -> BasePart:
@@ -68,6 +70,11 @@ class DetailsProgram(BaseProgram):
         self.__describe_basics(part)
         self._display.print(f"cooler: {part.cooler.part_id}")
         self._display.print(f"thermometer: {part.thermometer.part_id}")
+
+    def __handle_environment_controller(self, part: EnvironmentController):
+        self.__describe_basics(part)
+        self._display.print(f"temperature controller: {part.temperature_controller.part_id}")
+        self._display.print(f"water tank: {part.water_tank.part_id}")
 
     def __handle_generic_part(self, part: BasePart):
         self.__describe_basics(part)
