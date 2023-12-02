@@ -43,6 +43,9 @@ class BasePart(abc.ABC):
         # part_id is assigned by the parts manager
         self._part_id: str = ""
 
+    def __str__(self) -> str:
+        return f"{self.part_id} - {self.name}"
+
     def validate(self) -> None:
         """
         Validate the configuration of the part.

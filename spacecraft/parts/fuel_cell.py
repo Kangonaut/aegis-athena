@@ -1,11 +1,12 @@
 from typing import Self
 
-from .base import BasePart, PartInvalidConfiguration
+from .base import PartInvalidConfiguration
 from .fuel import FuelTank, FuelType
 from spacecraft import event
+from .water import BaseWaterSupply
 
 
-class FuelCell(BasePart):
+class FuelCell(BaseWaterSupply):
     def __init__(self, name: str):
         super().__init__(name)
         self.__oxygen_fuel_tank: FuelTank | None = None

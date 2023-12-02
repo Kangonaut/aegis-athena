@@ -7,8 +7,9 @@ from spacecraft.parts.eps_controller import EpsController
 from spacecraft.parts.fuel import FuelTank
 from spacecraft.parts.fuel_cell import FuelCell
 from spacecraft.parts.manager import PartsManager
-from spacecraft.programs.base import BaseProgram, ProgramArgumentParser, ProgramUnsupportedOperation, ProgramValueError, \
-    ProgramKeyError, ProgramSyntaxError
+from spacecraft.parts.tank import BaseTank
+from spacecraft.parts.water import WaterTank
+from spacecraft.programs.base import BaseProgram, ProgramArgumentParser, ProgramKeyError
 
 
 class DetailsProgram(BaseProgram):
@@ -24,7 +25,8 @@ class DetailsProgram(BaseProgram):
         self.__HANDLERS: dict[type, Callable[[any], None]] = {
             FuelCell: self.__handle_fuel_cell,
             Antenna: self.__handle_antenna,
-            FuelTank: self.__handle_fuel_tank,
+            WaterTank: self.__handle_tank,
+            FuelTank: self.__handle_tank,
             EpsController: self.__handle_eps_controller,
         }
 
@@ -50,10 +52,10 @@ class DetailsProgram(BaseProgram):
         self._display.print(f"frequency: {part.frequency} Hz")
         self._display.print(f"frequency_range: {part.frequency_range.min} - {part.frequency_range.max} Hz")
 
-    def __handle_fuel_tank(self, part: FuelTank):
+    def __handle_tank(self, part: BaseTank):
         self.__describe_basics(part)
-        self._display.print(f"capacity: {part.capacity} l")
-        self._display.print(f"content: {part.fuel_content} l")
+        self._display.print(f"capacity: {part.capacity:.2f} l")
+        self._display.print(f"content: {part.content:.2f} l")
 
     def __handle_eps_controller(self, part: EpsController):
         self.__describe_basics(part)
