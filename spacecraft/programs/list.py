@@ -1,3 +1,4 @@
+import time
 from typing import Callable
 
 from spacecraft.displays.base import BaseDisplay
@@ -27,6 +28,9 @@ class ListProgram(BaseProgram):
         parts: list[BasePart] = sorted(parts, key=lambda part: part.part_id)
         for part in parts:
             self._display.print(f"{part.part_id:<10} {part.name:<40} [[ {part.status:<7} ]]")
+
+            # add mock processing time
+            time.sleep(0.1)
 
     def __handle_list_systems(self) -> None:
         raise ProgramUnsupportedOperation("listing all systems is not yet supported")

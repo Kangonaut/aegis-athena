@@ -1,4 +1,6 @@
 import io
+import time
+from typing import Callable
 
 from spacecraft.displays.base import BaseDisplay
 
@@ -12,9 +14,9 @@ class StreamlitDisplay(BaseDisplay):
         "NOMINAL": "green",
     }
 
-    def __init__(self):
+    def __init__(self, callback: Callable[[str], None]):
         self.__out_stream = io.StringIO()
-        self.__last_read_pos: int = 0
+        self.__callback = callback
 
     def __highlight_keywords(self, content: str) -> str:
         for keyword, color in self.__KEYWORD_COLORS.items():
@@ -22,6 +24,9 @@ class StreamlitDisplay(BaseDisplay):
         return content
 
     def __transform_input(self, content: str) -> str:
+        # replace command prefix
+        content = content.replace("system:/ $", "**:violet[system]:/ $**")
+
         # replace space
         content = content.replace(" ", "&nbsp;")
 
@@ -33,18 +38,18 @@ class StreamlitDisplay(BaseDisplay):
 
         return content
 
-    def print(self, content: str) -> None:
-        print(content, file=self.__out_stream, end="\n")
+    def print(self, content: str, end="\n") -> None:
+        # transform input
+        content = self.__transform_input(f"{content}{end}")
 
-    def read_recent(self) -> str:
-        # go back to last read position
-        self.__out_stream.seek(self.__last_read_pos)
+        # print to out-stream
+        print(content, file=self.__out_stream)
 
-        # read
-        content = self.__out_stream.read()
-        content = self.__transform_input(content)
+        # call callback and pass output up to this point
+        content = self.__out_stream.getvalue()
+        self.__callback(content)
 
-        # update last read position
-        self.__last_read_pos = self.__out_stream.tell()
-
+    def flush(self) -> str:
+        content = self.__out_stream.getvalue()
+        self.__out_stream = io.StringIO()
         return content

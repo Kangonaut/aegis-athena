@@ -32,6 +32,9 @@ class Shell(BaseProgram):
 
     @error_handler
     def exec(self, command: str) -> None:
+        # output command input
+        self._display.print(f"system:/ $ {command}")
+
         # decompose command into program and args
         command_parts = command.split()
         program: str = command_parts[0]
