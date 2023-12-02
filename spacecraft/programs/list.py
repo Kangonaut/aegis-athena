@@ -30,7 +30,7 @@ class ListProgram(BaseProgram):
             self._display.print(f"{part.part_id:<10} {part.name:<40} [[ {part.status:<7} ]]")
 
             # add mock processing time
-            time.sleep(0.1)
+            time.sleep(0.2)
 
     def __handle_list_systems(self) -> None:
         raise ProgramUnsupportedOperation("listing all systems is not yet supported")
