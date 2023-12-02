@@ -3,11 +3,12 @@ from typing import Callable, Type, Self
 from spacecraft.displays.base import BaseDisplay
 from spacecraft.parts.antenna import Antenna
 from spacecraft.parts.base import BasePart
-from spacecraft.parts.eps_controller import EpsController
+from spacecraft.parts.eps_controller import PowerController
 from spacecraft.parts.fuel import FuelTank
 from spacecraft.parts.fuel_cell import FuelCell
 from spacecraft.parts.manager import PartsManager
 from spacecraft.parts.tank import BaseTank
+from spacecraft.parts.temp_controller import TemperatureController
 from spacecraft.parts.water import WaterTank
 from spacecraft.programs.base import BaseProgram, ProgramArgumentParser, ProgramKeyError
 
@@ -27,7 +28,8 @@ class DetailsProgram(BaseProgram):
             Antenna: self.__handle_antenna,
             WaterTank: self.__handle_tank,
             FuelTank: self.__handle_tank,
-            EpsController: self.__handle_eps_controller,
+            PowerController: self.__handle_power_controller,
+            TemperatureController: self.__handle_temperature_controller,
         }
 
     def __get_part_by_id(self, part_id: str) -> BasePart:
@@ -57,10 +59,15 @@ class DetailsProgram(BaseProgram):
         self._display.print(f"capacity: {part.capacity:.2f} l")
         self._display.print(f"content: {part.content:.2f} l")
 
-    def __handle_eps_controller(self, part: EpsController):
+    def __handle_power_controller(self, part: PowerController):
         self.__describe_basics(part)
         self._display.print(f"fuel_cell: {part.fuel_cell.part_id}")
         self._display.print(f"battery: {part.battery.part_id}")
+
+    def __handle_temperature_controller(self, part: TemperatureController):
+        self.__describe_basics(part)
+        self._display.print(f"cooler: {part.cooler.part_id}")
+        self._display.print(f"thermometer: {part.thermometer.part_id}")
 
     def __handle_generic_part(self, part: BasePart):
         self.__describe_basics(part)
