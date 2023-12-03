@@ -31,7 +31,6 @@ class FuelCell(BaseWaterSupply):
         if value.fuel_type != FuelType.LIQUID_OXYGEN:
             raise PartInvalidConfiguration("fuel tank must have fuel-type oxygen")
         self.__oxygen_fuel_tank = value
-        event.send(event.EventType.PART_CONFIG_UPDATED, None)
 
     @property
     def hydrogen_fuel_tank(self) -> FuelTank | None:
@@ -42,4 +41,3 @@ class FuelCell(BaseWaterSupply):
         if value.fuel_type != FuelType.LIQUID_HYDROGEN:
             raise PartInvalidConfiguration("fuel tank must have fuel-type hydrogen")
         self.__hydrogen_fuel_tank = value
-        event.send(event.EventType.PART_CONFIG_UPDATED, None)
