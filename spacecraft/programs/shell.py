@@ -7,6 +7,7 @@ from spacecraft.programs.base import BaseProgram, ProgramException, ProgramSynta
 from spacecraft.programs.details import DetailsProgram
 from spacecraft.programs.list import ListProgram
 from spacecraft.programs.set import SetProgram
+from spacecraft.programs.transmit import TransmitProgram
 
 
 class Shell(BaseProgram):
@@ -17,6 +18,7 @@ class Shell(BaseProgram):
             "list": ListProgram(parts_manager, display),
             "set": SetProgram(parts_manager, display),
             "details": DetailsProgram(parts_manager, display),
+            "transmit": TransmitProgram(parts_manager, display),
         }
 
     @staticmethod
@@ -46,4 +48,4 @@ class Shell(BaseProgram):
             raise ProgramSyntaxError(f"program not found: {program}")
 
     def __output_error(self, error: Exception) -> None:
-        self._display.print(f"ERROR: {str(error)}")
+        self._display.error(str(error))
