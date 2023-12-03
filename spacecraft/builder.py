@@ -1,7 +1,9 @@
+from spacecraft.communication.dispatcher import DefaultCommunicationDispatcher
 from spacecraft.displays.base import BaseDisplay
 from spacecraft.displays.streamlit import StreamlitDisplay
 from spacecraft.parts.antenna import Antenna, RangeType, FrequencyRange
 from spacecraft.parts.battery import Battery
+from spacecraft.parts.communication_controller import CommunicationController
 from spacecraft.parts.cooler import Cooler
 from spacecraft.parts.environment_controller import EnvironmentController
 from spacecraft.parts.power_controller import PowerController
@@ -73,6 +75,15 @@ class SpacecraftBuilder:
             water_tank=water_tank,
         )
 
+        communication_controller = CommunicationController(
+            name="COMS controller",
+            secret="pssst!",  # configured secret
+            antenna=antenna_1,
+            dispatcher=DefaultCommunicationDispatcher(
+                secret="Cisco123",  # actual secret
+            ),
+        )
+
         spacecraft.parts_manager.add(lox_tank_1)
         spacecraft.parts_manager.add(lh2_tank_1)
         spacecraft.parts_manager.add(fuel_cell_1)
@@ -84,5 +95,6 @@ class SpacecraftBuilder:
         spacecraft.parts_manager.add(interior_thermometer)
         spacecraft.parts_manager.add(interior_temperature_controller)
         spacecraft.parts_manager.add(environment_controller)
+        spacecraft.parts_manager.add(communication_controller)
 
         return spacecraft
