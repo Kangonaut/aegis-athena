@@ -7,11 +7,14 @@ from spacecraft.displays.base import BaseDisplay
 
 class StreamlitDisplay(BaseDisplay):
     __KEYWORD_COLORS: dict[str, str] = {
-        "ERROR": "red",
         "OFFLINE": "red",
         "MALFUNC": "orange",
         "MALFUNCTION": "orange",
         "NOMINAL": "green",
+        "DEBUG": "gray",
+        "INFO": "blue",
+        "WARNING": "orange",
+        "ERROR": "red",
     }
 
     def __init__(self, callback: Callable[[str], None]):
