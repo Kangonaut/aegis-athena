@@ -77,10 +77,10 @@ class SpacecraftBuilder:
 
         communication_controller = CommunicationController(
             name="COMS controller",
-            secret="pssst!",  # configured secret
+            secret="cisco",  # configured secret
             antenna=antenna_1,
             dispatcher=DefaultCommunicationDispatcher(
-                secret="Cisco123",  # actual secret
+                secret="class",  # actual secret
             ),
         )
 

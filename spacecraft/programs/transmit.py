@@ -85,7 +85,7 @@ class TransmitProgram(BaseProgram):
 
         communicator = communication_controller.get_communicator()
         for token in communicator.stream(message):
-            self._display.print(token.content, end=" ")
+            self._display.print(token.content, end="")
 
         self._display.print("")  # newline
         self._display.info("received EOT")

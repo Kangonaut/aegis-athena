@@ -9,17 +9,15 @@ def is_letter(char: str) -> bool:
     return "A" <= char <= "Z"
 
 
-def caesar_cipher(char: str, offset: int) -> str:
-    if is_letter(char):
-        is_upper: bool = char.isupper()
-        char = char.upper()
+def caesar_cipher(letter: str, offset: int) -> str:
+    is_upper: bool = letter.isupper()
+    letter = letter.upper()
 
-        letter_code: int = ord(char) - ord("A")
-        encrypted_letter_code: int = (letter_code + offset) % 26
-        encrypted_char: str = chr(encrypted_letter_code + ord("A"))
+    letter_code: int = ord(letter) - ord("A")
+    encrypted_letter_code: int = (letter_code + offset) % 26
+    encrypted_char: str = chr(encrypted_letter_code + ord("A"))
 
-        return encrypted_char if is_upper else encrypted_char.lower()
-    return char
+    return encrypted_char if is_upper else encrypted_char.lower()
 
 
 def infinite_secret(secret: str) -> Generator[str, None, None]:
@@ -54,7 +52,10 @@ class VigenereCipher(BaseEncryption):
             transformed_token: str = ""
 
             for char in token.content:
-                transformed_token += transform(char, secret_generator)
+                if is_letter(char):
+                    transformed_token += transform(char, secret_generator)
+                else:
+                    transformed_token += char
 
             yield MessageChunk(content=transformed_token)
 
