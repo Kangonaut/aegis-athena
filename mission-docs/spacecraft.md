@@ -76,3 +76,31 @@ For a substantial fraction of the mission, the S.P.A.C.E.C.R.A.F.T. cohabits wit
 An essential organ of the S.P.A.C.E.C.R.A.F.T. module is its cognitively advanced communication module. This integrated system enables unswerving communication channels between Earth, encapsulating the cogs of crucial information exchange in every phase of the journey. Beyond conversing with Earth, the module facilitates constant communication with the A.P.O.L.L.O. module, ensuring unremitting coordination during the mission's course.
 
 Envisaged in the spirit of precision and innovation, S.P.A.C.E.C.R.A.F.T. stands as an exemplary paean to human ingenuity. The careful design renditions translate into a formidable vessel intended to ferry humanity toward our closest cosmic neighbor, whilst catering to the crew's needs, ensuring their safety, and preserving our hopes for lunar exploration and beyond.
+
+## 2.3 Systems
+
+### 2.3.1 Electrical Power System (EPS)
+
+Representing the lifeblood of all on-board operations, the Electrical Power System (EPS) breathes energy into every electrical part and function of the S.P.A.C.E.C.R.A.F.T. module.
+
+#### 2.3.1.1 Fuel Cell
+
+The heart of the EPS consists of two fuel cell modules. These fuel cells, functioning in perfect synchronization, use hydrogen and oxygen in a controlled chemical reaction to generate electricity. An additional third fuel cell module lurks in the shadows, ready to assume functionality if the need arises, providing an essential backup system.
+
+Crucially, the byproduct of the power generation process, apart from waste heat, is water — a precious and life-sustaining commodity for our crew of astronauts during their momentous journey.
+
+#### 2.3.1.2 Fuel Storage
+
+Both oxygen and hydrogen, the vital fuels for the power cells, are stored in liquid form due to their storage efficiency at low temperatures.
+
+The Liquid Oxygen (LOX) is stored in two separate tanks, a primary and an auxiliary unit to provide a reliable backup. Similarly, Liquid Hydrogen (LH2) is preserved in two distinct tanks, one serving as the operative unit and the other as a fail-safe.
+
+#### 2.3.1.3 Battery
+
+Having a backup system for a mission of this magnitude is not a luxury; it's a necessity. Every resource, including power and water, is critical for the lunar mission's success. Recognizing the significance of redundancy, the S.P.A.C.E.C.R.A.F.T. is equipped with a primary and auxiliary silver-zinc battery system. This system functions as an emergency power reservoir and buffer during peak consumption periods, thereby ensuring uninterrupted power supply.
+
+#### 2.3.1.4 Control System
+
+Directing the course of the EPS is the EPS Controller, a master maestro conducting this symphony of power production, distribution, and storage. It regulates INPUT from the fuel cells, allots OUTPUT to the different systems, and toggles between the primary and backup systems as required.
+
+The EPS, with its harmonious orchestra of power production, storage systems, and well-coordinated control unit, safeguards all electrical functions on the S.P.A.C.E.C.R.A.F.T., turning the wheel of scientific discovery and human ingenuity on its journey to the moon and back.
