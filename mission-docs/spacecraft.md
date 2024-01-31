@@ -1,37 +1,3 @@
-# S.P.A.C.E.C.R.A.F.T.
-
-## Naming
-
-S.P.A.C.E.C.R.A.F.T. = Superb Pod for Astronaut Carriage, Exploration, Communication, Recovery, And Future Travels
-
-## Purpose
-
-S.P.A.C.E.C.R.A.F.T. is a command and service module. It is designed to facilitate the crew during most of the space travel, thus also has all the life support systems needed to accomodate the crew. It has propulsion systems to do the hohmann transfer from earth to the moon, from the moon back to the earth and also the de-orbit maneuvor to start the re-entry process. For the most part of the mission it is connected with the A.P.O.L.L.O. (lunar lander) module, except for when it is used to bring 2 astronauts onto the lunar surface (while the command and service module remains in orbit with 1 astronaut). It also has a communications module to communicate with earth and the A.P.O.L.L.O. module.
-
-## Systems
-
-### EPS (Electrical Power System)
-
-Provides power to all electrical systems and parts of the S.P.A.C.E.C.R.A.F.T. module.
-
-Power is provided using fuel cells (2 fuel cell modules, 1 as backup). They use hydrogen and oxygen to generate electrical power and drinkable water as a byproduct. The oxygen is stored in liquid form (LOX). There are two LOX tanks: a main one and a auxiliary one as a backup. The hydrogen is also stored in liquid form (LH2). There are also two LH2 tanks (one main and one backup). The backup is important, since it provides two essential ressources: electrical power and water. The energy is stored in a silver-zinc battery (again main and auxiliary). The system is controlled by a EPS controller.
-
-### SPS (Service Propulsion System)
-
-The SPS is responsible for adjusting course. It is used to perform the Hohmann transfer from earth orbit to lunar orbit, the Hohmann transfer from lunar orbit back to earth orbit and the de-orbit maneuver to start the re-entry process. In order to do this, the S.P.A.C.E.C.R.A.F.T. module is equipped with a Aerojet AJ10 vacuum optimized engine. The engine is mounted on a gimbal, to allow for Thrust Vector Control (TVC). The propellant consists of hydrazine as fuel and nitrogen tetroxide as oxidizer. This fuel mix is hyperbolic, which means that it ignites spontaneously when mixed together. The fuel and oxidizer are stored in seperate tanks.
-
-### Environmental Control System (ECS)
-
-The Environmental Control Subsystem (ECS) enables pressurization of the cabin, controls the temperature of electronic equipment, and provides breathable oxygen for the astronauts. It also provides water for drinking, cooling, fire extinguishing, and food preparation.
-
-subsystems: 
- - water management section (WCS)
- - Oxygen supply and cabin pressure control section (OSCPCS)
- - Atmosphere Revitalization System (ARS)
- - Heat transport section (HTS)
-
-===============================
-
 # 2 S.P.A.C.E.C.R.A.F.T.
 
 ## 2.1 Naming
@@ -99,9 +65,9 @@ The Liquid Oxygen (LOX) is stored in two separate tanks, a primary and an auxili
 
 Having a backup system for a mission of this magnitude is not a luxury; it's a necessity. Every resource, including power and water, is critical for the lunar mission's success. Recognizing the significance of redundancy, the S.P.A.C.E.C.R.A.F.T. is equipped with a primary and auxiliary silver-zinc battery system. This system functions as an emergency power reservoir and buffer during peak consumption periods, thereby ensuring uninterrupted power supply.
 
-#### 2.3.1.4 Control System
+#### 2.3.1.4 EPS Controller
 
-Directing the course of the EPS is the EPS Controller, a master maestro conducting this symphony of power production, distribution, and storage. It regulates INPUT from the fuel cells, allots OUTPUT to the different systems, and toggles between the primary and backup systems as required.
+Directing the course of the EPS is the EPS Controller, a master maestro conducting this symphony of power production, distribution, and storage. It regulates INPUT from the fuel cells and allots OUTPUT to the different systems.
 
 The EPS, with its harmonious orchestra of power production, storage systems, and well-coordinated control unit, safeguards all electrical functions on the S.P.A.C.E.C.R.A.F.T., turning the wheel of scientific discovery and human ingenuity on its journey to the moon and back.
 
@@ -123,7 +89,147 @@ Powering the AJ10 engine is the volatile yet efficient mix of Hydrazine (fuel) a
 
 While offering optimal reactivity, these substances are kept in separate tanks for safety and controlled use. This precise isolation prevents premature combustion, ensuring the fuel is available precisely when required, and in the controlled manner necessary for mission success.
 
+#### 2.3.2.3 SPS Controller
+
+The Service Propulsion System stands as an impressively complex marvel of engineering. Yet, such intricacy requires an equally, if not more, impressive conduit of oversight to ensure optimal operational efficiency - the SPS Controller.
+
+The SPS Controller is the brain of the SPS, tasked with regulating the complex sequence of actions indispensable for successful maneuvers. Its primary role is ensuring a judicious and timely feed of propellant to the engine, a task paramount to the smooth operation of the Hohmann transfer and de-orbit maneuvers.
+
+Propellant feed is not a simple on-off operation. It requires microscopic precision in regulating the quantity of hydrazine and nitrogen tetroxide, ensuring the accurate creation of thrust. Timing, too, is crucial in these procedures. Hence, the SPS Controller performs the delicate dance of managing these elements to a timely and precise rhythm.
+
 Your journey aboard the S.P.A.C.E.C.R.A.F.T., through the vast cosmos to the lunar landscape, is driven by the powerful Service Propulsion System – a testament to humanity's ingenuity to transcend Earthly confines and reach for the stars and beyond.
 
-### 2.3.2 Environmental Control System (ECS)
+### 2.3.3 Environmental Control System (ECS)
 
+Instrumental in creating a hospitable bubble in the unforgiving vacuum of space, the Environmental Control Subsystem (ECS) is a vital integrant of the S.P.A.C.E.C.R.A.F.T. module. From stable life support to protecting delicate electronic equipment, all aspects of maintaining a comfortable and safe environment for the astronauts and machine components are overseen by the ECS.
+
+#### 2.3.3.1 Water Management Section (WCS)
+
+A lifeline within the S.P.A.C.E.C.R.A.F.T.'s Environmental Control Subsystem, the Water Management Section (WCS), attends to the vital role of managing the spacecraft's water resources. This subsystem ensures the availability of water for diverse mission-critical applications, from hydration and meal preparation for the astronauts to cooling various electronic systems and providing for extinguishing needs in the unlikely event of a fire within the module.
+
+#### 2.3.3.1.1 Main Water Tank
+
+The heart of the WCS, the Main Water Tank, carries the primary reserve of water slated for the mission. This reservoir's water is primarily used for hydration, meal preparation, and the cooling needs of the spacecraft's electronic systems.
+
+##### 2.3.3.1.2 Backup Water Tank
+
+As is the case with space missions' high stakes, redundancy is important. The Backup Water Tank holds a reserve of water, ready to supplement the main supply if necessary. This reserve acts as an insurance policy, ensuring the availability of this indispensable resource at all times.
+
+##### 2.3.3.1.3 Main Water Pump
+
+The Main Water Pump shuffles water from the tank to the various parts of the spacecraft as needed. It ensures that the prescribed amount of water is distributed to meet the drinking, meal preparation, and cooling requirements, as dictated by the current mission phase and on-board needs.
+
+##### 2.3.3.1.4 Backup Water Pump
+
+Following the essential principle of redundancy in space missions, a Backup Water Pump is integrated into the WCS. This pump comes into play, ensuring uninterrupted water supply should any technical mishaps or issues befall the main pump.
+
+##### 2.3.3.1.5 WCS Controller
+
+A technological marvel within the WCS, the WCS Controller, acts as the brain of the system. It regulates water distribution across the spacecraft, based on need, priority, and system status. It smartly allocates water resources depending on the consumption requirements, overseeing efficient use of available reserves and making necessary projections for potential needs.
+
+Each component of the WCS works together, harmonizing the regulation and distribution of water to sustain both life and machine within the S.P.A.C.E.C.R.A.F.T. The subsystem, while unassuming in comparison to the more mechanical elements of a spacecraft, underpins life and mission success in the unforgiving environment of space.
+
+#### 2.3.3.2 Oxygen Supply and Cabin Pressure Control Section (OSCPCS)
+
+The Oxygen Supply and Cabin Pressure Control Section (OSCPCS) is a masterful blend of engineering and planning designed to support life in the remote expanse of space. The OSCPCS stores gaseous oxygen and regulates the cabin and suit pressures by providing oxygen to the Atmosphere Revitalization System (ARS). It compensates for the metabolic consumption of the crew, ensuring that the astronauts always have a steady supply of breathable air.
+
+The blend of cabin air is a careful mix of 60% nitrogen and 40% oxygen, designed to minimize the risk of fire, a potentially catastrophic event in the spacecraft.
+
+##### 2.3.3.2.1 LN2 Tank
+
+The LN2 Tank or Liquid Nitrogen Tank is a critical component of the OSCPCS. Nitrogen is necessary to achieve the 60% nitrogen - 40% oxygen mix of the cabin air. The LN2 tank ensures that there is always a sufficient supply of nitrogen to maintain this optimal balance.
+
+##### 2.3.3.2.2 LOX Tanks
+
+The LOX Tanks, part of the Electrical Power System (EPS), play a critical role in the OSCPCS operation. They store the necessary liquid oxygen, which can be released and converted into gaseous form as required to maintain the desired oxygen percentage in the cabin.
+
+##### 2.3.3.2.3 OSCPCS Controller
+
+The OSCPCS Controller is the heart of the OSCPCS operations. It constantly monitors and regulates the levels of nitrogen and oxygen, along with the cabin and suit pressures. Depending on the crew's metabolic requirements and the spacecraft's conditions, the OSCPCS Controller makes real-time adjustments to maintain a safe and comfortable environment for the astronauts throughout their lunar mission.
+
+#### 2.3.3.3 Atmosphere Revitalization System (ARS)
+
+Indispensable to the livability of the S.P.A.C.E.C.R.A.F.T. module, the Atmosphere Revitalization System (ARS) upholds the health of the spacecraft's internal environment. Primarily, the ARS removes carbon dioxide from the cabin air while cooling and conditioning the air, thus maintaining a regulated, comfortable in-craft climate for the crew.
+
+##### 2.3.3.3.1 Loop Fan
+
+The loop fan is an essential part of the ARS. It facilitates continuous air circulation, ensuring that the cabin air reliably reaches the system for treatment. A backup fan is also integrated into the ARS to maintain this critical circulation should the main fan encounter technical issues.
+
+##### 2.3.3.3.2 Heat Exchanger
+
+The heat exchanger serves as the cooling heart of the ARS. Here, the warm cabin air surrenders its heat to the Thermal Control System (TCS), effectively cooling the air before it is returned to the cabin.
+
+##### 2.3.3.3.3 Water Separators
+
+The water separators in the ARS play a vital role in humidity control. Utilizing specialized fans, water is effectively spun out from the air in a centrifugal manner. Once separated, the water is re-routed for storage, minimizing waste and efficiently recycling resources.
+
+##### 2.3.3.3.4 Odor Removal Canister
+
+With activated charcoal as its active ingredient, the odor removal canisters relentlessly scrub the air clean of any unpleasant smells. Simultaneously, a backup canister stands ready to assume the function, ensuring continuous functionality.
+
+##### 2.3.3.3.5 CO2 Removal Canister
+
+Potentially threatening levels of CO2 are effectively recaptured in CO2 removal canisters, utilizing Lithium Hydroxide (LiOH) cartridges. Both primary and backup canisters are installed to ensure consistently safe levels of CO2 within the S.P.A.C.E.C.R.A.F.T.
+
+##### 2.3.3.3.6 ARS Operation Cycle
+
+The ARS operation consists of a meticulously orchestrated series of steps. Cabin air is first drawn into the system, where it passes through the odor removal canister, scrubbing the air clean of smells. Next, the air undergoes CO2 removal in the designated canister, parsimoniously reducing this gas to safe levels.
+
+Post-conditioning, the air is carefully routed through the heat exchanger, where excess heat is rejected to the spacecraft's TCS. This cooled and now conditioned air then passes through the water separator, effectively controlling the humidity levels.
+
+Finally, the treated and tempered air is returned to the cabin, offering the crew a comfortable and safe internal atmosphere as they navigate through their lunar mission.
+
+Through the resilience of the Atmosphere Revitalization System (ARS), the inhospitable vagaries of outer space environments are kept at bay, nurturing a welcoming and comfortable atmosphere inside the spacecraft, truly a hearth away from home for our intrepid astronauts.
+
+
+##### 2.3.3.3.6 ARS Controller
+
+Navigating the continuous operation of the intricate Atmosphere Revitalization System (ARS) is a complex task, one expertly managed by the ARS Controller. This keystone component supervises all the functions of the ARS, ensuring an efficient and optimally functioning system.
+
+The ARS Controller effectively governs the rate of air circulation, manages the heat exchange process, and regulates the humidity levels within the cabin. Through its real-time analysis of cabin air, the controller directs air treatment through odor and CO2 removal canisters when necessary to maintain a clean, fresh atmosphere aboard the module.
+
+In essence, the ARS Controller exemplifies the blend of high-precision engineering and advanced programming. It stands vigilant, preserving a breathable and pleasant environment within the S.P.A.C.E.C.R.A.F.T., ultimately ensuring the health and comfort of our astronauts in their celestial voyage.
+
+#### 2.3.3.4 Heat Transport Section (HTS)
+
+A critical aspect of spacecraft management, the Heat Transport System, uses a water-glycol solution to cool temperature-sensitive equipment such as batteries and electronic gear requiring active thermal control. This solution circulates within the cooling loops, absorbing excess heat from the equipment mounted on cold plates and rails. The heat absorbed is then transferred to the space radiators for ejection, thus maintaining optimal thermal conditions.
+
+Spacecraft is continuously subjected to solar radiation, necessitating constant heat rejection. Moreover, to distribute the sun's heat more evenly across the spacecraft and avoid solar concentration points, the S.P.A.C.E.C.R.A.F.T. is initiated into a slow spin. Through this action, all sides of the spacecraft receive equal solar exposure.
+
+With the accurate metrics provided by the cabin thermometers and the protective function of the MLI, the Heat Transport Section expertly balances the complex variables of temperature regulation. It assures the safety of both astronauts and sensitive equipment, substantiating reliable mission execution as our astronauts traverse the imperious expanse of space.
+
+##### 2.3.3.4.1 Primary Single-Phased Cooling Loop
+
+Essential in the heat exchange process, the primary single-phased cooling loop circulates water-glycol solution under the regulation of a controlling pump. This loop facilitates the active cooling of electronic components, thus ensuring their peak performance.
+
+##### 2.3.3.4.2 Backup Single-Phased Cooling Loop
+
+To guarantee continuity in heat transport, a backup single-phased cooling loop is available. This system mirrors the primary loop, standing ready to take over should the primary system face any operational issues.
+
+##### 2.3.3.4.3 Main Space Radiator
+
+The primary conduit for ejecting surplus heat, the main space radiator, is vital for normal spacecraft operations. Using the change in state from a liquid to a gas, this radiator effectively expels unwanted heat into space.
+
+##### 2.3.3.4.4 Backup Space Radiator
+
+To safeguard the spacecraft's optimal temperature control, a backup space radiator is included. Like the main radiator, it stands ready to fulfill its role should the need arise.
+
+##### 2.3.3.4.5 Cabin Thermometers
+
+Accurate temperature reading is vital in the intricate management of spacecraft climate. To this end, a main cabin thermometer and a backup one work to consistently provide temperature readings, aiding in necessary changes for maintaining the desired cabin temperature.
+
+##### 2.3.3.4.6 Multi-Layer Insulation (MLI)
+
+The MLI wraps the spacecraft, acting as a protective layer against both solar radiation heat and the bitter cold of the shadows. This insulation empowers the S.P.A.C.E.C.R.A.F.T to maintain a steady internal temperature.
+
+##### 2.3.3.4.6 HTS Controller
+
+At the heart of the Heat Transport Section (HTS) operations is the HTS Controller - an intelligent unit engineered to manage the intricate environment of the S.P.A.C.E.C.R.A.F.T. The controller meticulously oversees the heat transport system, ensuring that the module's interior maintains optimal operating temperatures.
+
+The HTS Controller directs the regulation of coolants within the single-phased loops, instructing the pumps to adjust the flow based on the current needs of the thermal system, primarily dictated by the electronic equipment's conditions and cabin air temperature.
+
+Relying on the data from the cabin thermometers, the HTS Controller also oversees the slow spin of the spacecraft for even solar exposure, ensuring that no single area is exposed to sustained solar heat, which could create potentially hazardous hotspots.
+
+In summary, the HTS Controller exemplifies our vigilant dedication to providing a safe and consistent environment aboard the S.P.A.C.E.C.R.A.F.T, thus ensuring the comfort and safety of our astronauts during their expedition into the lunar sphere.
+
+Collectively, these subsystems work in harmony under the ECS, sculpting a safe and hospitable environment within the spacecraft. As we venture further from our home, the ECS stands out as a testament to human ingenuity, creating an Earth-like sanctuary that shields us from the harsh conditions of space travel.
