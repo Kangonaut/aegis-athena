@@ -233,3 +233,41 @@ Relying on the data from the cabin thermometers, the HTS Controller also oversee
 In summary, the HTS Controller exemplifies our vigilant dedication to providing a safe and consistent environment aboard the S.P.A.C.E.C.R.A.F.T, thus ensuring the comfort and safety of our astronauts during their expedition into the lunar sphere.
 
 Collectively, these subsystems work in harmony under the ECS, sculpting a safe and hospitable environment within the spacecraft. As we venture further from our home, the ECS stands out as a testament to human ingenuity, creating an Earth-like sanctuary that shields us from the harsh conditions of space travel.
+
+### 2.3.4 Communications System (COMS)
+
+Ensuring seamless and secure communication between the astronauts, the lunar lander, and mission control on Earth is a paramount challenge adeptly handled by the Communications System (COMS). The system provides a seamless conduit for data and voice communications between the various components of the mission, including the S.P.A.C.E.C.R.A.F.T. and A.P.O.L.L.O. modules as well as long-range communication with Earth.
+
+#### 2.3.4.1 VHF Scimitar Antennas
+
+Two Very High Frequency (VHF) scimitar antennas are installed on the S.P.A.C.E.C.R.A.F.T. to facilitate short-range communication with the A.P.O.L.L.O. module. These antennas offer reliable communication during those critical moments of lunar descent and ascent when the lander is disconnected from the main module. One antenna serves as the primary communication line, while the second serves as a backup ensuring fail-safe communication.
+
+#### 2.3.4.2 Steerable Unified S-band High-Gain Antenna
+
+For extensive range communication with Earth, an Unified S-band (USB) High-Gain antenna is used. This antenna, functioning with the Unified S-band (USB) system, is steerable, allowing it to maintain optimal alignment with Earth regardless of the S.P.A.C.E.C.R.A.F.T's orientation. This antenna ensures unhindered voice and data communication across the vast expanse of space separating the S.P.A.C.E.C.R.A.F.T from the control centre on Earth.
+
+#### 2.3.4.3 COMS Controller
+
+The COMS Controller sits at the heart of the Communications System. It orchestrates which antenna is in use, necessitating manual change by the crew when communication needs shift between Earth and the A.P.O.L.L.O. module.
+
+Significantly, the COMS Controller also maintains the integrity and security of the communications. It employs a Vigenère Cipher and a Pre-shared Key (PSK) for digital cryptology, encrypting and decrypting communications to ensure their privacy and protection from potential eavesdroppers.
+
+In essence, the COMS system significantly aids mission success, reinforcing near real-time and secure communication links between S.P.A.C.E.C.R.A.F.T. module, the A.P.O.L.L.O. module, and mission control on Earth, fostering efficiency, safety, and unity in mission activities throughout the lunar expedition.
+
+#### 2.3.5 Binary Regulated Artifical Intelligence Network System (BRAINS)
+
+Serving as the cerebral backbone of the S.P.A.C.E.C.R.A.F.T., the Binary Regulated Artificial Intelligence Network System (BRAINS) is the comprehensive hardware setup that brings the onboard AI Assistant, M.A.R.S., to operational life. It nests all the components foundational to execute the complex tasks assigned to M.A.R.S., making it a wonder of computational craft and machine intelligence.
+
+##### 2.3.5.1 BRAINS Controller
+
+Operating as the system's governing body, the BRAINS Controller manages and orchestrates all operations within the BRAINS. Critical in ensuring that all subsystems work in perfect harmony, the controller ensures that M.A.R.S.'s needs and tasks are expertly balanced and executed, ensuring optimal AI performance throughout the mission.
+
+##### 2.3.5.2 GPU Cluster
+
+The neurosynaptic core of BRAINS, the GPU Cluster, forms the subnet of the system that facilitates the advanced neural network architecture behind M.A.R.S.'s machine intelligence. Built around a framework of 10 high-performance H100 Tensor-Core-GPUs, these individual processing units come together to form a potent collective neural network compute platform, granting the onboard AI the power to perform with impressive speed and analytical precision.
+
+##### 2.3.5.3 Disk Array running RAID
+
+Mirroring the potent memory recall and storage capacity of the human brain, BRAINS utilizes a sophisticated disk array employing Redundant Array of Independent/Inexpensive Disk (RAID) technology. This specialized setup stores the vast knowledge base on which M.A.R.S. relies to provide expert guidance and perform complex decision-making processes.
+
+The BRAINS is a marvel of artificial intelligence engineering that ably supports the complicated tasks that M.A.R.S. needs to execute. It combines the delicate balance of immense computational power with the capacity of high-volume data management, creating a potent AI network dedicated to the successful outcome of the Aegis Athena mission.
