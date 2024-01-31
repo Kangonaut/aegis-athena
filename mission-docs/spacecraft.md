@@ -258,10 +258,6 @@ In essence, the COMS system significantly aids mission success, reinforcing near
 
 Serving as the cerebral backbone of the S.P.A.C.E.C.R.A.F.T., the Binary Regulated Artificial Intelligence Network System (BRAINS) is the comprehensive hardware setup that brings the onboard AI Assistant, M.A.R.S., to operational life. It nests all the components foundational to execute the complex tasks assigned to M.A.R.S., making it a wonder of computational craft and machine intelligence.
 
-##### 2.3.5.1 BRAINS Controller
-
-Operating as the system's governing body, the BRAINS Controller manages and orchestrates all operations within the BRAINS. Critical in ensuring that all subsystems work in perfect harmony, the controller ensures that M.A.R.S.'s needs and tasks are expertly balanced and executed, ensuring optimal AI performance throughout the mission.
-
 ##### 2.3.5.2 GPU Cluster
 
 The neurosynaptic core of BRAINS, the GPU Cluster, forms the subnet of the system that facilitates the advanced neural network architecture behind M.A.R.S.'s machine intelligence. Built around a framework of 10 high-performance H100 Tensor-Core-GPUs, these individual processing units come together to form a potent collective neural network compute platform, granting the onboard AI the power to perform with impressive speed and analytical precision.
@@ -271,3 +267,7 @@ The neurosynaptic core of BRAINS, the GPU Cluster, forms the subnet of the syste
 Mirroring the potent memory recall and storage capacity of the human brain, BRAINS utilizes a sophisticated disk array employing Redundant Array of Independent/Inexpensive Disk (RAID) technology. This specialized setup stores the vast knowledge base on which M.A.R.S. relies to provide expert guidance and perform complex decision-making processes.
 
 The BRAINS is a marvel of artificial intelligence engineering that ably supports the complicated tasks that M.A.R.S. needs to execute. It combines the delicate balance of immense computational power with the capacity of high-volume data management, creating a potent AI network dedicated to the successful outcome of the Aegis Athena mission.
+
+##### 2.3.5.1 BRAINS Controller
+
+Operating as the system's governing body, the BRAINS Controller manages and orchestrates all operations within the BRAINS. Critical in ensuring that all subsystems work in perfect harmony, the controller ensures that M.A.R.S.'s needs and tasks are expertly balanced and executed, ensuring optimal AI performance throughout the mission.
