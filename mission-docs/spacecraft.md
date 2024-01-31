@@ -104,3 +104,26 @@ Having a backup system for a mission of this magnitude is not a luxury; it's a n
 Directing the course of the EPS is the EPS Controller, a master maestro conducting this symphony of power production, distribution, and storage. It regulates INPUT from the fuel cells, allots OUTPUT to the different systems, and toggles between the primary and backup systems as required.
 
 The EPS, with its harmonious orchestra of power production, storage systems, and well-coordinated control unit, safeguards all electrical functions on the S.P.A.C.E.C.R.A.F.T., turning the wheel of scientific discovery and human ingenuity on its journey to the moon and back.
+
+### 2.3.2 Service Propulsion System (SPS)
+
+The Service Propulsion System (SPS) is the powerhouse of the S.P.A.C.E.C.R.A.F.T. module, responsible for orchestrating the profound ballet of interstellar navigation and ensuring accurate course alterations during the lunar mission.
+
+#### 2.3.2.1 Core Functionality
+
+The predominant responsibility of the SPS is to perform the intricate Hohmann transfer maneuvers, which are paramount in guiding the module from the Earth's orbit to the lunar orbit, and back. Further, the SPS shoulders the critical function of facilitating the de-orbit maneuver, a carefully calculated sequence that initiates the re-entry process, marking the initiation of the return journey.
+
+#### 2.3.2.2 Engine and Thrust Vector Control (TVC)
+
+At the heart of the SPS beats the Aerojet AJ10, a vacuum-optimized engine celebrated for its precision and reliability. The engine, housed in an innovative pivoting mount — a gimbal — facilitates Thrust Vector Control (TVC). This set-up allows for meticulous directional adjustments of the propulsion, enabling precise navigation and trajectory modifications, crucial for the complexities of space travel.
+
+#### 2.3.2.2 Propellant and Storage
+
+Powering the AJ10 engine is the volatile yet efficient mix of Hydrazine (fuel) and Nitrogen Tetroxide (oxidizer). This particular choice of hypergolic propellants boasts a dependable characteristic — it spontaneously ignites upon contact, negating the need for a separate ignition system and reducing potential points of failure.
+
+While offering optimal reactivity, these substances are kept in separate tanks for safety and controlled use. This precise isolation prevents premature combustion, ensuring the fuel is available precisely when required, and in the controlled manner necessary for mission success.
+
+Your journey aboard the S.P.A.C.E.C.R.A.F.T., through the vast cosmos to the lunar landscape, is driven by the powerful Service Propulsion System – a testament to humanity's ingenuity to transcend Earthly confines and reach for the stars and beyond.
+
+### 2.3.2 Environmental Control System (ECS)
+
