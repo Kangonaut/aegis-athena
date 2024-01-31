@@ -48,3 +48,7 @@ class PartsManager:
 
         # add part
         self.__parts[part.part_id] = part
+
+    def add_many(self, parts: list[BasePart]) -> None:
+        for part in parts:
+            self.add(part)

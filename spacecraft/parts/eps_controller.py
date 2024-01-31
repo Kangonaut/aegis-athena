@@ -5,7 +5,7 @@ from spacecraft.parts.battery import Battery
 from spacecraft.parts.fuel_cell import FuelCell
 
 
-class PowerController(BasePart):
+class EpsController(BasePart):
     def __init__(self, name: str, battery: Battery, fuel_cell: FuelCell):
         super().__init__(name)
         self.__battery = battery

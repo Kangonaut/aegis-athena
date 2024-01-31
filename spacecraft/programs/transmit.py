@@ -7,7 +7,7 @@ from spacecraft.parts.antenna import Antenna
 from spacecraft.parts.base import BasePart
 from spacecraft.parts.communication_controller import CommunicationController
 from spacecraft.parts.environment_controller import EnvironmentController
-from spacecraft.parts.power_controller import PowerController
+from spacecraft.parts.eps_controller import EpsController
 from spacecraft.parts.fuel import FuelTank
 from spacecraft.parts.fuel_cell import FuelCell
 from spacecraft.parts.manager import PartsManager

@@ -85,7 +85,7 @@ At the heart of the SPS beats the Aerojet AJ10, a vacuum-optimized engine celebr
 
 #### 2.3.2.2 Propellant and Storage
 
-Powering the AJ10 engine is the volatile yet efficient mix of Hydrazine (fuel) and Nitrogen Tetroxide (oxidizer). This particular choice of hypergolic propellants boasts a dependable characteristic — it spontaneously ignites upon contact, negating the need for a separate ignition system and reducing potential points of failure.
+Powering the AJ10 engine is the volatile yet efficient mix of Aerozine 50 (fuel) and Nitrogen Tetroxide (N2O4 - oxidizer). This particular choice of hypergolic propellants boasts a dependable characteristic — it spontaneously ignites upon contact, negating the need for a separate ignition system and reducing potential points of failure.
 
 While offering optimal reactivity, these substances are kept in separate tanks for safety and controlled use. This precise isolation prevents premature combustion, ensuring the fuel is available precisely when required, and in the controlled manner necessary for mission success.
 

@@ -10,8 +10,14 @@ class BaseWaterSupply(BasePart):
 
 
 class WaterTank(BaseTank):
-    def __init__(self, name: str, capacity: float, content: float, water_supply: BaseWaterSupply):
-        super().__init__(name, capacity, content)
+    def __init__(self, name: str, capacity: float, fill_level: float, water_supply: BaseWaterSupply):
+        super().__init__(
+            name=name,
+            capacity=capacity,
+            fill_level=fill_level,
+            contents="water",
+            contents_abbreviation="H2O",
+        )
         self.__water_supply: BaseWaterSupply = water_supply
 
     @property

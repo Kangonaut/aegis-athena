@@ -62,3 +62,11 @@ class Antenna(BasePart):
     @property
     def frequency_range(self) -> FrequencyRange:
         return self.__frequency_range
+
+    def display_details(self) -> str:
+        return (
+                super().display_details() +
+                f"range: {self.range_type}\n"
+                f"frequency: {self.frequency} Hz\n"
+                f"frequency_range: {self.frequency_range.min} - {self.frequency_range.max} Hz\n"
+        )

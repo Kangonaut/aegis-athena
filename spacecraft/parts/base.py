@@ -106,3 +106,9 @@ class BasePart(abc.ABC):
     @property
     def power_state(self) -> bool:
         return self.__power_state
+
+    def display_details(self) -> str:
+        return (
+            f"name: {self.name}\n"
+            f"status: {self.status}\n"
+        )
