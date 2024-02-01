@@ -1,41 +1,22 @@
 from typing import Self
 
 from spacecraft.parts.base import BasePart
-from spacecraft.parts.fuel import FuelTank
+from spacecraft.parts.fuel import FuelTank, OxidizerTank
 
 
 class Engine(BasePart):
-    def __init__(self, name: str):
+    def __init__(self, name: str, fuel_tank: FuelTank, oxidizer_tank: OxidizerTank):
         super().__init__(name)
-        self.__fuel_tank: FuelTank | None = None
-        self.__oxidizer_tank: FuelTank | None = None
-
-    def validate(self) -> None:
-        if self.__oxygen_fuel_tank.fuel_type != FuelType.LIQUID_OXYGEN:
-            raise PartInvalidConfiguration("the oxygen fuel tank must have fuel-type oxygen")
-        if self.__hydrogen_fuel_tank.fuel_type != FuelType.LIQUID_HYDROGEN:
-            raise PartInvalidConfiguration("the hydrogen fuel tank must have fuel-type hydrogen")
+        self.fuel_tank: FuelTank = fuel_tank
+        self.oxidizer_tank: OxidizerTank = oxidizer_tank
 
     @property
     def dependencies(self) -> set[Self]:
-        return {self.__oxygen_fuel_tank, self.__hydrogen_fuel_tank}
+        return {self.fuel_tank, self.oxidizer_tank}
 
-    @property
-    def oxygen_fuel_tank(self) -> FuelTank | None:
-        return self.__oxygen_fuel_tank
-
-    @oxygen_fuel_tank.setter
-    def oxygen_fuel_tank(self, value: FuelTank) -> None:
-        if value.fuel_type != FuelType.LIQUID_OXYGEN:
-            raise PartInvalidConfiguration("fuel tank must have fuel-type oxygen")
-        self.__oxygen_fuel_tank = value
-
-    @property
-    def hydrogen_fuel_tank(self) -> FuelTank | None:
-        return self.__hydrogen_fuel_tank
-
-    @hydrogen_fuel_tank.setter
-    def hydrogen_fuel_tank(self, value: FuelTank) -> None:
-        if value.fuel_type != FuelType.LIQUID_HYDROGEN:
-            raise PartInvalidConfiguration("fuel tank must have fuel-type hydrogen")
-        self.__hydrogen_fuel_tank = value
+    def display_details(self) -> str:
+        return (
+                super().display_details() +
+                f"fuel: {self.fuel_tank.part_id}\n"
+                f"oxidizer: {self.oxidizer_tank.part_id}\n"
+        )

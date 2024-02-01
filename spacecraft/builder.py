@@ -9,6 +9,9 @@ from spacecraft.parts.environment_controller import EnvironmentController
 from spacecraft.parts.eps_controller import EpsController
 from spacecraft.parts.fuel import LoxTank, Lh2Tank, AerozineTank, N2o4Tank
 from spacecraft.parts.fuel_cell import FuelCell
+from spacecraft.parts.engine import Engine
+from spacecraft.parts.gimbal import EngineGimbal
+from spacecraft.parts.sps_controller import SpsController
 from spacecraft.parts.temp_controller import TemperatureController
 from spacecraft.parts.thermometer import Thermometer
 from spacecraft.parts.water import WaterTank
@@ -76,15 +79,70 @@ class SpacecraftBuilder:
         ])
 
         # SPS
+        aerozine_tank = AerozineTank(
+            name="Aerozine 50 tank",
+            capacity=1_000,
+            fill_level=900,
+        )
+        n2o4_tank = N2o4Tank(
+            name="N2O4 tank",
+            capacity=1_000,
+            fill_level=900,
+        )
+        engine = Engine(
+            name="Aerojet AJ10",
+            fuel_tank=aerozine_tank,
+            oxidizer_tank=n2o4_tank,
+        )
+        gimbal = EngineGimbal(
+            name="TVC gimbal"
+        )
+        sps_controller = SpsController(
+            name="SPS controller",
+            engine=engine,
+            gimbal=gimbal,
+        )
+        spacecraft.parts_manager.add_many([
+            aerozine_tank,
+            n2o4_tank,
+            engine,
+            gimbal,
+            sps_controller,
+        ])
 
         # COMS
-        main_low_range_antenna = Antenna(
-            name="short-range antenna",
+        main_short_range_antenna = Antenna(
+            name="VHF scimitar antenna 0",
             range_type=RangeType.SHORT_RANGE,
-            frequency=1_000,
-            frequency_range=FrequencyRange(500, 2_000),
+            frequency=296_800_000,  # or 259_700_000
+            frequency_range=FrequencyRange(30_000_000, 300_000_000),
         )
-        spacecraft.parts_manager.add(main_low_range_antenna)
+        backup_short_range_antenna = Antenna(
+            name="VHF scimitar antenna 1",
+            range_type=RangeType.SHORT_RANGE,
+            frequency=296_800_000,  # or 259_700_000
+            frequency_range=FrequencyRange(30_000_000, 300_000_000),
+        )
+        main_long_range_antenna = Antenna(
+            name="USB antenna",
+            range_type=RangeType.LONG_RANGE,
+            frequency=2_119_000_000_000,
+            frequency_range=FrequencyRange(2_025_000_000, 2_290_000_000),
+        )
+        coms_controller = ComsController(
+            name="COMS controller",
+            antenna=main_short_range_antenna,
+            secret="cisco",  # configured secret
+            dispatcher=DefaultCommunicationDispatcher(
+                secret="class",  # actual secret
+            ),
+        )
+        spacecraft.parts_manager.add_many([
+            main_short_range_antenna,
+            backup_short_range_antenna,
+            main_long_range_antenna,
+            coms_controller,
+        ])
 
         # antenna_1 = Antenna(
         #     name="short range antenna",

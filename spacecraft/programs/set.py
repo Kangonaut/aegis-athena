@@ -7,9 +7,10 @@ from spacecraft.parts.antenna import Antenna
 from spacecraft.parts.base import BasePart
 from spacecraft.parts.coms_controller import ComsController
 from spacecraft.parts.eps_controller import EpsController
-from spacecraft.parts.fuel import FuelTank
+from spacecraft.parts.engine import Engine
 from spacecraft.parts.fuel_cell import FuelCell
 from spacecraft.parts.manager import PartsManager
+from spacecraft.parts.sps_controller import SpsController
 from spacecraft.programs.base import BaseProgram, ProgramArgumentParser, ProgramValueError, ProgramKeyError, \
     ProgramSyntaxError
 
@@ -40,7 +41,10 @@ class SetProgram(BaseProgram):
                 "lox": partial(self.__handle_set_part, attribute_name="lox_tank"),
                 "lh2": partial(self.__handle_set_part, attribute_name="lh2_tank"),
             },
-            FuelTank: {},
+            Engine: {
+                "fuel": partial(self.__handle_set_part, attribute_name="fuel_tank"),
+                "oxi": partial(self.__handle_set_part, attribute_name="oxidizer_tank"),
+            },
             Antenna: {
                 "hz": partial(self.__handle_set_int, attribute_name="frequency"),
             },
@@ -51,7 +55,11 @@ class SetProgram(BaseProgram):
             EpsController: {
                 "fc": partial(self.__handle_set_part, attribute_name="fuel_cell"),
                 "bat": partial(self.__handle_set_part, attribute_name="battery"),
-            }
+            },
+            SpsController: {
+                "engine": partial(self.__handle_set_part, attribute_name="engine"),
+                "gimbal": partial(self.__handle_set_part, attribute_name="gimbal"),
+            },
         }
 
     def __get_part_by_id(self, part_id: str) -> BasePart:
@@ -91,7 +99,7 @@ class SetProgram(BaseProgram):
 
     def __handle_set_part(self, part: BasePart, value: str, attribute_name: str) -> None:
         value_part = self.__get_part_by_id(value)
-        self.__assert_setter_type(part, attribute_name, value_part)
+        self.__assert_setter_type(part, value_part, attribute_name)
         setattr(part, attribute_name, value_part)
 
     def __handle_set_int(self, part: BasePart, value: str, attribute_name: str) -> None:
