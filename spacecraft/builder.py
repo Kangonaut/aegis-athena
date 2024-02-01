@@ -3,6 +3,7 @@ from spacecraft.displays.base import BaseDisplay
 from spacecraft.displays.streamlit import StreamlitDisplay
 from spacecraft.parts.antenna import Antenna, RangeType, FrequencyRange
 from spacecraft.parts.battery import Battery
+from spacecraft.parts.brains_controller import BrainsController
 from spacecraft.parts.coms_controller import ComsController
 from spacecraft.parts.cooler import Cooler
 from spacecraft.parts.environment_controller import EnvironmentController
@@ -11,7 +12,9 @@ from spacecraft.parts.fuel import LoxTank, Lh2Tank, AerozineTank, N2o4Tank
 from spacecraft.parts.fuel_cell import FuelCell
 from spacecraft.parts.engine import Engine
 from spacecraft.parts.gimbal import EngineGimbal
+from spacecraft.parts.gpu import GraphicsProcessingUnit
 from spacecraft.parts.sps_controller import SpsController
+from spacecraft.parts.storage import StorageMedium, StorageArray
 from spacecraft.parts.temp_controller import TemperatureController
 from spacecraft.parts.thermometer import Thermometer
 from spacecraft.parts.water import WaterTank
@@ -142,6 +145,52 @@ class SpacecraftBuilder:
             backup_short_range_antenna,
             main_long_range_antenna,
             coms_controller,
+        ])
+
+        # BRAINS
+        gpu_0 = GraphicsProcessingUnit(name="GPU 0")
+        gpu_1 = GraphicsProcessingUnit(name="GPU 1")
+        gpu_2 = GraphicsProcessingUnit(name="GPU 2")
+        gpu_3 = GraphicsProcessingUnit(name="GPU 3")
+        gpu_4 = GraphicsProcessingUnit(name="GPU 4")
+        gpu_5 = GraphicsProcessingUnit(name="GPU 5")
+        gpu_6 = GraphicsProcessingUnit(name="GPU 6")
+        gpu_7 = GraphicsProcessingUnit(name="GPU 7")
+        gpu_8 = GraphicsProcessingUnit(name="GPU 8")
+        gpu_9 = GraphicsProcessingUnit(name="GPU 9")
+
+        disk_0 = StorageMedium(
+            name="SSD 0",
+            capacity=5_000_000_000,
+        )
+        disk_1 = StorageMedium(
+            name="SSD 1",
+            capacity=5_000_000_000,
+        )
+        disk_2 = StorageMedium(
+            name="SSD 2",
+            capacity=5_000_000_000,
+        )
+        disk_3 = StorageMedium(
+            name="SSD 3",
+            capacity=5_000_000_000,
+        )
+        disk_array = StorageArray(
+            name="RAID 5 array",
+            storage_elems=[disk_0, disk_1, disk_2, disk_3]
+        )
+
+        brains_controller = BrainsController(
+            name="BRAINS Controller",
+            storage=disk_array,
+            gpus=[gpu_0, gpu_1, gpu_2, gpu_3, gpu_4, gpu_5, gpu_6, gpu_7, gpu_8, gpu_9]
+        )
+
+        spacecraft.parts_manager.add_many([
+            gpu_0, gpu_1, gpu_2, gpu_3, gpu_4, gpu_5, gpu_6, gpu_7, gpu_8, gpu_9,
+            disk_0, disk_1, disk_2, disk_3,
+            disk_array,
+            brains_controller,
         ])
 
         # antenna_1 = Antenna(
