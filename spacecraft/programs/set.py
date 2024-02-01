@@ -1,10 +1,12 @@
 import typing
 from typing import Callable, Type
+from functools import partial
 
 from spacecraft.displays.base import BaseDisplay
 from spacecraft.parts.antenna import Antenna
 from spacecraft.parts.base import BasePart
-from spacecraft.parts.communication_controller import CommunicationController
+from spacecraft.parts.coms_controller import ComsController
+from spacecraft.parts.eps_controller import EpsController
 from spacecraft.parts.fuel import FuelTank
 from spacecraft.parts.fuel_cell import FuelCell
 from spacecraft.parts.manager import PartsManager
@@ -31,21 +33,25 @@ class SetProgram(BaseProgram):
         super().__init__(parts_manager, display)
 
         self.__HANDLERS: dict[str, Callable[[BasePart, str], None]] = {
-            "power": self.__handle_set_power,
+            "pwr": self.__handle_set_power,
         }
         self.__PART_SPECIFIC_HANDLERS: dict[Type, dict[str, Callable[[any, str], None]]] = {
             FuelCell: {
-                "lox": self.__handle_fuel_cell_set_oxygen,
-                "lh2": self.__handle_fuel_cell_set_hydrogen,
+                "lox": partial(self.__handle_set_part, attribute_name="lox_tank"),
+                "lh2": partial(self.__handle_set_part, attribute_name="lh2_tank"),
             },
             FuelTank: {},
             Antenna: {
-                "hz": self.__handle_antenna_set_frequency,
+                "hz": partial(self.__handle_set_int, attribute_name="frequency"),
             },
-            CommunicationController: {
-                "secret": self.__handle_communication_controller_set_secret,
-                "antenna": self.__handle_communication_controller_set_antenna,
+            ComsController: {
+                "pwd": partial(self.__handle_set_str, attribute_name="secret"),
+                "ant": partial(self.__handle_set_part, attribute_name="antenna"),
             },
+            EpsController: {
+                "fc": partial(self.__handle_set_part, attribute_name="fuel_cell"),
+                "bat": partial(self.__handle_set_part, attribute_name="battery"),
+            }
         }
 
     def __get_part_by_id(self, part_id: str) -> BasePart:
@@ -54,9 +60,21 @@ class SetProgram(BaseProgram):
             raise ProgramKeyError(f"{part_id} is not a valid part ID")
         return part
 
-    def __assert_setter_type(self, part_property: property, value: BasePart) -> None:
-        target_type = typing.get_type_hints(part_property.fset)["value"]
+    def __assert_setter_type(self, part: BasePart, value: BasePart, attribute_name: str) -> None:
+        # if public attribute
+        type_hints = typing.get_type_hints(part.__init__)
+        print(f"type: {part}; type_hints: {type_hints}")
+        if attribute_name in type_hints:
+            target_type = type_hints[attribute_name]
+        # if private attribute with setter
+        elif (part_property := getattr(part, attribute_name, None)) and isinstance(part_property, property):
+            target_type = typing.get_type_hints(part_property.fset)["value"]
+        else:
+            raise ProgramValueError(f"{value.part_id} is not compatible")
+
+        # check if types match
         if not isinstance(value, target_type):
+            print(f"type: {type(value)}; target: {target_type}")
             raise ProgramValueError(f"{value.part_id} is not compatible")
 
     def __handle_set_power(self, part: BasePart, value: str) -> None:
@@ -71,30 +89,21 @@ class SetProgram(BaseProgram):
         except ValueError:
             raise ProgramValueError("value must be a valid integer")
 
-    def __handle_fuel_cell_set_oxygen(self, part: FuelCell, value: str):
-        tank = self.__get_part_by_id(value)
-        self.__assert_setter_type(part.__class__.oxygen_fuel_tank, tank)
-        part.oxygen_fuel_tank = tank
+    def __handle_set_part(self, part: BasePart, value: str, attribute_name: str) -> None:
+        value_part = self.__get_part_by_id(value)
+        self.__assert_setter_type(part, attribute_name, value_part)
+        setattr(part, attribute_name, value_part)
 
-    def __handle_fuel_cell_set_hydrogen(self, part: FuelCell, value: str):
-        tank = self.__get_part_by_id(value)
-        self.__assert_setter_type(part.__class__.hydrogen_fuel_tank, tank)
-        part.hydrogen_fuel_tank = tank
-
-    def __handle_antenna_set_frequency(self, part: Antenna, value: str):
+    def __handle_set_int(self, part: BasePart, value: str, attribute_name: str) -> None:
+        print(attribute_name)
         try:
             value = int(value)
+            setattr(part, attribute_name, value)
         except ValueError:
-            raise ProgramValueError("frequency must be an integer")
-        part.frequency = value
+            raise ProgramValueError(f"{attribute_name} must be a valid integer")
 
-    def __handle_communication_controller_set_secret(self, part: CommunicationController, value: str):
-        part.secret = value
-
-    def __handle_communication_controller_set_antenna(self, part: CommunicationController, value: str):
-        antenna = self.__get_part_by_id(value)
-        self.__assert_setter_type(part.__class__.antenna, antenna)
-        part.antenna = antenna
+    def __handle_set_str(self, part: BasePart, value: str, attribute_name: str):
+        setattr(part, attribute_name, value)
 
     def exec(self, arguments: list[str]) -> None:
         # set 0ab3 power 0
@@ -105,6 +114,8 @@ class SetProgram(BaseProgram):
 
         # retrieve part
         part = self.__get_part_by_id(part_id)
+
+        print(part.__class__.__dict__)
 
         # call handler
         if key in self.__HANDLERS:

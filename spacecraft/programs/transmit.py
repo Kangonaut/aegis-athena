@@ -5,7 +5,7 @@ from typing import Callable, Type, Self
 from spacecraft.displays.base import BaseDisplay
 from spacecraft.parts.antenna import Antenna
 from spacecraft.parts.base import BasePart
-from spacecraft.parts.communication_controller import CommunicationController
+from spacecraft.parts.coms_controller import ComsController
 from spacecraft.parts.environment_controller import EnvironmentController
 from spacecraft.parts.eps_controller import EpsController
 from spacecraft.parts.fuel import FuelTank
@@ -43,8 +43,8 @@ class TransmitProgram(BaseProgram):
             raise ProgramKeyError(f"{part_id} is not a valid part ID")
         return part
 
-    def __assert_controller_type(self, part: BasePart) -> CommunicationController:
-        if not isinstance(part, CommunicationController):
+    def __assert_controller_type(self, part: BasePart) -> ComsController:
+        if not isinstance(part, ComsController):
             raise ProgramValueError(f"{part.part_id} must be a COMs system")
         return part
 
@@ -80,10 +80,10 @@ class TransmitProgram(BaseProgram):
             max_random_duration=self.__RESPONSE_MAX_RANDOM_DURATION,
         )
 
-    def __generate_response(self, communication_controller: CommunicationController, message: str) -> None:
+    def __generate_response(self, coms_controller: ComsController, message: str) -> None:
         self._display.info("receiving response")
 
-        communicator = communication_controller.get_communicator()
+        communicator = coms_controller.get_communicator()
         for token in communicator.stream(message):
             self._display.print(token.content, end="")
 
@@ -98,8 +98,8 @@ class TransmitProgram(BaseProgram):
 
         # retrieve part
         part = self.__get_part_by_id(part_id)
-        communication_controller = self.__assert_controller_type(part)
+        coms_controller = self.__assert_controller_type(part)
 
         self.__simulate_transmit(message)
         self.__simulate_response_time(message)
-        self.__generate_response(communication_controller, message)
+        self.__generate_response(coms_controller, message)

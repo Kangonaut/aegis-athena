@@ -7,7 +7,7 @@ from spacecraft.parts.antenna import Antenna
 from spacecraft.parts.base import BasePart
 
 
-class CommunicationController(BasePart):
+class ComsController(BasePart):
     def __init__(self, name: str, antenna: Antenna, secret: str, dispatcher: BaseCommunicationDispatcher):
         super().__init__(name)
         self.__antenna = antenna

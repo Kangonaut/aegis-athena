@@ -3,7 +3,7 @@ from spacecraft.displays.base import BaseDisplay
 from spacecraft.displays.streamlit import StreamlitDisplay
 from spacecraft.parts.antenna import Antenna, RangeType, FrequencyRange
 from spacecraft.parts.battery import Battery
-from spacecraft.parts.communication_controller import CommunicationController
+from spacecraft.parts.coms_controller import ComsController
 from spacecraft.parts.cooler import Cooler
 from spacecraft.parts.environment_controller import EnvironmentController
 from spacecraft.parts.eps_controller import EpsController
@@ -77,13 +77,14 @@ class SpacecraftBuilder:
 
         # SPS
 
-
-
-
-
-
-
-
+        # COMS
+        main_low_range_antenna = Antenna(
+            name="short-range antenna",
+            range_type=RangeType.SHORT_RANGE,
+            frequency=1_000,
+            frequency_range=FrequencyRange(500, 2_000),
+        )
+        spacecraft.parts_manager.add(main_low_range_antenna)
 
         # antenna_1 = Antenna(
         #     name="short range antenna",
