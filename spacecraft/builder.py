@@ -1,10 +1,12 @@
 from spacecraft.communication.dispatcher import DefaultCommunicationDispatcher
 from spacecraft.displays.base import BaseDisplay
+from spacecraft.parts.ars import Fan, HeatExchanger, WaterSeparator, OdorRemover, Co2Remover, ArsController
 from spacecraft.parts.coms import Antenna, RangeType, FrequencyRange
 from spacecraft.parts.coms_controller import ComsController
 from spacecraft.parts.eps import Battery, FuelCell, EpsController
 from spacecraft.parts.brains import BrainsController, GraphicsProcessingUnit, StorageArray, StorageMedium
 from spacecraft.parts.fuel import LoxTank, Lh2Tank, AerozineTank, N2o4Tank
+from spacecraft.parts.hts import CoolingLoop, Radiator
 from spacecraft.parts.sps import Engine, EngineGimbal, SpsController
 from spacecraft.parts.wcs import WaterTank, WaterPump, WcsController
 from spacecraft.spacecraft import Spacecraft
@@ -217,10 +219,80 @@ class SpacecraftBuilder:
             wcs_controller,
         ])
 
+        # ECS - HTS
+        main_space_radiator = Radiator(
+            name="space radiator 0",
+        )
+        backup_space_radiator = Radiator(
+            name="space radiator 1"
+        )
+        main_cooling_loop = CoolingLoop(
+            name="cooling loop 0",
+            radiator=main_space_radiator,
+        )
+        backup_cooling_loop = CoolingLoop(
+            name="cooling loop 1",
+            radiator=main_space_radiator,
+        )
+        # TODO: cabin thermometers
+        spacecraft.parts_manager.add_many([
+            main_space_radiator,
+            backup_space_radiator,
+            main_cooling_loop,
+            backup_cooling_loop,
+        ])
+
         # ECS - ARS
+        main_fan = Fan(
+            name="fan 0",
+        )
+        backup_fan = Fan(
+            name="fan 1",
+        )
+        heat_exchanger = HeatExchanger(
+            name="heat exchanger",
+            cooling_loop=main_cooling_loop,
+        )
+        main_water_seperator = WaterSeparator(
+            name="centrifugal seperator 0",
+        )
+        backup_water_seperator = WaterSeparator(
+            name="centrifugal seperator 1",
+        )
+        main_odor_remover = OdorRemover(
+            name="activated charcoal canister 0",
+        )
+        backup_odor_remover = OdorRemover(
+            name="activated charcoal canister 1",
+        )
+        main_co2_remover = Co2Remover(
+            name="LiOH canister 0",
+        )
+        backup_co2_remover = Co2Remover(
+            name="LiOH canister 1",
+        )
+        ars_controller = ArsController(
+            name="ARS controller",
+            fan=main_fan,
+            heat_exchanger=heat_exchanger,
+            water_separator=main_water_seperator,
+            odor_remover=main_odor_remover,
+            co2_remover=main_co2_remover,
+        )
+        spacecraft.parts_manager.add_many([
+            main_fan,
+            backup_fan,
+            heat_exchanger,
+            main_water_seperator,
+            backup_water_seperator,
+            main_odor_remover,
+            backup_odor_remover,
+            main_co2_remover,
+            backup_co2_remover,
+            ars_controller,
+        ])
 
         # ECS - OSCPCS
-        # ECS - HTS
 
         # antenna_1 = Antenna(
         #     name="short range antenna",

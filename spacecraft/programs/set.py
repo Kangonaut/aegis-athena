@@ -3,7 +3,9 @@ from typing import Callable, Type
 from functools import partial
 
 from spacecraft.displays.base import BaseDisplay
+from spacecraft.parts.ars import HeatExchanger, ArsController
 from spacecraft.parts.base import BasePart
+from spacecraft.parts.hts import CoolingLoop
 from spacecraft.parts.manager import PartsManager
 from spacecraft.parts.coms import Antenna
 from spacecraft.parts.coms_controller import ComsController
@@ -36,6 +38,19 @@ class SetProgram(BaseProgram):
             "pwr": self.__handle_set_power,
         }
         self.__PART_SPECIFIC_HANDLERS: dict[Type, dict[str, Callable[[any, str], None]]] = {
+            CoolingLoop: {
+                "rad": partial(self.__handle_set_part, attribute_name="radiator"),
+            },
+            HeatExchanger: {
+                "cool": partial(self.__handle_set_part, attribute_name="cooling_loop")
+            },
+            ArsController: {
+                "fan": partial(self.__handle_set_part, attribute_name="fan"),
+                "heatex": partial(self.__handle_set_part, attribute_name="heat_exchanger"),
+                "h2osep": partial(self.__handle_set_part, attribute_name="water_seperator"),
+                "odorrem": partial(self.__handle_set_part, attribute_name="odor_remover"),
+                "co2rem": partial(self.__handle_set_part, attribute_name="co2_remover"),
+            },
             WaterPump: {
                 "tank": partial(self.__handle_set_part, attribute_name="water_tank"),
             },
