@@ -17,7 +17,8 @@ from spacecraft.parts.sps_controller import SpsController
 from spacecraft.parts.storage import StorageMedium, StorageArray
 from spacecraft.parts.temp_controller import TemperatureController
 from spacecraft.parts.thermometer import Thermometer
-from spacecraft.parts.water import WaterTank
+from spacecraft.parts.water import WaterTank, WaterPump
+from spacecraft.parts.wcs_controller import WcsController
 from spacecraft.spacecraft import Spacecraft
 
 
@@ -192,6 +193,47 @@ class SpacecraftBuilder:
             disk_array,
             brains_controller,
         ])
+
+        # ECS
+        # ECS - WMS
+        main_water_tank = WaterTank(
+            name="H2O tank 0",
+            capacity=100,
+            fill_level=60,
+            water_supply=main_fuel_cell,
+        )
+        backup_water_tank = WaterTank(
+            name="H2O tank 1",
+            capacity=100,
+            fill_level=100,
+            water_supply=main_fuel_cell,
+        )
+        main_water_pump = WaterPump(
+            name="H2O pump 0",
+            water_tank=main_water_tank,
+        )
+        backup_water_pump = WaterPump(
+            name="H2O pump 1",
+            water_tank=main_water_tank,
+        )
+        wcs_controller = WcsController(
+            name="WCS controller",
+            water_pump=main_water_pump,
+        )
+
+        spacecraft.parts_manager.add_many([
+            main_water_tank,
+            backup_water_tank,
+            main_water_pump,
+            backup_water_pump,
+            wcs_controller,
+        ])
+
+        # ECS - ARS
+        
+
+        # ECS - OSCPCS
+        # ECS - HTS
 
         # antenna_1 = Antenna(
         #     name="short range antenna",

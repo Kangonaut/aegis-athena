@@ -11,6 +11,8 @@ from spacecraft.parts.engine import Engine
 from spacecraft.parts.fuel_cell import FuelCell
 from spacecraft.parts.manager import PartsManager
 from spacecraft.parts.sps_controller import SpsController
+from spacecraft.parts.water import WaterTank, WaterPump
+from spacecraft.parts.wcs_controller import WcsController
 from spacecraft.programs.base import BaseProgram, ProgramArgumentParser, ProgramValueError, ProgramKeyError, \
     ProgramSyntaxError
 
@@ -37,6 +39,15 @@ class SetProgram(BaseProgram):
             "pwr": self.__handle_set_power,
         }
         self.__PART_SPECIFIC_HANDLERS: dict[Type, dict[str, Callable[[any, str], None]]] = {
+            WaterPump: {
+                "tank": partial(self.__handle_set_part, attribute_name="water_tank"),
+            },
+            WaterTank: {
+                "fc": partial(self.__handle_set_part, attribute_name="water_supply"),
+            },
+            WcsController: {
+                "pmp": partial(self.__handle_set_part, attribute_name="water_pump")
+            },
             FuelCell: {
                 "lox": partial(self.__handle_set_part, attribute_name="lox_tank"),
                 "lh2": partial(self.__handle_set_part, attribute_name="lh2_tank"),

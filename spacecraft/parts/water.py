@@ -18,8 +18,30 @@ class WaterTank(BaseTank):
             contents="water",
             contents_abbreviation="H2O",
         )
-        self.__water_supply: BaseWaterSupply = water_supply
+        self.water_supply: BaseWaterSupply = water_supply
 
     @property
     def dependencies(self) -> set[Self]:
-        return {self.__water_supply}
+        return {self.water_supply}
+
+    def display_details(self) -> str:
+        return (
+                super().display_details() +
+                f"supply: {self.water_supply.part_id}\n"
+        )
+
+
+class WaterPump(BasePart):
+    def __init__(self, name: str, water_tank: WaterTank):
+        super().__init__(name)
+        self.water_tank: WaterTank = water_tank
+
+    @property
+    def dependencies(self) -> set[Self]:
+        return {self.water_tank}
+
+    def display_details(self) -> str:
+        return (
+                super().display_details() +
+                f"tank: {self.water_tank.part_id}\n"
+        )
