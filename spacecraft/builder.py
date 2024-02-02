@@ -1,24 +1,12 @@
 from spacecraft.communication.dispatcher import DefaultCommunicationDispatcher
 from spacecraft.displays.base import BaseDisplay
-from spacecraft.displays.streamlit import StreamlitDisplay
-from spacecraft.parts.antenna import Antenna, RangeType, FrequencyRange
-from spacecraft.parts.battery import Battery
-from spacecraft.parts.brains_controller import BrainsController
+from spacecraft.parts.coms import Antenna, RangeType, FrequencyRange
 from spacecraft.parts.coms_controller import ComsController
-from spacecraft.parts.cooler import Cooler
-from spacecraft.parts.environment_controller import EnvironmentController
-from spacecraft.parts.eps_controller import EpsController
+from spacecraft.parts.eps import Battery, FuelCell, EpsController
+from spacecraft.parts.brains import BrainsController, GraphicsProcessingUnit, StorageArray, StorageMedium
 from spacecraft.parts.fuel import LoxTank, Lh2Tank, AerozineTank, N2o4Tank
-from spacecraft.parts.fuel_cell import FuelCell
-from spacecraft.parts.engine import Engine
-from spacecraft.parts.gimbal import EngineGimbal
-from spacecraft.parts.gpu import GraphicsProcessingUnit
-from spacecraft.parts.sps_controller import SpsController
-from spacecraft.parts.storage import StorageMedium, StorageArray
-from spacecraft.parts.temp_controller import TemperatureController
-from spacecraft.parts.thermometer import Thermometer
-from spacecraft.parts.water import WaterTank, WaterPump
-from spacecraft.parts.wcs_controller import WcsController
+from spacecraft.parts.sps import Engine, EngineGimbal, SpsController
+from spacecraft.parts.wcs import WaterTank, WaterPump, WcsController
 from spacecraft.spacecraft import Spacecraft
 
 
@@ -230,7 +218,6 @@ class SpacecraftBuilder:
         ])
 
         # ECS - ARS
-        
 
         # ECS - OSCPCS
         # ECS - HTS

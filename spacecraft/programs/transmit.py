@@ -3,17 +3,9 @@ import time
 from typing import Callable, Type, Self
 
 from spacecraft.displays.base import BaseDisplay
-from spacecraft.parts.antenna import Antenna
 from spacecraft.parts.base import BasePart
-from spacecraft.parts.coms_controller import ComsController
-from spacecraft.parts.environment_controller import EnvironmentController
-from spacecraft.parts.eps_controller import EpsController
-from spacecraft.parts.fuel import FuelTank
-from spacecraft.parts.fuel_cell import FuelCell
 from spacecraft.parts.manager import PartsManager
-from spacecraft.parts.tank import BaseTank
-from spacecraft.parts.temp_controller import TemperatureController
-from spacecraft.parts.water import WaterTank
+from spacecraft.parts.coms_controller import ComsController
 from spacecraft.programs.base import BaseProgram, ProgramArgumentParser, ProgramKeyError, ProgramValueError
 
 

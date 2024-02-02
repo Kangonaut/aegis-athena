@@ -3,16 +3,13 @@ from typing import Callable, Type
 from functools import partial
 
 from spacecraft.displays.base import BaseDisplay
-from spacecraft.parts.antenna import Antenna
 from spacecraft.parts.base import BasePart
-from spacecraft.parts.coms_controller import ComsController
-from spacecraft.parts.eps_controller import EpsController
-from spacecraft.parts.engine import Engine
-from spacecraft.parts.fuel_cell import FuelCell
 from spacecraft.parts.manager import PartsManager
-from spacecraft.parts.sps_controller import SpsController
-from spacecraft.parts.water import WaterTank, WaterPump
-from spacecraft.parts.wcs_controller import WcsController
+from spacecraft.parts.coms import Antenna
+from spacecraft.parts.coms_controller import ComsController
+from spacecraft.parts.sps import Engine, SpsController
+from spacecraft.parts.eps import FuelCell, EpsController
+from spacecraft.parts.wcs import WaterTank, WaterPump, WcsController
 from spacecraft.programs.base import BaseProgram, ProgramArgumentParser, ProgramValueError, ProgramKeyError, \
     ProgramSyntaxError
 

@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from spacecraft.parts.antenna import Antenna
+from spacecraft.parts.coms import Antenna
 
 
 @dataclass
