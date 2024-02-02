@@ -6,7 +6,7 @@ from spacecraft.parts.coms_controller import ComsController
 from spacecraft.parts.eps import Battery, FuelCell, EpsController
 from spacecraft.parts.brains import BrainsController, GraphicsProcessingUnit, StorageArray, StorageMedium
 from spacecraft.parts.fuel import LoxTank, Lh2Tank, AerozineTank, N2o4Tank
-from spacecraft.parts.hts import CoolingLoop, Radiator
+from spacecraft.parts.hts import CoolingLoop, Radiator, CoolantPump, Thermometer, HtsController
 from spacecraft.parts.sps import Engine, EngineGimbal, SpsController
 from spacecraft.parts.wcs import WaterTank, WaterPump, WcsController
 from spacecraft.spacecraft import Spacecraft
@@ -220,6 +220,12 @@ class SpacecraftBuilder:
         ])
 
         # ECS - HTS
+        main_coolant_pump = CoolantPump(
+            name="coolant pump 0",
+        )
+        backup_coolant_pump = CoolantPump(
+            name="coolant pump 1",
+        )
         main_space_radiator = Radiator(
             name="space radiator 0",
         )
@@ -229,17 +235,34 @@ class SpacecraftBuilder:
         main_cooling_loop = CoolingLoop(
             name="cooling loop 0",
             radiator=main_space_radiator,
+            coolant_pump=main_coolant_pump,
         )
         backup_cooling_loop = CoolingLoop(
             name="cooling loop 1",
             radiator=main_space_radiator,
+            coolant_pump=main_coolant_pump,
         )
-        # TODO: cabin thermometers
+        main_cabin_thermometer = Thermometer(
+            name="cabin thermometer 0",
+        )
+        backup_cabin_thermometer = Thermometer(
+            name="cabin thermometer 1",
+        )
+        hts_controller = HtsController(
+            name="HTS controller",
+            cooling_loop=main_cooling_loop,
+            thermometer=main_cabin_thermometer,
+        )
         spacecraft.parts_manager.add_many([
+            main_coolant_pump,
+            backup_coolant_pump,
             main_space_radiator,
             backup_space_radiator,
             main_cooling_loop,
             backup_cooling_loop,
+            main_cabin_thermometer,
+            backup_cabin_thermometer,
+            hts_controller,
         ])
 
         # ECS - ARS

@@ -5,7 +5,7 @@ from functools import partial
 from spacecraft.displays.base import BaseDisplay
 from spacecraft.parts.ars import HeatExchanger, ArsController
 from spacecraft.parts.base import BasePart
-from spacecraft.parts.hts import CoolingLoop
+from spacecraft.parts.hts import CoolingLoop, HtsController
 from spacecraft.parts.manager import PartsManager
 from spacecraft.parts.coms import Antenna
 from spacecraft.parts.coms_controller import ComsController
@@ -38,8 +38,12 @@ class SetProgram(BaseProgram):
             "pwr": self.__handle_set_power,
         }
         self.__PART_SPECIFIC_HANDLERS: dict[Type, dict[str, Callable[[any, str], None]]] = {
+            HtsController: {
+                "therm": partial(self.__handle_set_part, attribute_name="thermometer"),
+            },
             CoolingLoop: {
                 "rad": partial(self.__handle_set_part, attribute_name="radiator"),
+                "pmp": partial(self.__handle_set_part, attribute_name="coolant_pump")
             },
             HeatExchanger: {
                 "cool": partial(self.__handle_set_part, attribute_name="cooling_loop")
