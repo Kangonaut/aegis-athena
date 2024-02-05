@@ -3,6 +3,7 @@ from spacecraft.displays.base import BaseDisplay
 from spacecraft.parts.ars import Fan, HeatExchanger, WaterSeparator, OdorRemover, Co2Remover, ArsController
 from spacecraft.parts.coms import Antenna, RangeType, FrequencyRange
 from spacecraft.parts.coms_controller import ComsController
+from spacecraft.parts.ecs import EcsController
 from spacecraft.parts.eps import Battery, FuelCell, EpsController
 from spacecraft.parts.brains import BrainsController, GraphicsProcessingUnit, StorageArray, StorageMedium
 from spacecraft.parts.fuel import LoxTank, Lh2Tank, AerozineTank, N2o4Tank, Ln2Tank
@@ -185,7 +186,6 @@ class SpacecraftBuilder:
             brains_controller,
         ])
 
-        # ECS
         # ECS - WMS
         main_water_tank = WaterTank(
             name="H2O tank 0",
@@ -331,5 +331,15 @@ class SpacecraftBuilder:
             ln2_tank,
             oscpcs_controller,
         ])
+
+        # ECS
+        ecs_controller = EcsController(
+            name="ECS controller",
+            wcs_controller=wcs_controller,
+            ars_controller=ars_controller,
+            oscpcs_controller=oscpcs_controller,
+            hts_controller=hts_controller,
+        )
+        spacecraft.parts_manager.add(ecs_controller)
 
         return spacecraft
