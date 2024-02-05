@@ -10,6 +10,7 @@ class OscpcsController(BasePart):
         self.lox_tank = lox_tank
         self.ln2_tank = ln2_tank
 
+    @property
     def dependencies(self) -> set[Self]:
         return {self.ln2_tank, self.lox_tank}
 
