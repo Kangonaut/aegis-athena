@@ -17,7 +17,7 @@ class ListProgram(BaseProgram):
     )
 
     MIN_PROCESSING_DURATION: float = 0.01
-    MAX_PROCESSING_DURATION: float = 0.3
+    MAX_PROCESSING_DURATION: float = 0.1
 
     def __init__(self, parts_manager: PartsManager, display: BaseDisplay):
         super().__init__(parts_manager, display)
@@ -32,15 +32,17 @@ class ListProgram(BaseProgram):
         parts: list[BasePart] = sorted(parts, key=lambda part: part.part_id)
         for part in parts:
             self._display.print(f"{part.part_id:<10} {part.name:<40} [[ {part.status:<7} ]]")
-
-            # add mock processing time
-            duration: float = random.uniform(self.MIN_PROCESSING_DURATION, self.MAX_PROCESSING_DURATION)
-            time.sleep(duration)
+            self.__simulate_processing_duration()
 
     def __handle_list_systems(self) -> None:
         controllers = filter(lambda x: isinstance(x, BaseController), self._parts_manager.get_all())
         for controller in controllers:
             self._display.print(f"{controller.get_system_name():<51} [[ {controller.status:<7} ]]")
+            self.__simulate_processing_duration()
+
+    def __simulate_processing_duration(self) -> None:
+        duration: float = random.uniform(self.MIN_PROCESSING_DURATION, self.MAX_PROCESSING_DURATION)
+        time.sleep(duration)
 
     def exec(self, arguments: list[str]) -> None:
         arguments = self.__PARSER.parse_args(arguments)
