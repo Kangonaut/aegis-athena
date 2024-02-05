@@ -35,7 +35,7 @@ class ListProgram(BaseProgram):
             self.__simulate_processing_duration()
 
     def __handle_list_systems(self) -> None:
-        controllers = filter(lambda x: isinstance(x, BaseController), self._parts_manager.get_all())
+        controllers = self._parts_manager.get_controllers()
         for controller in controllers:
             self._display.print(f"{controller.get_system_name():<51} [[ {controller.status:<7} ]]")
             self.__simulate_processing_duration()

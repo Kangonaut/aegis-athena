@@ -1,7 +1,7 @@
 import random
 import hashlib
 
-from spacecraft.parts.base import BasePart
+from spacecraft.parts.base import BasePart, BaseController
 
 
 class PartsManager:
@@ -13,6 +13,9 @@ class PartsManager:
 
     def get_all(self) -> set[BasePart]:
         return set(self.__parts.values())
+
+    def get_controllers(self) -> set[BaseController]:
+        return set(filter(lambda x: isinstance(x, BaseController), self.__parts.values()))
 
     @staticmethod
     def __generate_random_part_id() -> str:

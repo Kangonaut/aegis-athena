@@ -155,7 +155,10 @@ class SetProgram(BaseProgram):
         # retrieve part
         part = self.__get_part_by_id(part_id)
 
-        print(part.__class__.__dict__)
+        # check if part is controllable
+        if not part.controllable:
+            raise ProgramValueError(f"part {part_id} does not answer; unable to complete task")
+
 
         # call handler
         if key in self.__HANDLERS:

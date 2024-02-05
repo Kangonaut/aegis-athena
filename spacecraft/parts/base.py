@@ -39,6 +39,7 @@ class BasePart(abc.ABC):
     def __init__(self, name: str):
         self.__name: str = name
         self.__power_state: bool = True
+        self.controllable: bool = True
 
         # part_id is assigned by the parts manager
         self._part_id: str = ""
