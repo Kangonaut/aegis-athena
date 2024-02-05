@@ -1,6 +1,6 @@
 from typing import Self
 
-from spacecraft.parts.base import BasePart
+from spacecraft.parts.base import BasePart, BaseController
 from spacecraft.parts.mock import MockPart
 
 
@@ -31,7 +31,7 @@ class StorageArray(StorageMedium):
         return set(self.storage_elems)
 
 
-class BrainsController(BasePart):
+class BrainsController(BaseController):
     def __init__(self, name: str, gpus: list[GraphicsProcessingUnit], storage: StorageMedium):
         super().__init__(name)
         self.gpus = gpus

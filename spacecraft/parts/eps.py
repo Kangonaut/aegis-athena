@@ -1,6 +1,6 @@
 from typing import Self
 
-from spacecraft.parts.base import BasePart
+from spacecraft.parts.base import BasePart, BaseController
 from spacecraft.parts.wcs import BaseWaterSupply
 from spacecraft.parts.mock import MockPart
 from spacecraft.parts.fuel import LoxTank, Lh2Tank
@@ -28,7 +28,7 @@ class Battery(MockPart):
     pass
 
 
-class EpsController(BasePart):
+class EpsController(BaseController):
     def __init__(self, name: str, battery: Battery, fuel_cell: FuelCell):
         super().__init__(name)
         self.battery = battery

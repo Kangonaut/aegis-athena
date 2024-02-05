@@ -83,13 +83,13 @@ The predominant responsibility of the SPS is to perform the intricate Hohmann tr
 
 At the heart of the SPS beats the Aerojet AJ10, a vacuum-optimized engine celebrated for its precision and reliability. The engine, housed in an innovative pivoting mount — a gimbal — facilitates Thrust Vector Control (TVC). This set-up allows for meticulous directional adjustments of the propulsion, enabling precise navigation and trajectory modifications, crucial for the complexities of space travel.
 
-#### 2.3.2.2 Propellant and Storage
+#### 2.3.2.3 Propellant and Storage
 
 Powering the AJ10 engine is the volatile yet efficient mix of Aerozine 50 (fuel) and Nitrogen Tetroxide (N2O4 - oxidizer). This particular choice of hypergolic propellants boasts a dependable characteristic — it spontaneously ignites upon contact, negating the need for a separate ignition system and reducing potential points of failure.
 
 While offering optimal reactivity, these substances are kept in separate tanks for safety and controlled use. This precise isolation prevents premature combustion, ensuring the fuel is available precisely when required, and in the controlled manner necessary for mission success.
 
-#### 2.3.2.3 SPS Controller
+#### 2.3.2.4 SPS Controller
 
 The Service Propulsion System stands as an impressively complex marvel of engineering. Yet, such intricacy requires an equally, if not more, impressive conduit of oversight to ensure optimal operational efficiency - the SPS Controller.
 
@@ -107,7 +107,7 @@ Instrumental in creating a hospitable bubble in the unforgiving vacuum of space,
 
 A lifeline within the S.P.A.C.E.C.R.A.F.T.'s Environmental Control Subsystem, the Water Management Section (WCS), attends to the vital role of managing the spacecraft's water resources. This subsystem ensures the availability of water for diverse mission-critical applications, from hydration and meal preparation for the astronauts to cooling various electronic systems and providing for extinguishing needs in the unlikely event of a fire within the module.
 
-#### 2.3.3.1.1 Main Water Tank
+##### 2.3.3.1.1 Main Water Tank
 
 The heart of the WCS, the Main Water Tank, carries the primary reserve of water slated for the mission. This reservoir's water is primarily used for hydration, meal preparation, and the cooling needs of the spacecraft's electronic systems.
 
@@ -182,7 +182,7 @@ Finally, the treated and tempered air is returned to the cabin, offering the cre
 Through the resilience of the Atmosphere Revitalization System (ARS), the inhospitable vagaries of outer space environments are kept at bay, nurturing a welcoming and comfortable atmosphere inside the spacecraft, truly a hearth away from home for our intrepid astronauts.
 
 
-##### 2.3.3.3.6 ARS Controller
+##### 2.3.3.3.7 ARS Controller
 
 Navigating the continuous operation of the intricate Atmosphere Revitalization System (ARS) is a complex task, one expertly managed by the ARS Controller. This keystone component supervises all the functions of the ARS, ensuring an efficient and optimally functioning system.
 
@@ -222,7 +222,7 @@ Accurate temperature reading is vital in the intricate management of spacecraft 
 
 The MLI wraps the spacecraft, acting as a protective layer against both solar radiation heat and the bitter cold of the shadows. This insulation empowers the S.P.A.C.E.C.R.A.F.T to maintain a steady internal temperature.
 
-##### 2.3.3.4.6 HTS Controller
+##### 2.3.3.4.7 HTS Controller
 
 At the heart of the Heat Transport Section (HTS) operations is the HTS Controller - an intelligent unit engineered to manage the intricate environment of the S.P.A.C.E.C.R.A.F.T. The controller meticulously oversees the heat transport system, ensuring that the module's interior maintains optimal operating temperatures.
 
@@ -258,16 +258,16 @@ In essence, the COMS system significantly aids mission success, reinforcing near
 
 Serving as the cerebral backbone of the S.P.A.C.E.C.R.A.F.T., the Binary Regulated Artificial Intelligence Network System (BRAINS) is the comprehensive hardware setup that brings the onboard AI Assistant, M.A.R.S., to operational life. It nests all the components foundational to execute the complex tasks assigned to M.A.R.S., making it a wonder of computational craft and machine intelligence.
 
-##### 2.3.5.2 GPU Cluster
+##### 2.3.5.1 GPU Cluster
 
 The neurosynaptic core of BRAINS, the GPU Cluster, forms the subnet of the system that facilitates the advanced neural network architecture behind M.A.R.S.'s machine intelligence. Built around a framework of 10 high-performance H100 Tensor-Core-GPUs, these individual processing units come together to form a potent collective neural network compute platform, granting the onboard AI the power to perform with impressive speed and analytical precision.
 
-##### 2.3.5.3 Disk Array running RAID
+##### 2.3.5.2 Disk Array running RAID
 
 Mirroring the potent memory recall and storage capacity of the human brain, BRAINS utilizes a sophisticated disk array employing Redundant Array of Independent/Inexpensive Disk (RAID) technology. This specialized setup stores the vast knowledge base on which M.A.R.S. relies to provide expert guidance and perform complex decision-making processes.
 
 The BRAINS is a marvel of artificial intelligence engineering that ably supports the complicated tasks that M.A.R.S. needs to execute. It combines the delicate balance of immense computational power with the capacity of high-volume data management, creating a potent AI network dedicated to the successful outcome of the Aegis Athena mission.
 
-##### 2.3.5.1 BRAINS Controller
+##### 2.3.5.3 BRAINS Controller
 
 Operating as the system's governing body, the BRAINS Controller manages and orchestrates all operations within the BRAINS. Critical in ensuring that all subsystems work in perfect harmony, the controller ensures that M.A.R.S.'s needs and tasks are expertly balanced and executed, ensuring optimal AI performance throughout the mission.

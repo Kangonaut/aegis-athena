@@ -1,6 +1,6 @@
 from typing import Self
 
-from spacecraft.parts.base import BasePart
+from spacecraft.parts.base import BasePart, BaseController
 from spacecraft.parts.fuel import FuelTank, OxidizerTank
 from spacecraft.parts.mock import MockPart
 
@@ -27,7 +27,7 @@ class Engine(BasePart):
         )
 
 
-class SpsController(BasePart):
+class SpsController(BaseController):
     def __init__(self, name: str, engine: Engine, gimbal: EngineGimbal):
         super().__init__(name)
         self.engine = engine

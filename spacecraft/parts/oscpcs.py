@@ -1,10 +1,10 @@
 from typing import Self
 
-from spacecraft.parts.base import BasePart
+from spacecraft.parts.base import BaseController
 from spacecraft.parts.fuel import LoxTank, Ln2Tank
 
 
-class OscpcsController(BasePart):
+class OscpcsController(BaseController):
     def __init__(self, name: str, lox_tank: LoxTank, ln2_tank: Ln2Tank):
         super().__init__(name)
         self.lox_tank = lox_tank

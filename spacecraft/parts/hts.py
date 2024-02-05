@@ -1,6 +1,6 @@
 from typing import Self
 
-from spacecraft.parts.base import BasePart
+from spacecraft.parts.base import BasePart, BaseController
 from spacecraft.parts.mock import MockPart
 
 
@@ -34,7 +34,7 @@ class CoolingLoop(BasePart):
         )
 
 
-class HtsController(BasePart):
+class HtsController(BaseController):
     def __init__(self, name: str, thermometer: Thermometer, cooling_loop: CoolingLoop):
         super().__init__(name)
         self.thermometer = thermometer

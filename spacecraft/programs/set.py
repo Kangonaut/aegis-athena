@@ -4,7 +4,7 @@ from functools import partial
 
 from spacecraft.displays.base import BaseDisplay
 from spacecraft.parts.ars import HeatExchanger, ArsController
-from spacecraft.parts.base import BasePart
+from spacecraft.parts.base import BasePart, BaseController
 from spacecraft.parts.hts import CoolingLoop, HtsController
 from spacecraft.parts.manager import PartsManager
 from spacecraft.parts.coms import Antenna

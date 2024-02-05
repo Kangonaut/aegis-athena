@@ -1,6 +1,6 @@
 from typing import Self
 
-from spacecraft.parts.base import BasePart
+from spacecraft.parts.base import BasePart, BaseController
 from spacecraft.parts.hts import CoolingLoop
 from spacecraft.parts.mock import MockPart
 
@@ -20,8 +20,8 @@ class HeatExchanger(BasePart):
 
     def display_details(self) -> str:
         return (
-            super().display_details() +
-            f"cooler: {self.cooling_loop.part_id}\n"
+                super().display_details() +
+                f"cooler: {self.cooling_loop.part_id}\n"
         )
 
 
@@ -37,7 +37,7 @@ class Co2Remover(MockPart):
     pass
 
 
-class ArsController(BasePart):
+class ArsController(BaseController):
     def __init__(self,
                  name: str,
                  fan: Fan,
@@ -61,7 +61,7 @@ class ArsController(BasePart):
                 super().display_details() +
                 f"fan: {self.fan.part_id}\n"
                 f"heat exchanger: {self.heat_exchanger.part_id}\n"
-    f"water separator: {self.water_separator.part_id}\n"
+                f"water separator: {self.water_separator.part_id}\n"
                 f"odor remover: {self.odor_remover.part_id}\n"
                 f"CO2 remover: {self.co2_remover.part_id}\n"
         )

@@ -3,7 +3,7 @@ from typing import Callable
 import random
 
 from spacecraft.displays.base import BaseDisplay
-from spacecraft.parts.base import BasePart
+from spacecraft.parts.base import BasePart, BaseController
 from spacecraft.parts.manager import PartsManager
 from spacecraft.programs.base import BaseProgram, ProgramArgumentParser, ProgramUnsupportedOperation
 
@@ -38,7 +38,9 @@ class ListProgram(BaseProgram):
             time.sleep(duration)
 
     def __handle_list_systems(self) -> None:
-        raise ProgramUnsupportedOperation("listing all systems is not yet supported")
+        controllers = filter(lambda x: isinstance(x, BaseController), self._parts_manager.get_all())
+        for controller in controllers:
+            self._display.print(f"{controller.get_system_name():<51} [[ {controller.status:<7} ]]")
 
     def exec(self, arguments: list[str]) -> None:
         arguments = self.__PARSER.parse_args(arguments)

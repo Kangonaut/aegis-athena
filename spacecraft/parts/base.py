@@ -112,3 +112,12 @@ class BasePart(abc.ABC):
             f"name: {self.name}\n"
             f"status: {self.status}\n"
         )
+
+
+class BaseController(BasePart):
+    def __init__(self, name: str):
+        super().__init__(name)
+
+    @classmethod
+    def get_system_name(cls) -> str:
+        return cls.__name__.replace("Controller", "").upper()
