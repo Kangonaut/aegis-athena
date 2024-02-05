@@ -5,8 +5,9 @@ from spacecraft.parts.coms import Antenna, RangeType, FrequencyRange
 from spacecraft.parts.coms_controller import ComsController
 from spacecraft.parts.eps import Battery, FuelCell, EpsController
 from spacecraft.parts.brains import BrainsController, GraphicsProcessingUnit, StorageArray, StorageMedium
-from spacecraft.parts.fuel import LoxTank, Lh2Tank, AerozineTank, N2o4Tank
+from spacecraft.parts.fuel import LoxTank, Lh2Tank, AerozineTank, N2o4Tank, Ln2Tank
 from spacecraft.parts.hts import CoolingLoop, Radiator, CoolantPump, Thermometer, HtsController
+from spacecraft.parts.oscpcs import OscpcsController
 from spacecraft.parts.sps import Engine, EngineGimbal, SpsController
 from spacecraft.parts.wcs import WaterTank, WaterPump, WcsController
 from spacecraft.spacecraft import Spacecraft
@@ -316,53 +317,19 @@ class SpacecraftBuilder:
         ])
 
         # ECS - OSCPCS
-
-        # antenna_1 = Antenna(
-        #     name="short range antenna",
-        #     range_type=RangeType.SHORT_RANGE,
-        #     frequency_range=FrequencyRange(min=2 * 10 ** 9, max=4 * 10 ** 9),
-        #     frequency=3_013_347_988,
-        # )
-        #
-        # battery_1 = Battery(name="main battery")
-        # eps_controller = EpsController(
-        #     name="EPS controller",
-        #     battery=battery_1,
-        #     fuel_cell=fuel_cell_1,
-        # )
-        #
-        # water_tank = WaterTank(
-        #     name="main water tank",
-        #     capacity=100,
-        #     content=100,
-        #     water_supply=fuel_cell_1,
-        # )
-        #
-        # space_radiator = Cooler(
-        #     name="space radiator",
-        # )
-        # interior_thermometer = Thermometer(
-        #     name="interior thermometer"
-        # )
-        # interior_temperature_controller = TemperatureController(
-        #     name="interior temperature controller",
-        #     cooler=space_radiator,
-        #     thermometer=interior_thermometer,
-        # )
-        #
-        # environment_controller = EnvironmentController(
-        #     name="ECS controller",
-        #     temperature_controller=interior_temperature_controller,
-        #     water_tank=water_tank,
-        # )
-        #
-        # communication_controller = CommunicationController(
-        #     name="COMS controller",
-        #     secret="cisco",  # configured secret
-        #     antenna=antenna_1,
-        #     dispatcher=DefaultCommunicationDispatcher(
-        #         secret="class",  # actual secret
-        #     ),
-        # )
+        ln2_tank = Ln2Tank(
+            name="LN2 tank",
+            capacity=100,
+            fill_level=100,
+        )
+        oscpcs_controller = OscpcsController(
+            name="OSCPCS controller",
+            lox_tank=main_lox_tank,
+            ln2_tank=ln2_tank,
+        )
+        spacecraft.parts_manager.add_many([
+            ln2_tank,
+            oscpcs_controller,
+        ])
 
         return spacecraft

@@ -9,6 +9,7 @@ from spacecraft.parts.hts import CoolingLoop, HtsController
 from spacecraft.parts.manager import PartsManager
 from spacecraft.parts.coms import Antenna
 from spacecraft.parts.coms_controller import ComsController
+from spacecraft.parts.oscpcs import OscpcsController
 from spacecraft.parts.sps import Engine, SpsController
 from spacecraft.parts.eps import FuelCell, EpsController
 from spacecraft.parts.wcs import WaterTank, WaterPump, WcsController
@@ -38,6 +39,10 @@ class SetProgram(BaseProgram):
             "pwr": self.__handle_set_power,
         }
         self.__PART_SPECIFIC_HANDLERS: dict[Type, dict[str, Callable[[any, str], None]]] = {
+            OscpcsController: {
+                "lox": partial(self.__handle_set_part, attribute_name="lox_tank"),
+                "ln2": partial(self.__handle_set_part, attribute_name="ln2_tank"),
+            },
             HtsController: {
                 "therm": partial(self.__handle_set_part, attribute_name="thermometer"),
             },
