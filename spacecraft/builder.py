@@ -15,18 +15,9 @@ from spacecraft.spacecraft import Spacecraft
 
 
 class SpacecraftBuilder:
+
     @classmethod
-    def build_level_0(cls, display: BaseDisplay) -> Spacecraft:
-        spacecraft = cls.build_default(display)
-
-        main_lox_tank = spacecraft.parts_manager.get("9630")
-        main_lox_tank.power_off()
-        main_lox_tank.controllable = False
-
-        return spacecraft
-
-    @staticmethod
-    def build_default(display: BaseDisplay) -> Spacecraft:
+    def build_default(cls, display: BaseDisplay) -> Spacecraft:
         spacecraft = Spacecraft(display)
 
         # EPS

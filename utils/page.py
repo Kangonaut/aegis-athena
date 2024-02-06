@@ -22,16 +22,16 @@ def init_level_page(level_name: str):
     shell_utils.display_shell_history(shell_history, shell_history_container)
 
     # init spacecraft
-    level = level_utils.init_level(
+    level_state = level_utils.init_level(
         level_name,
         display_callback=partial(__display_output, placeholder=curr_output_placeholder)
     )
-    spacecraft = level.spacecraft
+    spacecraft = level_state.spacecraft
     st.sidebar.write(f"hash: {hash(spacecraft)}")
 
     # fill placeholder
-    top.title(level.name)
-    top.markdown(f"*{level.prolog}*")
+    top.title(level_state.level.name)
+    top.markdown(f"*{level_state.level.prolog}*")
 
     # command input
     command: str = st.chat_input()
@@ -46,10 +46,10 @@ def init_level_page(level_name: str):
     shell_history.append(output)
 
     # show completion status
-    if level.is_complete():
+    if level_state.is_complete():
         st.sidebar.markdown(f"status: **:green[CRISIS AVERTED]**")
 
         # show epilog if finished
-        bottom.markdown(f"*{level.epilog}*")
+        bottom.markdown(f"*{level_state.level.epilog}*")
     else:
         st.sidebar.markdown(f"status: **:red[ONGOING CRISIS]**")

@@ -1,40 +1,36 @@
-import abc
-from typing import Callable
-
-from spacecraft.builder import SpacecraftBuilder
-from spacecraft.displays.base import BaseDisplay
-from spacecraft.parts.base import PartStatus
+from levels.base import Level
+from levels.completion import ControllerStatusCompletionChecker
 from spacecraft.spacecraft import Spacecraft
 
 
-class BaseCompletionChecker(abc.ABC):
-    @abc.abstractmethod
-    def check_completion(self, spacecraft: Spacecraft) -> bool:
-        pass
+def adjust_spacecraft_level_0(spacecraft: Spacecraft) -> None:
+    ln2_tank = spacecraft.parts_manager.get("de55")
+    ln2_tank.power_off()
 
 
-class ControllerStatusCompletionChecker(BaseCompletionChecker):
-    def check_completion(self, spacecraft: Spacecraft) -> bool:
-        return all(part.status == PartStatus.NOMINAL for part in spacecraft.parts_manager.get_controllers())
+def adjust_spacecraft_level_1(spacecraft: Spacecraft) -> None:
+    main_lox_tank = spacecraft.parts_manager.get("9630")
+    main_lox_tank.power_off()
+    main_lox_tank.controllable = False
 
 
-class Level(abc.ABC):
-    name: str
-    prolog: str
-    epilog: str
-    completion_checker: BaseCompletionChecker
-    init_spacecraft: Callable[[BaseDisplay], Spacecraft]
+level_0 = Level(
+    name="Level 0 - What the f*ck?",
+    prolog="testing prolog",
+    epilog="testing epilog",
+    completion_checker=ControllerStatusCompletionChecker(),
+    adjust_spacecraft=adjust_spacecraft_level_0,
+)
 
-    def __init__(self, display: BaseDisplay) -> None:
-        self.spacecraft = self.init_spacecraft(display)
+# level_1 = Level(
+#     name="Level 1",
+#     prolog="testing prolog",
+#     epilog="testing epilog",
+#     completion_checker=ControllerStatusCompletionChecker(),
+#     adjust_spacecraft=adjust_spacecraft_level_1,
+# )
 
-    def is_complete(self) -> bool:
-        return self.completion_checker.check_completion(self.spacecraft)
-
-
-class Level0(Level):
-    name = "Level 0 - What the f*ck?"
-    prolog = "lorem ipsum dolor sit"
-    epilog = "lorem ipsum dolor sit"
-    completion_checker = ControllerStatusCompletionChecker()
-    init_spacecraft = SpacecraftBuilder.build_level_0
+LEVELS: dict[str, Level] = {
+    "level-0": level_0,
+    # "level-1": level_1,
+}

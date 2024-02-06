@@ -17,7 +17,7 @@ class ListProgram(BaseProgram):
     )
 
     MIN_PROCESSING_DURATION: float = 0.01
-    MAX_PROCESSING_DURATION: float = 0.1
+    MAX_PROCESSING_DURATION: float = 0.05
 
     def __init__(self, parts_manager: PartsManager, display: BaseDisplay):
         super().__init__(parts_manager, display)
