@@ -34,7 +34,7 @@ def init_level_page(level_name: str):
     top.markdown(f"*{level_state.level.prolog}*")
 
     # command input
-    command: str = st.chat_input()
+    command: str = st.chat_input(placeholder="enter your command ...")
     if command:
         spacecraft.shell.exec(command)
 
