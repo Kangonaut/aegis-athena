@@ -1,11 +1,14 @@
 import streamlit as st
 from streamlit.delta_generator import DeltaGenerator
 
+from levels.base import Level
 
-def init_shell_history() -> list[str]:
-    if "shell_history" not in st.session_state:
-        st.session_state["shell_history"] = []
-    return st.session_state["shell_history"]
+
+def init_shell_history(level: Level) -> list[str]:
+    key: str = f"{level.name}_shell_history"
+    if key not in st.session_state:
+        st.session_state[key] = []
+    return st.session_state[key]
 
 
 def display_shell_history(shell_history: list[str], display_elem: DeltaGenerator) -> None:

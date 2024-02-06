@@ -17,10 +17,6 @@ def init_level_page(level_name: str):
     shell_curr_container = body.container()
     curr_output_placeholder = shell_curr_container.empty()
 
-    # shell history
-    shell_history = shell_utils.init_shell_history()
-    shell_utils.display_shell_history(shell_history, shell_history_container)
-
     # init spacecraft
     level_state = level_utils.init_level(
         level_name,
@@ -28,6 +24,10 @@ def init_level_page(level_name: str):
     )
     spacecraft = level_state.spacecraft
     st.sidebar.write(f"hash: {hash(spacecraft)}")
+
+    # shell history
+    shell_history = shell_utils.init_shell_history(level_state.level)
+    shell_utils.display_shell_history(shell_history, shell_history_container)
 
     # fill placeholder
     top.title(level_state.level.name)
