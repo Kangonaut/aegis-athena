@@ -1,5 +1,5 @@
 from levels.base import Level
-from levels.completion import ControllerStatusCompletionChecker
+from levels.completion import ControllerStatusCompletionChecker, ComsSecretCompletionChecker
 from spacecraft.spacecraft import Spacecraft
 
 
@@ -22,15 +22,15 @@ level_0 = Level(
     adjust_spacecraft=adjust_spacecraft_level_0,
 )
 
-# level_1 = Level(
-#     name="Level 1",
-#     prolog="testing prolog",
-#     epilog="testing epilog",
-#     completion_checker=ControllerStatusCompletionChecker(),
-#     adjust_spacecraft=adjust_spacecraft_level_1,
-# )
+level_1 = Level(
+    name="Level 1",
+    prolog="testing prolog",
+    epilog="testing epilog",
+    completion_checker=ControllerStatusCompletionChecker(),
+    adjust_spacecraft=adjust_spacecraft_level_1,
+)
 
 LEVELS: dict[str, Level] = {
     "level-0": level_0,
-    # "level-1": level_1,
+    "level-1": level_1,
 }
