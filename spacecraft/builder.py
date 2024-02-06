@@ -15,9 +15,11 @@ from spacecraft.spacecraft import Spacecraft
 
 
 class SpacecraftBuilder:
+    def __init__(self):
+        self.configured_secret: str = "cisco"
+        self.actual_secret: str = "cisco"
 
-    @classmethod
-    def build_default(cls, display: BaseDisplay) -> Spacecraft:
+    def build_default(self, display: BaseDisplay) -> Spacecraft:
         spacecraft = Spacecraft(display)
 
         # EPS
@@ -129,9 +131,9 @@ class SpacecraftBuilder:
         coms_controller = ComsController(
             name="COMS controller",
             antenna=main_short_range_antenna,
-            secret="cisco",  # configured secret
+            secret=self.configured_secret,  # configured secret
             dispatcher=DefaultCommunicationDispatcher(
-                secret="class",  # actual secret
+                secret=self.actual_secret,  # actual secret
             ),
         )
         spacecraft.parts_manager.add_many([

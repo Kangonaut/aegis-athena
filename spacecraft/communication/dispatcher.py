@@ -31,17 +31,17 @@ class MockCommunicationDispatcher(BaseCommunicationDispatcher):
 
 class DefaultCommunicationDispatcher(BaseCommunicationDispatcher):
     def __init__(self, secret: str):
-        self.__secret = secret
+        self.secret = secret
 
     def dispatch(self, state: CommunicationState) -> BaseCommunicator:
-        if state.secret == self.__secret:
+        if state.secret == self.secret:
             # secret is correct -> no need to encrypt
             return MockCommunicator()
         else:
             # secret is incorrect -> perform encryption/decryption
             return IncorrectSecretCommunicator(
                 communicator=MockCommunicator(),
-                encryption_secret=self.__secret,  # actual secret
+                encryption_secret=self.secret,  # actual secret
                 decryption_secret=state.secret,  # incorrect secret
                 encryption=VigenereCipher(),
             )

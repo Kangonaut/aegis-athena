@@ -14,14 +14,14 @@ class ComsController(BaseController):
         super().__init__(name)
         self.antenna = antenna
         self.secret = secret  # ironic, secret is a public attribute :)
-        self.__dispatcher = dispatcher
+        self.dispatcher = dispatcher
 
     @property
     def dependencies(self) -> set[Self]:
         return {self.antenna}
 
     def get_communicator(self) -> BaseCommunicator:
-        return self.__dispatcher.dispatch(
+        return self.dispatcher.dispatch(
             state=CommunicationState(
                 self.antenna,
                 self.secret

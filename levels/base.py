@@ -32,7 +32,7 @@ class Level:
                  epilog: str,
                  completion_checker: BaseCompletionChecker,
                  adjust_spacecraft: Callable[[Spacecraft], None],
-                 init_spacecraft: Callable[[BaseDisplay], Spacecraft] = SpacecraftBuilder.build_default) -> None:
+                 init_spacecraft: Callable[[BaseDisplay], Spacecraft] = SpacecraftBuilder().build_default) -> None:
         self.name = name
         self.prolog = prolog
         self.epilog = epilog
