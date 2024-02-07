@@ -46,7 +46,7 @@ class StreamlitDisplay(BaseDisplay):
         content = self.__transform_input(f"{content}{end}")
 
         # print to out-stream
-        print(content, file=self.__out_stream)
+        print(content, file=self.__out_stream, end="")
 
         # call callback and pass output up to this point
         content = self.__out_stream.getvalue()
