@@ -18,7 +18,7 @@ def adjust_spacecraft_level_1(spacecraft: Spacecraft) -> None:
 
 def adjust_spacecraft_level_2(spacecraft: Spacecraft) -> None:
     coms_controller: ComsController = spacecraft.parts_manager.get("1d40")
-    coms_controller.secret = "other"
+    coms_controller.secret = "1234"
 
 
 level_0 = Level(

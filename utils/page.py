@@ -42,8 +42,8 @@ def init_level_page(level_name: str):
     __display_narrative(level_state.level.prolog, top)
 
     # command input
-    command: str = st.chat_input(placeholder="enter your command ...")
-    if command:
+    command: str = st.chat_input(placeholder="enter your command ...", disabled=level_state.is_complete())
+    if command and not level_state.is_complete():
         spacecraft.shell.exec(command)
 
     # display current output
