@@ -1,6 +1,7 @@
 import abc
 
-from spacecraft.communication.communicator import BaseCommunicator, MockCommunicator, IncorrectSecretCommunicator
+from spacecraft.communication.communicator import BaseCommunicator, MockCommunicator, EncryptedCommunicator, \
+    LlamaIndexCommunicator
 from spacecraft.communication.encryption import VigenereCipher
 from spacecraft.communication.state import ComsState, CommunicationState, BrainsState
 
@@ -25,7 +26,7 @@ class BaseBrainsDispatcher(BaseCommunicationDispatcher):
 
 class DefaultBrainsDispatcher(BaseBrainsDispatcher):
     def dispatch(self, state: BrainsState) -> BaseCommunicator:
-        return MockCommunicator()
+        return LlamaIndexCommunicator()
 
 
 class MockComsDispatcher(BaseCommunicationDispatcher):
@@ -41,14 +42,9 @@ class DefaultComsDispatcher(BaseComsDispatcher):
         self.secret = secret
 
     def dispatch(self, state: ComsState) -> BaseCommunicator:
-        if state.secret == self.secret:
-            # secret is correct -> no need to encrypt
-            return MockCommunicator()
-        else:
-            # secret is incorrect -> perform encryption/decryption
-            return IncorrectSecretCommunicator(
-                communicator=MockCommunicator(),
-                encryption_secret=self.secret,  # actual secret
-                decryption_secret=state.secret,  # incorrect secret
-                encryption=VigenereCipher(),
-            )
+        return EncryptedCommunicator(
+            communicator=MockCommunicator(),
+            encryption_secret=self.secret,  # actual secret
+            decryption_secret=state.secret,  # incorrect secret
+            encryption=VigenereCipher(),
+        )

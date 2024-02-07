@@ -1,6 +1,9 @@
 import streamlit as st
 from utils import level_utils, shell_utils
 from functools import partial
+import dotenv
+
+dotenv.load_dotenv()
 
 
 def __display_output(content: str, placeholder):

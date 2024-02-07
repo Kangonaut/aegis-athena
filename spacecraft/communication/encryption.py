@@ -30,12 +30,12 @@ def infinite_secret(secret: str) -> Generator[str, None, None]:
 class BaseEncryption(abc.ABC):
     @classmethod
     @abc.abstractmethod
-    def encrypt(cls, input_stream: Iterator[MessageChunk], secret: str) -> Iterator[MessageChunk]:
+    def encrypt(cls, input_stream: Iterator[MessageChunk], secret: str) -> Generator[MessageChunk, None, None]:
         pass
 
     @classmethod
     @abc.abstractmethod
-    def decrypt(cls, input_stream: Iterator[MessageChunk], secret: str) -> Iterator[MessageChunk]:
+    def decrypt(cls, input_stream: Iterator[MessageChunk], secret: str) -> Generator[MessageChunk, None, None]:
         pass
 
 
@@ -45,7 +45,7 @@ class VigenereCipher(BaseEncryption):
             input_stream: Iterator[MessageChunk],
             secret: str,
             transform: Callable[[str, Generator[str, None, None]], str]
-    ) -> Iterator[MessageChunk]:
+    ) -> Generator[MessageChunk, None, None]:
         secret_generator = infinite_secret(secret)
 
         for token in input_stream:
@@ -75,7 +75,7 @@ class VigenereCipher(BaseEncryption):
         return caesar_cipher(char, offset)
 
     @classmethod
-    def encrypt(cls, input_stream: Iterator[MessageChunk], secret: str) -> Iterator[MessageChunk]:
+    def encrypt(cls, input_stream: Iterator[MessageChunk], secret: str) -> Generator[MessageChunk, None, None]:
         return cls.__handle_input_stream(
             input_stream,
             secret,
@@ -83,7 +83,7 @@ class VigenereCipher(BaseEncryption):
         )
 
     @classmethod
-    def decrypt(cls, input_stream: Iterator[MessageChunk], secret: str) -> Iterator[MessageChunk]:
+    def decrypt(cls, input_stream: Iterator[MessageChunk], secret: str) -> Generator[MessageChunk, None, None]:
         return cls.__handle_input_stream(
             input_stream,
             secret,
