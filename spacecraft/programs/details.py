@@ -14,12 +14,6 @@ class DetailsProgram(BaseProgram):
     def __init__(self, parts_manager: PartsManager, display: BaseDisplay):
         super().__init__(parts_manager, display)
 
-    def __get_part_by_id(self, part_id: str) -> BasePart:
-        part = self._parts_manager.get(part_id)
-        if part is None:
-            raise ProgramKeyError(f"{part_id} is not a valid part ID")
-        return part
-
     def __describe_basics(self, part: BasePart):
         self._display.print(f"id: {part.part_id}")
         self._display.print(part.display_details())
@@ -33,5 +27,5 @@ class DetailsProgram(BaseProgram):
         part_id: str = arguments.part
 
         # retrieve part
-        part = self.__get_part_by_id(part_id)
+        part = self._get_part_by_id(part_id)
         self.__handle_generic_part(part)

@@ -3,6 +3,7 @@ from typing import Callable
 from spacecraft.displays.base import BaseDisplay
 from spacecraft.parts.base import PartInvalidConfiguration
 from spacecraft.parts.manager import PartsManager
+from spacecraft.programs.ask import AskProgram
 from spacecraft.programs.base import BaseProgram, ProgramException, ProgramSyntaxError
 from spacecraft.programs.details import DetailsProgram
 from spacecraft.programs.list import ListProgram
@@ -19,6 +20,7 @@ class Shell(BaseProgram):
             "set": SetProgram(parts_manager, display),
             "details": DetailsProgram(parts_manager, display),
             "transmit": TransmitProgram(parts_manager, display),
+            "ask": AskProgram(parts_manager, display),
         }
 
     @staticmethod

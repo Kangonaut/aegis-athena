@@ -1,11 +1,12 @@
-from spacecraft.communication.dispatcher import DefaultCommunicationDispatcher
+from spacecraft.communication.dispatcher import DefaultComsDispatcher, DefaultBrainsDispatcher
 from spacecraft.displays.base import BaseDisplay
 from spacecraft.parts.ars import Fan, HeatExchanger, WaterSeparator, OdorRemover, Co2Remover, ArsController
+from spacecraft.parts.brains_controller import BrainsController
 from spacecraft.parts.coms import Antenna, RangeType, FrequencyRange
 from spacecraft.parts.coms_controller import ComsController
 from spacecraft.parts.ecs import EcsController
 from spacecraft.parts.eps import Battery, FuelCell, EpsController
-from spacecraft.parts.brains import BrainsController, GraphicsProcessingUnit, StorageArray, StorageMedium
+from spacecraft.parts.brains import GraphicsProcessingUnit, StorageArray, StorageMedium
 from spacecraft.parts.fuel import LoxTank, Lh2Tank, AerozineTank, N2o4Tank, Ln2Tank
 from spacecraft.parts.hts import CoolingLoop, Radiator, CoolantPump, Thermometer, HtsController
 from spacecraft.parts.oscpcs import OscpcsController
@@ -132,7 +133,7 @@ class SpacecraftBuilder:
             name="COMS controller",
             antenna=main_short_range_antenna,
             secret=self.configured_secret,  # configured secret
-            dispatcher=DefaultCommunicationDispatcher(
+            dispatcher=DefaultComsDispatcher(
                 secret=self.actual_secret,  # actual secret
             ),
         )
@@ -179,7 +180,8 @@ class SpacecraftBuilder:
         brains_controller = BrainsController(
             name="BRAINS Controller",
             storage=disk_array,
-            gpus=[gpu_0, gpu_1, gpu_2, gpu_3, gpu_4, gpu_5, gpu_6, gpu_7, gpu_8, gpu_9]
+            gpus=[gpu_0, gpu_1, gpu_2, gpu_3, gpu_4, gpu_5, gpu_6, gpu_7, gpu_8, gpu_9],
+            dispatcher=DefaultBrainsDispatcher()
         )
 
         spacecraft.parts_manager.add_many([

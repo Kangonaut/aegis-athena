@@ -2,6 +2,7 @@ import argparse
 import abc
 
 from spacecraft.displays.base import BaseDisplay
+from spacecraft.parts.base import BasePart, PartStatus
 from spacecraft.parts.manager import PartsManager
 
 
@@ -34,6 +35,14 @@ class BaseProgram(abc.ABC):
     def __init__(self, parts_manager: PartsManager, display: BaseDisplay):
         self._parts_manager = parts_manager
         self._display = display
+
+    def _get_part_by_id(self, part_id: str) -> BasePart:
+        part = self._parts_manager.get(part_id)
+        if part is None:
+            raise ProgramKeyError(f"{part_id} is not a valid part ID")
+        if part.status == PartStatus.OFFLINE:
+            raise ProgramException(f"part is offline")
+        return part
 
     @abc.abstractmethod
     def exec(self, arguments: list[str]) -> None:

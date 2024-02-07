@@ -32,16 +32,16 @@ class ListProgram(BaseProgram):
         parts: list[BasePart] = sorted(parts, key=lambda part: part.name)
         for part in parts:
             self._display.print(f"{part.part_id:<10} {part.name:<40} [[ {part.status:<7} ]]")
-            self.__simulate_processing_duration()
+            self.__simulate_wait_time()
 
     def __handle_list_systems(self) -> None:
         controllers = self._parts_manager.get_controllers()
         controllers = sorted(controllers, key=lambda controller: controller.name)
         for controller in controllers:
             self._display.print(f"{controller.get_system_name():<51} [[ {controller.status:<7} ]]")
-            self.__simulate_processing_duration()
+            self.__simulate_wait_time()
 
-    def __simulate_processing_duration(self) -> None:
+    def __simulate_wait_time(self) -> None:
         duration: float = random.uniform(self.MIN_PROCESSING_DURATION, self.MAX_PROCESSING_DURATION)
         time.sleep(duration)
 

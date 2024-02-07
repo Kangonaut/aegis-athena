@@ -94,12 +94,6 @@ class SetProgram(BaseProgram):
             },
         }
 
-    def __get_part_by_id(self, part_id: str) -> BasePart:
-        part = self._parts_manager.get(part_id)
-        if part is None:
-            raise ProgramKeyError(f"{part_id} is not a valid part ID")
-        return part
-
     def __assert_setter_type(self, part: BasePart, value: BasePart, attribute_name: str) -> None:
         # if public attribute
         type_hints = typing.get_type_hints(part.__init__)
@@ -130,7 +124,7 @@ class SetProgram(BaseProgram):
             raise ProgramValueError("value must be a valid integer")
 
     def __handle_set_part(self, part: BasePart, value: str, attribute_name: str) -> None:
-        value_part = self.__get_part_by_id(value)
+        value_part = self._get_part_by_id(value)
         self.__assert_setter_type(part, value_part, attribute_name)
         setattr(part, attribute_name, value_part)
 
@@ -153,12 +147,11 @@ class SetProgram(BaseProgram):
         value: str = arguments.value
 
         # retrieve part
-        part = self.__get_part_by_id(part_id)
+        part = self._get_part_by_id(part_id)
 
         # check if part is controllable
         if not part.controllable:
             raise ProgramValueError(f"part {part_id} does not answer; unable to complete task")
-
 
         # call handler
         if key in self.__HANDLERS:

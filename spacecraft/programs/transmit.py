@@ -29,15 +29,9 @@ class TransmitProgram(BaseProgram):
     def __init__(self, parts_manager: PartsManager, display: BaseDisplay):
         super().__init__(parts_manager, display)
 
-    def __get_part_by_id(self, part_id: str) -> BasePart:
-        part = self._parts_manager.get(part_id)
-        if part is None:
-            raise ProgramKeyError(f"{part_id} is not a valid part ID")
-        return part
-
     def __assert_controller_type(self, part: BasePart) -> ComsController:
         if not isinstance(part, ComsController):
-            raise ProgramValueError(f"{part.part_id} must be a COMs system")
+            raise ProgramValueError(f"{part.part_id} must be a COMS system")
         return part
 
     def __simulate_wait_time(self, duration: float, max_random_duration: float) -> None:
@@ -75,7 +69,7 @@ class TransmitProgram(BaseProgram):
     def __generate_response(self, coms_controller: ComsController, message: str) -> None:
         self._display.info("receiving response")
 
-        communicator = coms_controller.get_communicator()
+        communicator = coms_controller.communicator
         for token in communicator.stream(message):
             self._display.print(token.content, end="")
 
@@ -89,7 +83,7 @@ class TransmitProgram(BaseProgram):
         message: str = " ".join(arguments.message)
 
         # retrieve part
-        part = self.__get_part_by_id(part_id)
+        part = self._get_part_by_id(part_id)
         coms_controller = self.__assert_controller_type(part)
 
         self.__simulate_transmit(message)
