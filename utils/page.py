@@ -10,6 +10,11 @@ def __display_output(content: str, placeholder):
     placeholder.markdown(content)
 
 
+def __display_narrative(content: str, placeholder):
+    for chunk in content.split("\n"):
+        placeholder.markdown(f"*{chunk}*")
+
+
 def init_level_page(level_name: str):
     # page layout
     top = st.container()
@@ -34,7 +39,7 @@ def init_level_page(level_name: str):
 
     # fill placeholder
     top.title(level_state.level.name)
-    top.markdown(f"*{level_state.level.prolog}*")
+    __display_narrative(level_state.level.prolog, top)
 
     # command input
     command: str = st.chat_input(placeholder="enter your command ...")
@@ -53,6 +58,6 @@ def init_level_page(level_name: str):
         st.sidebar.markdown(f"status: **:green[CRISIS AVERTED]**")
 
         # show epilog if finished
-        bottom.markdown(f"*{level_state.level.epilog}*")
+        __display_narrative(level_state.level.epilog, bottom)
     else:
         st.sidebar.markdown(f"status: **:red[ONGOING CRISIS]**")

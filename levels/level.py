@@ -52,13 +52,21 @@ As I finish the last of the chicken, I can't help but humorously contemplate if,
 )
 
 level_2_builder = SpacecraftBuilder()
-level_2_builder.configured_secret = "somethingelse"
-level_2_builder.actual_secret = "cisco"
+level_2_builder.configured_secret = "1234"
+level_2_builder.actual_secret = "apollo"
 level_2 = Level(
-    name="Level 2",
-    prolog="testing prolog",
-    epilog="testing epilog",
-    completion_checker=ComsSecretCompletionChecker(target_secret="Cisco123"),
+    name="Level 2 - What about god?",
+    prolog="""I find myself floating languidly towards my sleeping quarters. Exhaustion is starting to seep into my bones, a testament to the long, eventful day spent onboard the S.P.A.C.E.C.R.A.F.T. – a series of seemingly unending crises. All I yearn for is a good night’s rest. However, just as I’m about to encase myself within my anti-gravity sleeping bag, my heart sinks.
+I’ve forgotten something crucial. In the chaos of malfunctioning tanks and almost lethal freeze-dried chicken, I’ve forgotten to check in on the progress of the lunar lander. My two fellow astronauts are still out there, and the guilt of oversight washes over me like a cold shower. The delicacy of my planned slumber is torn to shreds. Adrenaline beats sleepiness and I scramble, hastily pushing myself towards the console again.
+A new problem confronts me as I reach the console. To establish communication, I need a Pre-Shared Key (PSK) for decrypting the messages – a PSK code that I, in all wisdom of my porous memory, have managed to forget. Desperate, I begin to scour the cabin, floating from one corner to another, urgent frantic glances bouncing around the restricted space. In a spectacle of near-comic relief, I chance upon a small Post-it note frailly stuck to the maintenance schedule above my work terminal.
+**"PSK (Day 1): Name of lunar lander in lowercase, without spaces or special characters. PS: I don't trust your memory, Wade. - Cheers, Bob"**
+Oh, sweet irony. Bob’s faith, more the lack of it, in my memory has saved my skin yet again. The newfound clue replaces my crushing helplessness with a glimmer of hope. But herein lies the paradox, the name of the lunar lander remains elusive—lost in the hazy maze of my forgetful mind. As the console blinks impatiently at me, the magnitude of my forgetfulness dawns upon me. It's one step forward and yet, I’m still miles away from the solution. I grit my teeth and ready myself for the next bout of this relentless struggle against my own memory.""",
+    epilog="""The AI proves its worth once again, and the gratitude I feel toward this mechanical guide is immense.
+Talking to my fellow astronauts and hearing about their safe progress brings a deep sense of relief, washing away the previous feelings of guilt and panic like a cleansing rain. Their laughs echoing in the cabin and their excited descriptions of the moon's desolate beauty somehow bring an unexpected sense of comfort—celestial tranquility bundled with comradery, who would have thought?
+Finally, free from the chains of mechanical and memory failures for the day, I am able to traverse back to my sleeping quarters. Slipping into the sleeping bag made for microgravity feels like an accomplishment I should add to my resume. The soft hum of the spacecraft fills the silent space in the cabin, an electronic lullaby for my space-borne dreams.
+My eyes close, preparing to meet the sandman, my body relaxing, finally giving in to gravity-free rest. Though space is empty and vast, I realize life within S.P.A.C.E.C.R.A.F.T. is neither. My dreams eagerly wait to unfold, maybe spaceships, maybe chickens, maybe codes.
+With a sly grin spreading on my tired face as I drift off, I mumble to myself, "Next time, maybe I should get Bob to remember that we should get a dog." After all, if it gets to eat the food meant for humans onboard, it might willingly take on some crisis-solving too.""",
+    completion_checker=ComsSecretCompletionChecker(target_secret="advancedpodforouterspacelunarlandingoperations"),
     adjust_spacecraft=adjust_spacecraft_level_2,
     init_spacecraft=level_2_builder.build_default,
 )
