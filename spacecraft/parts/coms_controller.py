@@ -28,3 +28,9 @@ class ComsController(BaseController):
                 self.secret
             )
         )
+
+    def display_details(self) -> str:
+        return (
+                super().display_details() +
+                f"antenna: {self.antenna.part_id}\n"
+        )
