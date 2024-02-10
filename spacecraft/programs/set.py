@@ -5,6 +5,8 @@ from functools import partial
 from spacecraft.displays.base import BaseDisplay
 from spacecraft.parts.ars import HeatExchanger, ArsController
 from spacecraft.parts.base import BasePart, BaseController
+from spacecraft.parts.brains_controller import BrainsController
+from spacecraft.parts.ecs import EcsController
 from spacecraft.parts.hts import CoolingLoop, HtsController
 from spacecraft.parts.manager import PartsManager
 from spacecraft.parts.coms import Antenna
@@ -39,6 +41,15 @@ class SetProgram(BaseProgram):
             "pwr": self.__handle_set_power,
         }
         self.__PART_SPECIFIC_HANDLERS: dict[Type, dict[str, Callable[[any, str], None]]] = {
+            BrainsController: {
+                "strg": partial(self.__handle_set_part, attribute_name="storage"),
+            },
+            EcsController: {
+                "oscpcs": partial(self.__handle_set_part, attribute_name="oscpcs_controller"),
+                "hts": partial(self.__handle_set_part, attribute_name="hts_controller"),
+                "wcs": partial(self.__handle_set_part, attribute_name="wcs_controller"),
+                "ars": partial(self.__handle_set_part, attribute_name="ars_controller"),
+            },
             OscpcsController: {
                 "lox": partial(self.__handle_set_part, attribute_name="lox_tank"),
                 "ln2": partial(self.__handle_set_part, attribute_name="ln2_tank"),
@@ -64,7 +75,7 @@ class SetProgram(BaseProgram):
                 "tank": partial(self.__handle_set_part, attribute_name="water_tank"),
             },
             WaterTank: {
-                "fc": partial(self.__handle_set_part, attribute_name="water_supply"),
+                "ws": partial(self.__handle_set_part, attribute_name="water_supply"),
             },
             WcsController: {
                 "pmp": partial(self.__handle_set_part, attribute_name="water_pump")
