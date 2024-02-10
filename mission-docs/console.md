@@ -10,11 +10,15 @@ This highly innovative system adopts a dual-purpose role, integrating the essent
 
 Each command embedded in this system meticulously rides on the principles of intuitive design and effective execution, quintessential to ensure the seamless operation of any space mission. This sophisticated league of commands ensures a detailed real-time assessment of the mission parameters, thus contributing to the overall success of the mission.
 
-- `list`
-- `details`
-- `ask`
-- `transmit`
-- `set`
+- `list`: This instruction serves as an easy access point to the complete collection of S.P.A.C.E.C.R.A.F.T. systems and their components. By invoking this command, the astronauts or mission control can quickly glance through the comprehensive list of operational systems present within the S.P.A.C.E.C.R.A.F.T. module.
+
+- `details`: The `details` command dives deeper into the nitty-gritty of individual components. On execution, this command supplies an exhaustive overview of a specific component's current status, presenting data like operating condition, temperature, parameter-specific data, and more. The `details` command aids in comprehensive internal audits and system diagnostics.
+
+- `ask`: The `ask` command interfaces with the onboard AI assistant M.A.R.S., enabling communication. It can be utilized to request data interpretation, system status, resource allocation plans, scenario-based suggestions, and more. This instruction vitalises the interaction with M.A.R.S., effectively turning it into an accessible fount of real-time system analytics and advice.
+
+- `transmit`: Vital for the collaboration between S.P.A.C.E.C.R.A.F.T and mission control on Earth, the `transmit` command sends internal system data outward. It envelops a vast spectrum of missions; from sending regular status updates, conveying diagnostics data, transmitting critical alarms, or streaming live telemetry feed. Seamless operation of the `transmit` command is elemental in keeping the mission control up-to-date and facilitating ground-assisted decisions.
+
+- `set`: Among the most versatile commands, `set` allows for a multitude of system and component-specific configurations. Be it setting the operational frequencies of communication antennas or defining the relationship between key system components, the `set` command is the right tool. It gives astronauts and command centers a degree of control, enabling the adjustment of system parameters on-the-go based on immediate requirements and mission objectives.
 
 ## 3.3 The `list` Command
 
@@ -252,7 +256,7 @@ To energize a component:
 system:/ $ set <PART-ID> pwr 1
 ```
 
-Thus, the set command extends a powerful proxy to control each part's power settings on demand.
+Thus, the `set` command extends a powerful proxy to control each part's power settings on demand.
 
 ### 3.7.4 Part-Specific Configuration
 
@@ -260,7 +264,7 @@ This section will delve into more specifics about individual parts and correspon
 
 #### 3.7.4.1 ECS Controller
 
-Orchestrating a hospitable environment amidst the unforgiving vacuum of space, the Environmental Control System (ECS) Controller is a pivotal element in the S.P.A.C.E.C.R.A.F.T. module. It oversees the maintenance of a comfortable and safe environment for both astronauts and delicate electronic components onboard the spacecraft. This task envelopes four essential subsystems: the Water Management Section (WCS), the Oxygen Supply and Cabin Pressure Control Section (OSCPCS), the Atmosphere Revitalization System (ARS), and the Heat Transport Section (HTS). Each of these requires specific configurations via the set command to function harmoniously.
+Orchestrating a hospitable environment amidst the unforgiving vacuum of space, the Environmental Control System (ECS) Controller is a pivotal element in the S.P.A.C.E.C.R.A.F.T. module. It oversees the maintenance of a comfortable and safe environment for both astronauts and delicate electronic components onboard the spacecraft. This task envelopes four essential subsystems: the Water Management Section (WCS), the Oxygen Supply and Cabin Pressure Control Section (OSCPCS), the Atmosphere Revitalization System (ARS), and the Heat Transport Section (HTS). Each of these requires specific configurations via the `set` command to function harmoniously.
 
 ##### 3.7.4.1.1 WCS Controller Configuration
 
@@ -290,7 +294,7 @@ In this command, the first `<PART-ID>` refers to the ECS Controller's ID, while 
 
 The ARS is indispensable for maintaining a livable internal environment within the spacecraft. It works by removing carbon dioxide from the cabin air while cooling and conditioning the air.
 
-This important association between the ARS and ECS Controllers is established by using the set command:
+This important association between the ARS and ECS Controllers is established by using the `set` command:
 
 ```
 set <PART-ID> ars <PART-ID>
@@ -302,7 +306,7 @@ In this case, the first `<PART-ID>` corresponds to the ECS Controller's ID, whil
 
 The HTS is vital for optimal thermal regulation within the spacecraft. It employs a water-glycol solution to cool temperature-sensitive equipment, thus maintaining ideal conditions for both astronauts and delicate onboard equipment.
 
-Configuration of the ECS Controller to integrate with a specific HTS Controller is accomplished with the set command:
+Configuration of the ECS Controller to integrate with a specific HTS Controller is accomplished with the `set` command:
 
 ```
 set <PART-ID> hts <PART-ID>
@@ -314,13 +318,13 @@ In summary, the ECS Controller's specific configurations enrich its operational 
 
 #### 3.7.4.2 OSCPCS Controller
 
-The Oxygen Supply and Cabin Pressure Control Section (OSCPCS) Controller is a critical component demanding specific configurations due to its vital responsibilities in maintaining astronaut survival and comfort. The subsequent sections detail these configuration options via the set command.
+The Oxygen Supply and Cabin Pressure Control Section (OSCPCS) Controller is a critical component demanding specific configurations due to its vital responsibilities in maintaining astronaut survival and comfort. The subsequent sections detail these configuration options via the `set` command.
 
 ##### 3.7.4.2.1 LOX Tank Configuration
 
 The OSCPCS Controller interfaces with LOX Tanks, the critical components that store liquid oxygen, which is then released and converted into gaseous form as required.
 
-The set command allows the assignment of a specific LOX Tank to the OSCPCS controller for operational control. This assignment can be performed using the following syntax:
+The `set` command allows the assignment of a specific LOX Tank to the OSCPCS controller for operational control. This assignment can be performed using the following syntax:
 
 ```
 set <PART-ID> lox <PART-ID>
@@ -333,7 +337,7 @@ In this command, the first `<PART-ID>` refers to the OSCPCS Controller's ID, whi
 
 Similar to the LOX Tanks, the OSCPCS Controller also interacts with the LN2 or Liquid Nitrogen Tanks. These tanks maintain the supply of nitrogen, facilitating the required 60% nitrogen and 40% oxygen blend of cabin air.
 
-The assignment of an LN2 Tank to the OSCPCS Controller can be achieved using the set command in the following manner:
+The assignment of an LN2 Tank to the OSCPCS Controller can be achieved using the `set` command in the following manner:
 
 ```
 set <PART-ID> ln2 <PART-ID>
@@ -345,13 +349,13 @@ In essence, part-specific configurations for the OSCPCS Controller allow for a r
 
 #### 3.7.4.3 HTS Controller
 
-The Heat Transport Section (HTS) Controller, a key component of the S.P.A.C.E.C.R.A.F.T. module, is renowned for its meticulous management of the intricate environment within the spacecraft. It regulates crucial systems by managing the heat transport system to maintain optimal operational temperatures. Specific configurations via the set command ensure its efficient function.
+The Heat Transport Section (HTS) Controller, a key component of the S.P.A.C.E.C.R.A.F.T. module, is renowned for its meticulous management of the intricate environment within the spacecraft. It regulates crucial systems by managing the heat transport system to maintain optimal operational temperatures. Specific configurations via the `set` command ensure its efficient function.
 
 ##### 3.7.4.3.1 Thermometer Configuration
 
 Accurate temperature readings prove crucial in balancing the delicate and complex variables of spacecraft climate management. Thus, the HTS Controller integrates extensively with the cabin thermometers to consistently monitor spacecraft's internal conditions.
 
-The set command can associate a specified thermometer with the HTS Controller, as shown in the following syntax:
+The `set` command can associate a specified thermometer with the HTS Controller, as shown in the following syntax:
 
 ```
 set <PART-ID> therm <PART-ID>
@@ -363,13 +367,13 @@ In summary, the specific configurations for the HTS Controller make it a powerfu
 
 #### 3.7.4.4 ARS Controller
 
-The Atmosphere Revitalization System (ARS) Controller is a critical component of the S.P.A.C.E.C.R.A.F.T. module. It meticulously oversees the health of the spacecraft's internal environment, removing carbon dioxide, controlling humidity, and conditioning air. To ensure an optimal, comfortable in-craft climate, the ARS Controller relies on specific configurations via the set command.
+The Atmosphere Revitalization System (ARS) Controller is a critical component of the S.P.A.C.E.C.R.A.F.T. module. It meticulously oversees the health of the spacecraft's internal environment, removing carbon dioxide, controlling humidity, and conditioning air. To ensure an optimal, comfortable in-craft climate, the ARS Controller relies on specific configurations via the `set` command.
 
 ##### 3.7.4.4.1 Loop Fan Configuration:
 
 The loop fan in the ARS facilitates continuous air circulation, enabling cabin air to reach the system for treatment effectively.
 
-Using the set command, the ARS Controller can be linked to a specific loop fan:
+Using the `set` command, the ARS Controller can be linked to a specific loop fan:
 
 ```
 set <PART-ID> fan <PART-ID>
@@ -381,7 +385,7 @@ Heat Exchanger Configuration:
 
 The heart of ARS's cooling operation, the heat exchanger, is crucial for effectively cooling air before re-entering the cabin.
 
-Configuration of the ARS Controller to integrate with a specific heat exchanger is configured with the set command:
+Configuration of the ARS Controller to integrate with a specific heat exchanger is configured with the `set` command:
 
 ```
 set <PART-ID> heatex <PART-ID>
@@ -393,7 +397,7 @@ Water Separator Configuration:
 
 Effective humidity control within the spacecraft is achieved via the water separators in the ARS. They spin out water from the air in a centrifugal manner.
 
-To link a specific water separator with the ARS Controller, the set command is used:
+To link a specific water separator with the ARS Controller, the `set` command is used:
 
 ```
 set <PART-ID> h2osep <PART-ID>
@@ -405,7 +409,7 @@ Odor Removal Canister Configuration:
 
 Scrubbing the air clean of any unpleasant smells falls under the role of odor removal canisters. They form an integral part of ARS operations.
 
-The association of a particular odor removal canister with the ARS Controller can be established using the set command:
+The association of a particular odor removal canister with the ARS Controller can be established using the `set` command:
 
 ```
 set <PART-ID> odorrem <PART-ID>
@@ -417,7 +421,7 @@ CO2 Removal Canister Configuration:
 
 CO2 removal canisters effectively reduce potentially threatening CO2 levels to safe limits within the spacecraft.
 
-The assignment of a specific CO2 removal canister with the ARS Controller is achieved by using the set command:
+The assignment of a specific CO2 removal canister with the ARS Controller is achieved by using the `set` command:
 
 ```
 set <PART-ID> co2rem <PART-ID>
@@ -429,13 +433,13 @@ Overall, these specific configurations enable the ARS Controller to demonstrate 
 
 #### 3.7.4.5 WCS Controller
 
-Acting as a lifeline within the S.P.A.C.E.C.R.A.F.T.'s Environmental Control Subsystem, the Water Management Section (WCS) Controller plays a vital role in managing the spacecraft's water resources. The WCS caters to various mission-critical applications, from astronaut hydration and meal preparation to cooling various electronic systems and providing extinguishing resources in case of a fire emergency. The WCS Controller efficient function depends on specific configurations via the set command.
+Acting as a lifeline within the S.P.A.C.E.C.R.A.F.T.'s Environmental Control Subsystem, the Water Management Section (WCS) Controller plays a vital role in managing the spacecraft's water resources. The WCS caters to various mission-critical applications, from astronaut hydration and meal preparation to cooling various electronic systems and providing extinguishing resources in case of a fire emergency. The WCS Controller efficient function depends on specific configurations via the `set` command.
 
 ##### 3.7.4.5.1 Water Pump Configuration
 
 The water pump plays an integral part in the WCS, ensuring water is appropriately shuffled from the tank to various parts of the spacecraft as needed.
 
-Linking the WCS Controller with a specific water pump is achieved using the set command:
+Linking the WCS Controller with a specific water pump is achieved using the `set` command:
 
 ```
 set <PART-ID> pmp <PART-ID>
@@ -447,11 +451,11 @@ Through these specific configurations, the WCS Controller expertly manages the d
 
 #### 3.7.4.6 COMS Controller
 
-The Communications System (COMS) is pivotal for success in space missions, providing seamless and secure communication between astronauts, the lunar lander, and mission control on Earth. At the center of the COMS subsystem resides the COMS Controller, needed for both the integrity and security of communications. Specific configurations involving the set command help optimize the controller's functionalities and capabilities.
+The Communications System (COMS) is pivotal for success in space missions, providing seamless and secure communication between astronauts, the lunar lander, and mission control on Earth. At the center of the COMS subsystem resides the COMS Controller, needed for both the integrity and security of communications. Specific configurations involving the `set` command help optimize the controller's functionalities and capabilities.
 
 ##### 3.7.4.6.1 Encryption Secret Configuration
 
-The COMS Controller uses a Vigenère Cipher and a Pre-shared Key (PSK) for digital cryptology. To update or change the encryption secret, the set command is used as follows:
+The COMS Controller uses a Vigenère Cipher and a Pre-shared Key (PSK) for digital cryptology. To update or change the encryption secret, the `set` command is used as follows:
 
 ```
 set <PART-ID> pwd <SECRET>
@@ -461,7 +465,7 @@ In this setup, the first `<PART-ID>` corresponds to the COMS Controller's ID, an
 
 ##### 3.7.4.6.1 Antenna Configuration
 
-For communications with Earth or the A.P.O.L.L.O module, different antennas are required. The COMS Controller determines which antenna is in use. To set a specific antenna for use by the COMS Controller, the set command is applied:
+For communications with Earth or the A.P.O.L.L.O module, different antennas are required. The COMS Controller determines which antenna is in use. To set a specific antenna for use by the COMS Controller, the `set` command is applied:
 
 ```
 set <PART-ID> antenna <PART-ID>
@@ -473,11 +477,11 @@ Hence, through these precise configurations, the COMS Controller empowers the Co
 
 #### 3.7.4.7 EPS Controller
 
-The Electrical Power System (EPS) serves as a lifeline for all electronic activities within the S.P.A.C.E.C.R.A.F.T. module. Central to the EPS's operations is the EPS Controller, which manages power production, distribution, and storage. Particular configurations with the set command, detailed below, further enhance the functionality and performance of the EPS Controller.
+The Electrical Power System (EPS) serves as a lifeline for all electronic activities within the S.P.A.C.E.C.R.A.F.T. module. Central to the EPS's operations is the EPS Controller, which manages power production, distribution, and storage. Particular configurations with the `set` command, detailed below, further enhance the functionality and performance of the EPS Controller.
 
 ##### 3.7.4.7.1 Fuel Cell Configuration
 
-Constituting the heart of the EPS, the fuel cells generate electricity. To specify a particular fuel cell for use by the EPS Controller, use this set command format:
+Constituting the heart of the EPS, the fuel cells generate electricity. To specify a particular fuel cell for use by the EPS Controller, use this `set` command format:
 
 ```
 set <PART-ID> fc <PART-ID>
@@ -487,7 +491,7 @@ Here, the first `<PART-ID>` indicates the EPS Controller's ID, while the second 
 
 ##### 3.7.4.7.2 Battery Configuration
 
-Given the high stakes of space missions, having backup systems is crucial. To specify a particular battery for use by the EPS Controller, the set command is utilized as follows:
+Given the high stakes of space missions, having backup systems is crucial. To specify a particular battery for use by the EPS Controller, the `set` command is utilized as follows:
 
 ```
 set <PART-ID> bat <PART-ID>
@@ -499,11 +503,11 @@ Interpreting and implementing these configurations, the EPS controller effective
 
 #### 3.7.4.8 SPS Controller
 
-The Service Propulsion System (SPS) is instrumental in ensuring accurate course alterations and navigation during the lunar mission, with all its operations being closely regulated by an SPS Controller. Fine-tuning specific configurations through the set command caters to the intricate requirements of space travel and optimizes the functions of different constituents of the SPS.
+The Service Propulsion System (SPS) is instrumental in ensuring accurate course alterations and navigation during the lunar mission, with all its operations being closely regulated by an SPS Controller. Fine-tuning specific configurations through the `set` command caters to the intricate requirements of space travel and optimizes the functions of different constituents of the SPS.
 
 ##### 3.7.4.8.1 Engine Configuration
 
-The Aerojet AJ10 engine forms the backbone of the SPS, known for its precision and reliability. To specify a particular engine for use by the SPS Controller, use the set command format:
+The Aerojet AJ10 engine forms the backbone of the SPS, known for its precision and reliability. To specify a particular engine for use by the SPS Controller, use the `set` command format:
 
 ```
 set <PART-ID> engine <PART-ID>
@@ -513,7 +517,7 @@ Here, the first `<PART-ID>` denotes the SPS Controller's ID, while the second `<
 
 ##### 3.7.4.8.2 Gimbal Configuration
 
-The gimbal is a vital component closely tied to Thrust Vector Control, allowing for meticulous directional adjustments of the propulsion. To specify a specific gimbal for use by the SPS Controller, the set command is employed as follows:
+The gimbal is a vital component closely tied to Thrust Vector Control, allowing for meticulous directional adjustments of the propulsion. To specify a specific gimbal for use by the SPS Controller, the `set` command is employed as follows:
 
 ```
 set <PART-ID> gimbal <PART-ID>
@@ -525,11 +529,11 @@ Through these configurations, the SPS Controller regulates the vital components 
 
 #### 3.7.4.9 BRAINS Controller
 
-The Binary Regulated Artificial Intelligence Network System (BRAINS) constitutes the core computational setup for the onboard AI Assistant, M.A.R.S. Under its umbrella operates the BRAINS Controller, precisely orchestrating numerous hardware interactions and governing the operational balance of the AI network. To customize the system's configurations to better serve mission-specific needs, the set command comes into play.
+The Binary Regulated Artificial Intelligence Network System (BRAINS) constitutes the core computational setup for the onboard AI Assistant, M.A.R.S. Under its umbrella operates the BRAINS Controller, precisely orchestrating numerous hardware interactions and governing the operational balance of the AI network. To customize the system's configurations to better serve mission-specific needs, the `set` command comes into play.
 
 ##### 3.7.4.9.1 Storage Configuration
 
-Acting as the BRAINS' memory repository, an advanced disk array employing Redundant Array of Independent/Inexpensive Disk (RAID) technology is used. For defining a specific disk array for the BRAINS controller to utilize, the set command is employed:
+Acting as the BRAINS' memory repository, an advanced disk array employing Redundant Array of Independent/Inexpensive Disk (RAID) technology is used. For defining a specific disk array for the BRAINS controller to utilize, the `set` command is employed:
 
 ```
 set <PART-ID> strg <PART-ID>
@@ -543,7 +547,7 @@ The BRAINS Controller stands at the helm of the integral AI network, marshalling
 
 #### 3.7.4.10 Water Pump
 
-As an essential part of the Water Management Section, the Water Pump performs a critical role in maintaining the health and well-being of our astronauts and assuring the functional longevity of various thermal management systems in the S.P.A.C.E.C.R.A.F.T module. Deft manipulation of the pump's settings and functions is key in mission management. This section aims to guide users on how to customize the water pump configurations using the set command.
+As an essential part of the Water Management Section, the Water Pump performs a critical role in maintaining the health and well-being of our astronauts and assuring the functional longevity of various thermal management systems in the S.P.A.C.E.C.R.A.F.T module. Deft manipulation of the pump's settings and functions is key in mission management. This section aims to guide users on how to customize the water pump configurations using the `set` command.
 
 ##### 3.7.4.10.1 Tank configuration
 
@@ -561,11 +565,11 @@ Inextricably linked to both human survival factors and the optimal functioning o
 
 #### 3.7.4.11 Water Tank
 
-A mission-critical subsystem within the S.P.A.C.E.C.R.A.F.T. module, the Water Management Section (WCS) houses the significant Water Tank - safeguarding our most vital life-giving resource for the duration of the mission. The health and satisfaction of our astronauts, as well as the smooth operation of the spacecraft's electronic systems, hinge largely on meticulous control of the water tank and its contents. This section provides guidance on how to customize the water tank's configurations using the set command.
+A mission-critical subsystem within the S.P.A.C.E.C.R.A.F.T. module, the Water Management Section (WCS) houses the significant Water Tank - safeguarding our most vital life-giving resource for the duration of the mission. The health and satisfaction of our astronauts, as well as the smooth operation of the spacecraft's electronic systems, hinge largely on meticulous control of the water tank and its contents. This section provides guidance on how to customize the water tank's configurations using the `set` command.
 
 ##### 3.7.4.11.1 Water Supply Linkage
 
-The water tank works in concert with the water supply system (ws) to ensure the mission's fluid requirements are seamlessly met. To create a link between the water tank and the water supply system, the following set command syntax is used:
+The water tank works in concert with the water supply system (ws) to ensure the mission's fluid requirements are seamlessly met. To create a link between the water tank and the water supply system, the following `set` command syntax is used:
 
 ```
 set <PART-ID> ws <PART-ID>
@@ -579,11 +583,11 @@ The water tank forms a cornerstone in the edifice of onboard resource management
 
 #### 3.7.4.12 Fuel Cell
 
-The Energy Production System (EPS) is the beating heart of all onboard operations of the S.P.A.C.E.C.R.A.F.T. module, with the Fuel Cell playing a pivotal role in this critical subsystem. Acting in unison, these fuel cells tirelessly generate electricity through a controlled chemical reaction involving hydrogen and oxygen. Furthermore, in the unforgiving and unpredictable environment of space, a third fuel cell backups the system, prepared to take over at a moment's notice. This section elaborates how to configure the essential connections between the fuel cell and its required inputs using the set command.
+The Energy Production System (EPS) is the beating heart of all onboard operations of the S.P.A.C.E.C.R.A.F.T. module, with the Fuel Cell playing a pivotal role in this critical subsystem. Acting in unison, these fuel cells tirelessly generate electricity through a controlled chemical reaction involving hydrogen and oxygen. Furthermore, in the unforgiving and unpredictable environment of space, a third fuel cell backups the system, prepared to take over at a moment's notice. This section elaborates how to configure the essential connections between the fuel cell and its required inputs using the `set` command.
 
 ##### 3.7.4.12.1 Liquid Oxygen (LOX) Linkage
 
-The fuel cell relies on a steady supply of liquid oxygen (LOX) to maintain its electricity generation process. This connection can be configured using the following set command:
+The fuel cell relies on a steady supply of liquid oxygen (LOX) to maintain its electricity generation process. This connection can be configured using the following `set` command:
 
 ```
 set <PART-ID> lox <PART-ID>
@@ -593,7 +597,7 @@ In this command, the first `<PART-ID>` corresponds to the identifier for the fue
 
 ##### 3.7.4.12.2 Liquid Hydrogen (LH2) Linkage
 
-In addition to LOX, the fuel cell also requires liquid hydrogen (LH2) to function efficiently. The appropriate set command to establish this connection is:
+In addition to LOX, the fuel cell also requires liquid hydrogen (LH2) to function efficiently. The appropriate `set` command to establish this connection is:
 
 ```
 set <PART-ID> lh2 <PART-ID>
@@ -605,11 +609,11 @@ The precise configuration of the fuel cell with its required inputs of LOX and L
 
 #### 3.7.4.13 Engine
 
-The Aerojet AJ10 engine is a prestigious mechanical marvel optimized for the vacuum of space. Renowned for its precision and reliability, this vacuum-optimized engine is the robust heartbeat of the Service Propulsion System (SPS). Housed in a modern pivoting mount — a gimbal — it operates in perfect harmony with the Thrust Vector Control (TVC) system, enabling meticulous navigational and trajectory adjustments, critical for the complexities of space travel. This section presents detailed protocol to configure the fuel and oxidizer linkages for the AJ10 engine, using the set command.
+The Aerojet AJ10 engine is a prestigious mechanical marvel optimized for the vacuum of space. Renowned for its precision and reliability, this vacuum-optimized engine is the robust heartbeat of the Service Propulsion System (SPS). Housed in a modern pivoting mount — a gimbal — it operates in perfect harmony with the Thrust Vector Control (TVC) system, enabling meticulous navigational and trajectory adjustments, critical for the complexities of space travel. This section presents detailed protocol to configure the fuel and oxidizer linkages for the AJ10 engine, using the `set` command.
 
 ##### 3.7.4.13.1 Fuel Linkage
 
-The Aerojet AJ10 engine requires a consistent supply of fuel to operate efficiently. This linkage can be established via the set command as follows:
+The Aerojet AJ10 engine requires a consistent supply of fuel to operate efficiently. This linkage can be established via the `set` command as follows:
 
 ```
 set <PART-ID> fuel <PART-ID>
@@ -619,7 +623,7 @@ In the above command, the first `<PART-ID>` corresponds to the identifier for th
 
 ##### 3.7.4.13.2 Oxidizer Linkage
 
-Besides the fuel, an efficacious oxidizer supply is also indispensable for the operational AJ10 engine. The following set command serves to set up this connection:
+Besides the fuel, an efficacious oxidizer supply is also indispensable for the operational AJ10 engine. The following `set` command serves to set up this connection:
 
 ```
 set <PART-ID> oxi <PART-ID>
@@ -633,11 +637,11 @@ With the accurate configuration of the fuel and oxidizer inputs, the Aerojet AJ1
 
 As our astronauts traverse the unfathomable reaches of space, maintaining seamless and reliable communication lines is vital. Both the VHF Scimitar Antennas and the steerable Unified S-band High-Gain Antenna equipped on the S.P.A.C.E.C.R.A.F.T are a quintessential element of this communication network. These antennas facilitate short-range and extended communications, respectively, ensuring undisrupted contact with the mission control center on Earth and the A.P.O.L.L.O module.
 
-This section provides the necessary guidance to configure the frequency range for these antennas using the set command.
+This section provides the necessary guidance to configure the frequency range for these antennas using the `set` command.
 
 ##### 3.7.4.14.1 Frequency Configuration
 
-Adjusting the operational frequencies of the antennas is an integral part of optimizing communication performance. The following set command is employed to establish and adjust this frequency range:
+Adjusting the operational frequencies of the antennas is an integral part of optimizing communication performance. The following `set` command is employed to establish and adjust this frequency range:
 
 ```
 set <PART-ID> hz <HERTZ>
