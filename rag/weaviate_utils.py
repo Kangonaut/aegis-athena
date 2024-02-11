@@ -12,7 +12,7 @@ def get_weaviate_client():
     )
 
 
-def get_as_vector_store(weaviate_client: weaviate.Client, class_name: str) -> WeaviateVectorStore:
+def as_vector_store(weaviate_client: weaviate.Client, class_name: str) -> WeaviateVectorStore:
     vector_store = WeaviateVectorStore(
         weaviate_client=weaviate_client,
         index_name=class_name,
