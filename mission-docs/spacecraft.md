@@ -220,7 +220,7 @@ Accurate temperature reading is vital in the intricate management of spacecraft 
 
 ##### 2.3.3.4.6 Multi-Layer Insulation (MLI)
 
-The MLI wraps the spacecraft, acting as a protective layer against both solar radiation heat and the bitter cold of the shadows. This insulation empowers the S.P.A.C.E.C.R.A.F.T to maintain a steady internal temperature.
+The MLI wraps the spacecraft, acting as a protective layer against both solar radiation heat and the bitter cold of the shadows. This insulation empowers the S.P.A.C.E.C.R.A.F.T. to maintain a steady internal temperature.
 
 ##### 2.3.3.4.7 HTS Controller
 

@@ -1,0 +1,20 @@
+Who operates the Aegis Athena mission?
+What is the main goal of the Aegis Athena mission?
+What part of the S.P.A.C.E.C.R.A.F.T. module is responsible for regulating the cabin temperature?
+What is the composition of the cabin air?
+How many oxygen tanks does the S.P.A.C.E.C.R.A.F.T. module have?
+How do I send a message using the COMS system?
+What commands can be used to diagnose problems of unknown origin?
+What does EPS stand for?
+What is the main power source of the S.P.A.C.E.C.R.A.F.T. module?
+When setting the frequency of an antenna with the `set a716 hz <FREQUENCY-VALUE>` command, what is the unit of frequency?
+What is the protocol, in case of a potential disaster during the return journey?
+What does M.A.R.S. stand for?
+What hardware does M.A.R.S. need to function?
+Which nation could be seen as the Terrestrial Human's Republic's enemy?
+Which command can be used to inspect a particular part in more detail?
+What is the role of the space radiator?
+What does VHF stand for?
+How can I access the M.A.R.S. assistant?
+What is the purpose of the ARS system?
+What are the subsystems of the ECS system?
