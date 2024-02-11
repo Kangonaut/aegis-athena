@@ -4,10 +4,7 @@ from typing import Iterator, Generator
 import weaviate
 from llama_index import VectorStoreIndex
 
-from llama_index.llms import OpenAI
-from llama_index.prompts import PromptTemplate, Prompt
-from llama_index.query_pipeline import QueryPipeline
-from llama_index.vector_stores import WeaviateVectorStore
+from llama_index.query_engine import BaseQueryEngine
 
 from spacecraft.communication.encryption import BaseEncryption
 from spacecraft.communication.message import MessageChunk
@@ -71,19 +68,11 @@ class EncryptedCommunicator(BaseCommunicator):
         return decrypted_stream
 
 
-class LlamaIndexCommunicator(BaseCommunicator):
-    def __init__(self):
-        self.llm = OpenAI(
-            modeL="gpt-3.5-turbo",
-            temperature=0.2,
-        )
+class LlamaIndexQueryEngineCommunicator(BaseCommunicator):
+    def __init__(self, query_engine: BaseQueryEngine):
+        self.query_engine = query_engine
 
     def stream(self, message: str) -> Generator[MessageChunk, None, None]:
-        prompt_template = PromptTemplate(
-            "You are a helpful assistant"
-            "Please answer the user query: {query}"
-        )
-
-        for chunk in self.llm.stream(prompt_template, query=message):
+        for chunk in self.query_engine.query(message).response_gen:
+            yield MessageChunk(chunk)
             time.sleep(0.1)
-            yield MessageChunk(content=chunk)
