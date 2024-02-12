@@ -1,6 +1,7 @@
 from llama_index.query_engine import BaseQueryEngine
 from llama_index import VectorStoreIndex, ServiceContext
 from llama_index.llms import OpenAI
+from llama_index.postprocessor import SentenceTransformerRerank
 
 import streamlit as st
 from llama_index.vector_stores import WeaviateVectorStore
@@ -45,5 +46,36 @@ def get_v1_1(streaming=False) -> BaseQueryEngine:
     service_context = ServiceContext.from_defaults(llm=llm)
 
     query_engine = index.as_query_engine(service_context=service_context, streaming=streaming)
+
+    return query_engine
+
+
+@st.cache_resource()
+def get_v1_2(streaming=False) -> BaseQueryEngine:
+    """
+    Same setup as v1.0, but using a BLE reranker, to rerank the retrieved nodes.
+    """
+
+    weaviate_class_name: str = "MarkdownDocsChunk"
+    similarity_top_k: int = 10
+    reranked_top_n: int = 3
+
+    weaviate_client = weaviate_utils.get_weaviate_client()
+    vector_store = weaviate_utils.as_vector_store(weaviate_client, weaviate_class_name)
+    index = VectorStoreIndex.from_vector_store(vector_store)
+    reranker = SentenceTransformerRerank(
+        top_n=reranked_top_n,
+        model="BAAI/bge-reranker-base",
+    )
+
+    llm = OpenAI(model="gpt-3.5-turbo", temperature=0.1)
+    service_context = ServiceContext.from_defaults(llm=llm)
+
+    query_engine = index.as_query_engine(
+        service_context=service_context,
+        streaming=streaming,
+        similarity_top_k=similarity_top_k,
+        node_postprocessors=[reranker]
+    )
 
     return query_engine
