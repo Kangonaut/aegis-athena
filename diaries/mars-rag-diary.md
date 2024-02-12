@@ -12,3 +12,12 @@ The `simple-eval-questions` dataset was used in combination with `gpt-4` for the
 - Answer Relevance: 0.82
 - Context Relevance: 0.58
 
+## M.A.R.S. v1.1
+
+The same architecture as v1.0, but utilizing the `gpt-4` model for synthesis.
+
+### Results
+
+- Groundedness: 0.68
+- Answer Relevance: 0.57
+- Context Relevance: 0.9
