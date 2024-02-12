@@ -53,7 +53,7 @@ def get_v1_1(streaming=False) -> BaseQueryEngine:
 @st.cache_resource()
 def get_v1_2(streaming=False) -> BaseQueryEngine:
     """
-    Same setup as v1.0, but using a BLE reranker, to rerank the retrieved nodes.
+    Same setup as v1.0, but using a BGE reranker, to rerank the retrieved nodes.
     """
 
     weaviate_class_name: str = "MarkdownDocsChunk"
