@@ -30,3 +30,18 @@ The same architecture as v1.0, but utilizing the `gpt-4` model for synthesis.
 ### Thoughts
 
 Using a more advanced model, does not seem to drastically increase the overall performance of this basic RAG pipline.
+
+## M.A.R.S. v1.2
+
+The same architecture as v1.0, but before the retrieved nodes are passed as context to the LLM, they are reranked using the `SentenceTransformerRerank` module and the `BAAI/bge-reranker-base` transformer model from FlagEmbedding.
+
+### Results
+
+- Groundedness: 0.86
+- Answer Relevance: 0.82
+- Context Relevance: 0.68
+
+### Thoughts
+
+As can be seen, the approach improved the context relevance metric, which also causes the groundedness metric to go up. This makes sense, since a more relevant context makes it easier to form an answer that is backed up by mentioned context.
+
