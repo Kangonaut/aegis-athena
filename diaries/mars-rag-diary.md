@@ -12,6 +12,11 @@ The `simple-eval-questions` dataset was used in combination with `gpt-4` for the
 - Answer Relevance: 0.82
 - Context Relevance: 0.58
 
+### Thoughts
+
+There are a few questions that have an answer relevance and groundedness score of both 1, but score poorly on context relevance, due to the fact that although the answer is provided in one of the retrieved nodes, it also retrieves nodes which are less important to the query.
+This might be solved by using a reranker.
+
 ## M.A.R.S. v1.1
 
 The same architecture as v1.0, but utilizing the `gpt-4` model for synthesis.
@@ -21,3 +26,7 @@ The same architecture as v1.0, but utilizing the `gpt-4` model for synthesis.
 - Groundedness: 0.68
 - Answer Relevance: 0.57
 - Context Relevance: 0.9
+
+### Thoughts
+
+Using a more advanced model, does not seem to drastically increase the overall performance of this basic RAG pipline.
