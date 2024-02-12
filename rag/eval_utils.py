@@ -16,7 +16,7 @@ def get_eval_dataset_gen(dataset_path: str) -> Generator[str, None, None]:
 
 def get_triad_of_metrics_eval_app(app_id: str, query_engine: BaseQueryEngine) -> App:
     # feedback provider
-    llm = OpenAI()  # (model_engine="gpt-4")
+    llm = OpenAI(model_engine="gpt-4")
 
     # RAG triad of metrics
     context = App.select_context(query_engine)
