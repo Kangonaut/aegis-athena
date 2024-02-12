@@ -45,3 +45,20 @@ The same architecture as v1.0, but before the retrieved nodes are passed as cont
 
 As can be seen, the approach improved the context relevance metric, which also causes the groundedness metric to go up. This makes sense, since a more relevant context makes it easier to form an answer that is backed up by mentioned context.
 
+## M.A.R.S. v2.0
+
+This version uses sentence window retrieval, in order to give the synthesizer more context and make the retrieval step more precise.
+The Weaviate class `SentenceWindowDocsChunk` is used as a datasource. A parameter of `window_size = 3` is used for the data loading stage.
+Furthermore, v2.0 also utilizes a re-ranker stage also using the `BAAI/bge-reranker-base` model. 
+
+### Results
+
+- Groundedness: 0.82
+- Answer Relevance: 0.75
+- Context Relevance: 0.77
+
+### Thoughts
+
+This approach seems to have improved the context relevance metric, which proves the intuition behind the approach and also shows that this approach is also feasible for this dataset.
+
+Regarding the decrease of answer relevance, after looking through the samples that scored badly, I did not agree with the LLMs evaluation, since they all answered the query fairly well. Thus, I don't think this really has an effect on answer relevance.
