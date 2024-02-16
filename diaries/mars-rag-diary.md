@@ -62,3 +62,37 @@ Furthermore, v2.0 also utilizes a re-ranker stage also using the `BAAI/bge-reran
 This approach seems to have improved the context relevance metric, which proves the intuition behind the approach and also shows that this approach is also feasible for this dataset.
 
 Regarding the decrease of answer relevance, after looking through the samples that scored badly, I did not agree with the LLMs evaluation, since they all answered the query fairly well. Thus, I don't think this really has an effect on answer relevance.
+
+## M.A.R.S. v3.0
+
+The architecture is based on v2.0, but adds the HyDE query transformation method before the retrieval step.
+HyDE (Hypothetical Document Embedding) generates a hypothetical answer to the user query first, which is then used as the query string in the retrieval step.
+In this case, not only the HyDE query, but also the original query is used for retrieval (`include_original=True`).
+
+Default HyDE prompt:
+
+```python
+HYDE_TMPL = (
+    "Please write a passage to answer the question\n"
+    "Try to include as many key details as possible.\n"
+    "\n"
+    "\n"
+    "{context_str}\n"
+    "\n"
+    "\n"
+    'Passage:"""\n'
+)
+```
+
+### Results
+
+- Groundedness: 0.82
+- Answer Relevance: 0.86
+- Context Relevance: 0.77
+
+### Thoughts
+
+Compared to v2.0, groundedness and context relevance did not improve nor deteriorate. Answer relevance was only slightly improved.
+However, since HyDE should mainly affect context relevance, the improvement in answer relevance is probably not a sign of an improvement in the architecture, but merely random noise that comes with the sometimes inconsistent evaluation of the feedback LLM.
+Looking at some actual examples that were had a better answer relevance score, this seems to be true. This is a drawback of the rather small dataset size of just 20 questions. However, since running evals with GPT-4 as a feedback LLM is pretty expensive, I presently cannot afford to use a larger evaluation dataset.
+
