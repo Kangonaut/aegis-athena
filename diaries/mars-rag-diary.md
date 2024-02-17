@@ -96,3 +96,29 @@ Compared to v2.0, groundedness and context relevance did not improve nor deterio
 However, since HyDE should mainly affect context relevance, the improvement in answer relevance is probably not a sign of an improvement in the architecture, but merely random noise that comes with the sometimes inconsistent evaluation of the feedback LLM.
 Looking at some actual examples that were had a better answer relevance score, this seems to be true. This is a drawback of the rather small dataset size of just 20 questions. However, since running evals with GPT-4 as a feedback LLM is pretty expensive, I presently cannot afford to use a larger evaluation dataset.
 
+## M.A.R.S. v4.0
+
+This version of M.A.R.S. is used to try out how well the pipeline performs using smaller models. 
+The architecture is the same as v3.0, except from the LLM used, which is the Llama-2-7b-chat-hf (`llama2:7b`) model. The model is being run locally on an Ollama server instance.
+
+### Results
+
+- Groundedness: 0.86
+- Answer Relevance: 0.88
+- Context Relevance: 0.78
+
+### Thoughts
+
+As can be seen, the smaller LLama2-7b model still performs great, even slightly better than GPT-3.5-turbo, although that might be random error in judging.
+However, executing a single query pipeline pass almost took 4 minutes on my local machine. Since this is not acceptable, I will repeat this experiment with even smaller models.
+
+## M.A.R.S. v4.1
+
+This version of M.A.R.S. is used to try out how well the pipeline performs using smaller models. 
+The architecture is the same as v3.0, except from the LLM used, which is the Llama-2-7b-chat-hf (`llama2:7b`) model. The model is being run locally on an Ollama server instance.
+
+### Results
+
+- Groundedness: 0.86
+- Answer Relevance: 0.88
+- Context Relevance: 0.78
