@@ -265,3 +265,47 @@ def get_v4_2(streaming=False) -> BaseQueryEngine:
     final_query_engine = TransformQueryEngine(query_engine, query_transform=hyde)
 
     return final_query_engine
+
+
+@st.cache_resource()
+def get_v5_0(streaming=False) -> BaseQueryEngine:
+    """
+    Same as v3.0, but with hybrid vector search.
+    Hybrid search combines dense (similarity based) search with sparse (keyword based) search using the BM25F algorithm.
+
+    configuration: :code:`alpha = 0.75` (1 => pure vector search; 0 => pure BM25)
+    """
+
+    weaviate_class_name: str = "SentenceWindowDocsChunk"
+    similarity_top_k: int = 10
+    reranked_top_n: int = 3
+
+    weaviate_client = weaviate_utils.get_weaviate_client()
+    vector_store = weaviate_utils.as_vector_store(weaviate_client, weaviate_class_name)
+    index = VectorStoreIndex.from_vector_store(vector_store)
+
+    sentence_window_postprocessor = MetadataReplacementPostProcessor(target_metadata_key="window")
+
+    reranker = SentenceTransformerRerank(
+        top_n=reranked_top_n,
+        model="BAAI/bge-reranker-base",
+    )
+
+    llm = OpenAI(model="gpt-3.5-turbo", temperature=0.1)
+    service_context = ServiceContext.from_defaults(llm=llm)
+
+    query_engine = index.as_query_engine(
+        # hybrid search
+        vector_store_query_mode="hybrid",
+        alpha=0.75,  # 1 => vector search; 0 => BM25
+
+        service_context=service_context,
+        streaming=streaming,
+        similarity_top_k=similarity_top_k,
+        node_postprocessors=[sentence_window_postprocessor, reranker]
+    )
+
+    hyde = HyDEQueryTransform(llm=llm, include_original=True)
+    final_query_engine = TransformQueryEngine(query_engine, query_transform=hyde)
+
+    return final_query_engine
