@@ -6,6 +6,9 @@ from llama_index.query_engine import BaseQueryEngine
 
 import numpy as np
 from typing import Generator, Iterator
+import logging
+
+logger = logging.getLogger("EVAL")
 
 
 def get_eval_dataset_gen(dataset_path: str) -> Generator[str, None, None]:
@@ -49,5 +52,6 @@ def get_triad_of_metrics_eval_app(app_id: str, query_engine: BaseQueryEngine) ->
 
 def run_eval(query_engine: BaseQueryEngine, eval_app: TruLlama, eval_questions: Iterator[str]) -> None:
     with eval_app as recorder:
-        for question in eval_questions:
+        for idx, question in enumerate(eval_questions):
             query_engine.query(question)
+            logger.info(f"finished question #{idx + 1}")
