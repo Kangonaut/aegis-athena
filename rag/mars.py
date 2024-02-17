@@ -420,6 +420,7 @@ def get_v5_2(streaming=False) -> BaseQueryEngine:
     response_synthesizer = Refine(
         text_qa_template=qa_prompt,
         refine_template=refine_prompt,
+        streaming=True,
     )
 
     query_engine = index.as_query_engine(

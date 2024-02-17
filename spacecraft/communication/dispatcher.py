@@ -28,7 +28,7 @@ class BaseBrainsDispatcher(BaseCommunicationDispatcher):
 
 class DefaultBrainsDispatcher(BaseBrainsDispatcher):
     def dispatch(self, state: BrainsState) -> BaseCommunicator:
-        return LlamaIndexQueryEngineCommunicator(query_engine=mars.get_v1_0(streaming=True))
+        return LlamaIndexQueryEngineCommunicator(query_engine=mars.get_v5_2(streaming=True))
 
 
 class MockComsDispatcher(BaseCommunicationDispatcher):
