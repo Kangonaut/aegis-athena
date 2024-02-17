@@ -213,3 +213,20 @@ In addition to that, some answers are very simply wrong. Instead of saying that 
   - question: How many oxygen tanks does the S.P.A.C.E.C.R.A.F.T. module have?
   - answer: The given context information is that the S.P.A.C.E.C.R.A.F.T. module has two oxygen tanks, which means it can carry a total of four oxygen cylinders.
   - although two oxygen tanks are correct, it just invents some cylinders, which were not mentioned in the context
+
+## M.A.R.S. v5.0
+
+MARS-v5.0 is based on the architecture of v3.0, but uses hybrid search instead of pure vector search.
+Hybrid search combines similarity based search (dense) with keyword based search (sparse), in this case BM25F.
+The `alpha` parameter specifies the weight of the vector search result, in this case `alpha = 0.75`, which means that the result is still mainly based on similarity search.
+
+### Results
+
+- Groundedness: 0.9
+- Answer Relevance: 0.9
+- Context Relevance: 0.82
+
+### Thoughts
+
+As can be seen, the metrics were significantly improved. 
+It seems that sparse search helps with a few questions, which are only answered in one or two sentences in the docs. For example the answer to the question about what VHF means, is only mentioned once in the docs: `Two Very High Frequency (VHF) scimitar antennas are installed ...`. This particular question is also very suitable for sparse search, since it directly looks for the definition of a term (thus, keyword search is a very good approach).
