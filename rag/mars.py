@@ -309,3 +309,50 @@ def get_v5_0(streaming=False) -> BaseQueryEngine:
     final_query_engine = TransformQueryEngine(query_engine, query_transform=hyde)
 
     return final_query_engine
+
+
+st.cache_resource()
+
+
+def get_v5_1(streaming=False) -> BaseQueryEngine:
+    """
+    Same as v5.0, but using a larger sentence window.
+
+    v5.0 uses a sentence window of :code:`window_size=3`.
+
+    v5.1 uses a sentence window of :code:`window_size=5`.
+    """
+
+    weaviate_class_name: str = "LargerSentenceWindowDocsChunk"
+    similarity_top_k: int = 10
+    reranked_top_n: int = 3
+
+    weaviate_client = weaviate_utils.get_weaviate_client()
+    vector_store = weaviate_utils.as_vector_store(weaviate_client, weaviate_class_name)
+    index = VectorStoreIndex.from_vector_store(vector_store)
+
+    sentence_window_postprocessor = MetadataReplacementPostProcessor(target_metadata_key="window")
+
+    reranker = SentenceTransformerRerank(
+        top_n=reranked_top_n,
+        model="BAAI/bge-reranker-base",
+    )
+
+    llm = OpenAI(model="gpt-3.5-turbo", temperature=0.1)
+    service_context = ServiceContext.from_defaults(llm=llm)
+
+    query_engine = index.as_query_engine(
+        # hybrid search
+        vector_store_query_mode="hybrid",
+        alpha=0.75,  # 1 => vector search; 0 => BM25
+
+        service_context=service_context,
+        streaming=streaming,
+        similarity_top_k=similarity_top_k,
+        node_postprocessors=[sentence_window_postprocessor, reranker]
+    )
+
+    hyde = HyDEQueryTransform(llm=llm, include_original=True)
+    final_query_engine = TransformQueryEngine(query_engine, query_transform=hyde)
+
+    return final_query_engine
