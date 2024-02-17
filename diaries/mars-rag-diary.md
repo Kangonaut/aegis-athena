@@ -230,3 +230,17 @@ The `alpha` parameter specifies the weight of the vector search result, in this 
 
 As can be seen, the metrics were significantly improved. 
 It seems that sparse search helps with a few questions, which are only answered in one or two sentences in the docs. For example the answer to the question about what VHF means, is only mentioned once in the docs: `Two Very High Frequency (VHF) scimitar antennas are installed ...`. This particular question is also very suitable for sparse search, since it directly looks for the definition of a term (thus, keyword search is a very good approach).
+
+## M.A.R.S. v5.1
+
+MARS-v5.1 has the same architecture as v5.0, but uses a window size of 5 instead of 3 for sentence window retrieval.
+
+### Results
+
+- Groundedness: 0.89
+- Answer Relevance: 0.8
+- Context Relevance: 0.88
+
+### Thoughts
+
+Context relevance was improved a little bit, although not enough to make up for the additional 3 seconds of inference time. Also answer relevance dropped by 0.1, which might be random though.
