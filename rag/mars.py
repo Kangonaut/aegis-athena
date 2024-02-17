@@ -196,7 +196,7 @@ def get_v4_0(streaming=False) -> BaseQueryEngine:
 @st.cache_resource()
 def get_v4_1(streaming=False) -> BaseQueryEngine:
     """
-    Same as v3.0, but using the Llama-2-7b-chat-hf (:code:`llama2:7b`) model run on a local Ollama server instance.
+    Same as v3.0, but using the phi-2 (:code:`phi:2.7b`) model run on a local Ollama server instance.
     """
 
     weaviate_class_name: str = "SentenceWindowDocsChunk"
@@ -233,7 +233,7 @@ def get_v4_1(streaming=False) -> BaseQueryEngine:
 @st.cache_resource()
 def get_v4_2(streaming=False) -> BaseQueryEngine:
     """
-    Same as v3.0, but using the Llama-2-7b-chat-hf (:code:`llama2:7b`) model run on a local Ollama server instance.
+    Same as v3.0, but using the TinyLlama-1.1B-Chat-v1.0 (:code:`tinyllama:1.1b`) model run on a local Ollama server instance.
     """
 
     weaviate_class_name: str = "SentenceWindowDocsChunk"
