@@ -3,9 +3,11 @@ from llama_index.query_engine import BaseQueryEngine, TransformQueryEngine
 from llama_index import VectorStoreIndex, ServiceContext
 from llama_index.llms import OpenAI, Ollama
 from llama_index.postprocessor import SentenceTransformerRerank, MetadataReplacementPostProcessor
+from llama_index.response_synthesizers import Refine
+from llama_index.prompts import PromptTemplate
+from llama_index.vector_stores import WeaviateVectorStore
 
 import streamlit as st
-from llama_index.vector_stores import WeaviateVectorStore
 
 from rag import weaviate_utils
 
@@ -311,9 +313,7 @@ def get_v5_0(streaming=False) -> BaseQueryEngine:
     return final_query_engine
 
 
-st.cache_resource()
-
-
+@st.cache_resource()
 def get_v5_1(streaming=False) -> BaseQueryEngine:
     """
     Same as v5.0, but using a larger sentence window.
@@ -350,6 +350,88 @@ def get_v5_1(streaming=False) -> BaseQueryEngine:
         streaming=streaming,
         similarity_top_k=similarity_top_k,
         node_postprocessors=[sentence_window_postprocessor, reranker]
+    )
+
+    hyde = HyDEQueryTransform(llm=llm, include_original=True)
+    final_query_engine = TransformQueryEngine(query_engine, query_transform=hyde)
+
+    return final_query_engine
+
+
+@st.cache_resource()
+def get_v5_2(streaming=False) -> BaseQueryEngine:
+    """
+    Same as v5.1, but uses a different synthesizer for generating the final answer.
+    In addition to that, the LLM is configured with :code:`temperature=0.3`, making it a bit more imaginative.
+
+    \\
+
+    v5.2 uses a :code:`Refine` synthesizer with customized prompts.
+    The prompts are based on the default prompts, but have an additional line:
+    :code:`Please write the answer using simple and clear language.`
+    """
+
+    weaviate_class_name: str = "SentenceWindowDocsChunk"
+    similarity_top_k: int = 10
+    reranked_top_n: int = 3
+
+    weaviate_client = weaviate_utils.get_weaviate_client()
+    vector_store = weaviate_utils.as_vector_store(weaviate_client, weaviate_class_name)
+    index = VectorStoreIndex.from_vector_store(vector_store)
+
+    sentence_window_postprocessor = MetadataReplacementPostProcessor(target_metadata_key="window")
+
+    reranker = SentenceTransformerRerank(
+        top_n=reranked_top_n,
+        model="BAAI/bge-reranker-base",
+    )
+
+    llm = OpenAI(model="gpt-3.5-turbo", temperature=0.3)
+    service_context = ServiceContext.from_defaults(llm=llm)
+
+    qa_prompt_tmpl = (
+        "Context information is below.\n"
+        "---------------------\n"
+        "{context_str}\n"
+        "---------------------\n"
+        "Given the context information and not prior knowledge, "
+        "answer the query.\n"
+        "Please write the answer using simple and clear language.\n"  # custom
+        "Query: {query_str}\n"
+        "Answer: "
+    )
+    qa_prompt = PromptTemplate(qa_prompt_tmpl)
+
+    refine_prompt_tmpl = (
+        "The original query is as follows: {query_str}\n"
+        "We have provided an existing answer: {existing_answer}\n"
+        "We have the opportunity to refine the existing answer "
+        "(only if needed) with some more context below.\n"
+        "------------\n"
+        "{context_msg}\n"
+        "------------\n"
+        "Given the new context, refine the original answer to better "
+        "answer the query.\n"
+        "Please write the answer using simple and clear language.\n"  # custom
+        "If the context isn't useful, return the original answer.\n"
+        "Refined Answer: "
+    )
+    refine_prompt = PromptTemplate(refine_prompt_tmpl)
+    response_synthesizer = Refine(
+        text_qa_template=qa_prompt,
+        refine_template=refine_prompt,
+    )
+
+    query_engine = index.as_query_engine(
+        # hybrid search
+        vector_store_query_mode="hybrid",
+        alpha=0.75,  # 1 => vector search; 0 => BM25
+
+        service_context=service_context,
+        streaming=streaming,
+        similarity_top_k=similarity_top_k,
+        node_postprocessors=[sentence_window_postprocessor, reranker],
+        response_synthesizer=response_synthesizer,
     )
 
     hyde = HyDEQueryTransform(llm=llm, include_original=True)
