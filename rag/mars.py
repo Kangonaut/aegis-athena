@@ -191,3 +191,77 @@ def get_v4_0(streaming=False) -> BaseQueryEngine:
     final_query_engine = TransformQueryEngine(query_engine, query_transform=hyde)
 
     return final_query_engine
+
+
+@st.cache_resource()
+def get_v4_1(streaming=False) -> BaseQueryEngine:
+    """
+    Same as v3.0, but using the Llama-2-7b-chat-hf (:code:`llama2:7b`) model run on a local Ollama server instance.
+    """
+
+    weaviate_class_name: str = "SentenceWindowDocsChunk"
+    similarity_top_k: int = 10
+    reranked_top_n: int = 3
+
+    weaviate_client = weaviate_utils.get_weaviate_client()
+    vector_store = weaviate_utils.as_vector_store(weaviate_client, weaviate_class_name)
+    index = VectorStoreIndex.from_vector_store(vector_store)
+
+    sentence_window_postprocessor = MetadataReplacementPostProcessor(target_metadata_key="window")
+
+    reranker = SentenceTransformerRerank(
+        top_n=reranked_top_n,
+        model="BAAI/bge-reranker-base",
+    )
+
+    llm = Ollama(model="phi:2.7b", request_timeout=600.0, temperature=0.1)
+    service_context = ServiceContext.from_defaults(llm=llm)
+
+    query_engine = index.as_query_engine(
+        service_context=service_context,
+        streaming=streaming,
+        similarity_top_k=similarity_top_k,
+        node_postprocessors=[sentence_window_postprocessor, reranker]
+    )
+
+    hyde = HyDEQueryTransform(llm=llm, include_original=True)
+    final_query_engine = TransformQueryEngine(query_engine, query_transform=hyde)
+
+    return final_query_engine
+
+
+@st.cache_resource()
+def get_v4_2(streaming=False) -> BaseQueryEngine:
+    """
+    Same as v3.0, but using the Llama-2-7b-chat-hf (:code:`llama2:7b`) model run on a local Ollama server instance.
+    """
+
+    weaviate_class_name: str = "SentenceWindowDocsChunk"
+    similarity_top_k: int = 10
+    reranked_top_n: int = 3
+
+    weaviate_client = weaviate_utils.get_weaviate_client()
+    vector_store = weaviate_utils.as_vector_store(weaviate_client, weaviate_class_name)
+    index = VectorStoreIndex.from_vector_store(vector_store)
+
+    sentence_window_postprocessor = MetadataReplacementPostProcessor(target_metadata_key="window")
+
+    reranker = SentenceTransformerRerank(
+        top_n=reranked_top_n,
+        model="BAAI/bge-reranker-base",
+    )
+
+    llm = Ollama(model="tinyllama:1.1b", request_timeout=600.0, temperature=0.1)
+    service_context = ServiceContext.from_defaults(llm=llm)
+
+    query_engine = index.as_query_engine(
+        service_context=service_context,
+        streaming=streaming,
+        similarity_top_k=similarity_top_k,
+        node_postprocessors=[sentence_window_postprocessor, reranker]
+    )
+
+    hyde = HyDEQueryTransform(llm=llm, include_original=True)
+    final_query_engine = TransformQueryEngine(query_engine, query_transform=hyde)
+
+    return final_query_engine

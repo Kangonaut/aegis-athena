@@ -54,4 +54,4 @@ def run_eval(query_engine: BaseQueryEngine, eval_app: TruLlama, eval_questions: 
     with eval_app as recorder:
         for idx, question in enumerate(eval_questions):
             query_engine.query(question)
-            logger.info(f"finished question #{idx + 1}")
+            print(f"finished question #{idx + 1}")
