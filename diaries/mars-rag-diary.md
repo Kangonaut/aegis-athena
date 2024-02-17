@@ -192,11 +192,13 @@ It seems, that overall, the model is simply not powerful enough for this task.
       
       Answer: The S.P.A.C.E.C.R.A.F.T. module has 2 unique subsystems that are not present in the A.P.O.L.L.O.
       ```
-    - as can be seen, the model answers the question in a somewhat reasonable way, but then starts to hallucinate a new prompt for itself
+    - as can be seen, the model answers the question in a somewhat reasonable way, but then starts to hallucinate a new
+      prompt for itself
 
 ## M.A.R.S. v4.2
 
-Same as v4.0, but with an even smaller model, the TinyLLama-1.1B-Chat-v1.0 model with 1.1 billion parameters (`tinyllama:1.1b`).
+Same as v4.0, but with an even smaller model, the TinyLLama-1.1B-Chat-v1.0 model with 1.1 billion
+parameters (`tinyllama:1.1b`).
 
 ### Results
 
@@ -206,19 +208,23 @@ Same as v4.0, but with an even smaller model, the TinyLLama-1.1B-Chat-v1.0 model
 
 ### Thoughts
 
-Similar to v4.1, both groundedness and answer relevance have decreased compared to when using a bigger, more capable model.
-In addition to that, some answers are very simply wrong. Instead of saying that it doesn't know, it just hallucinates some answers, which makes it very inept to the use case.
+Similar to v4.1, both groundedness and answer relevance have decreased compared to when using a bigger, more capable
+model.
+In addition to that, some answers are very simply wrong. Instead of saying that it doesn't know, it just hallucinates
+some answers, which makes it very inept to the use case.
 
 - example of hallucinated answer:
-  - question: How many oxygen tanks does the S.P.A.C.E.C.R.A.F.T. module have?
-  - answer: The given context information is that the S.P.A.C.E.C.R.A.F.T. module has two oxygen tanks, which means it can carry a total of four oxygen cylinders.
-  - although two oxygen tanks are correct, it just invents some cylinders, which were not mentioned in the context
+    - question: How many oxygen tanks does the S.P.A.C.E.C.R.A.F.T. module have?
+    - answer: The given context information is that the S.P.A.C.E.C.R.A.F.T. module has two oxygen tanks, which means it
+      can carry a total of four oxygen cylinders.
+    - although two oxygen tanks are correct, it just invents some cylinders, which were not mentioned in the context
 
 ## M.A.R.S. v5.0
 
 MARS-v5.0 is based on the architecture of v3.0, but uses hybrid search instead of pure vector search.
 Hybrid search combines similarity based search (dense) with keyword based search (sparse), in this case BM25F.
-The `alpha` parameter specifies the weight of the vector search result, in this case `alpha = 0.75`, which means that the result is still mainly based on similarity search.
+The `alpha` parameter specifies the weight of the vector search result, in this case `alpha = 0.75`, which means that
+the result is still mainly based on similarity search.
 
 ### Results
 
@@ -228,8 +234,12 @@ The `alpha` parameter specifies the weight of the vector search result, in this 
 
 ### Thoughts
 
-As can be seen, the metrics were significantly improved. 
-It seems that sparse search helps with a few questions, which are only answered in one or two sentences in the docs. For example the answer to the question about what VHF means, is only mentioned once in the docs: `Two Very High Frequency (VHF) scimitar antennas are installed ...`. This particular question is also very suitable for sparse search, since it directly looks for the definition of a term (thus, keyword search is a very good approach).
+As can be seen, the metrics were significantly improved.
+It seems that sparse search helps with a few questions, which are only answered in one or two sentences in the docs. For
+example the answer to the question about what VHF means, is only mentioned once in the
+docs: `Two Very High Frequency (VHF) scimitar antennas are installed ...`. This particular question is also very
+suitable for sparse search, since it directly looks for the definition of a term (thus, keyword search is a very good
+approach).
 
 ## M.A.R.S. v5.1
 
@@ -243,4 +253,28 @@ MARS-v5.1 has the same architecture as v5.0, but uses a window size of 5 instead
 
 ### Thoughts
 
-Context relevance was improved a little bit, although not enough to make up for the additional 3 seconds of inference time. Also answer relevance dropped by 0.1, which might be random though.
+Context relevance was improved a little bit, although not enough to make up for the additional 3 seconds of inference
+time. Also answer relevance dropped by 0.1, which might be random though.
+
+## M.A.R.S. v5.2
+
+M.A.R.S. v5.2 is based on the architecture of v5.0, but adds a `Refine` synthesizer with custom prompts.
+Moreover, the LLM configuration is adjusted to `temperatuer=0.3`, which makes it slightly more imaginative.
+
+The default prompts of the `Refine` synthesizer were modified by adding a single
+line: `Please write the answer using simple and clear language.`
+The idea is that, since the documentation is partly written using more complex language and terms, it might be
+beneficial to write the answer in clear and simple language.
+
+### Results
+
+- Groundedness: 0.94
+- Answer Relevance: 0.94
+- Context Relevance: 0.82
+
+### Thoughts
+
+As can be seen, both groundedness and answer relevance has significantly improved, which is probably due to the fact the
+simple answers are easier to understand for the feedback model.
+Since this is probably also true for real life users, I think this is an actual improvement and a relevant change for
+the RAG pipeline.
