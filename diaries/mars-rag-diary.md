@@ -1,6 +1,6 @@
 # M.A.R.S. RAG Diary
 
-## M.A.R.S. v1.0
+## M.A.R.S. RAG Pipeline v1.0
 
 This version utilizes a basic RAG setup, consisting of a Weaviate vector database and the `gpt-3.5-turbo` model for
 synthesis.
@@ -20,7 +20,7 @@ relevance, due to the fact that although the answer is provided in one of the re
 which are less important to the query.
 This might be solved by using a reranker.
 
-## M.A.R.S. v1.1
+## M.A.R.S. RAG Pipeline v1.1
 
 The same architecture as v1.0, but utilizing the `gpt-4` model for synthesis.
 
@@ -34,7 +34,7 @@ The same architecture as v1.0, but utilizing the `gpt-4` model for synthesis.
 
 Using a more advanced model, does not seem to drastically increase the overall performance of this basic RAG pipline.
 
-## M.A.R.S. v1.2
+## M.A.R.S. RAG Pipeline v1.2
 
 The same architecture as v1.0, but before the retrieved nodes are passed as context to the LLM, they are reranked using
 the `SentenceTransformerRerank` module and the `BAAI/bge-reranker-base` transformer model from FlagEmbedding.
@@ -51,7 +51,7 @@ As can be seen, the approach improved the context relevance metric, which also c
 This makes sense, since a more relevant context makes it easier to form an answer that is backed up by mentioned
 context.
 
-## M.A.R.S. v2.0
+## M.A.R.S. RAG Pipeline v2.0
 
 This version uses sentence window retrieval, in order to give the synthesizer more context and make the retrieval step
 more precise.
@@ -74,7 +74,7 @@ Regarding the decrease of answer relevance, after looking through the samples th
 the LLMs evaluation, since they all answered the query fairly well. Thus, I don't think this really has an effect on
 answer relevance.
 
-## M.A.R.S. v3.0
+## M.A.R.S. RAG Pipeline v3.0
 
 The architecture is based on v2.0, but adds the HyDE query transformation method before the retrieval step.
 HyDE (Hypothetical Document Embedding) generates a hypothetical answer to the user query first, which is then used as
@@ -113,7 +113,7 @@ Looking at some actual examples that were had a better answer relevance score, t
 of the rather small dataset size of just 20 questions. However, since running evals with GPT-4 as a feedback LLM is
 pretty expensive, I presently cannot afford to use a larger evaluation dataset.
 
-## M.A.R.S. v4.0
+## M.A.R.S. RAG Pipeline v4.0
 
 This version of M.A.R.S. is used to try out how well the pipeline performs using smaller models.
 The architecture is the same as v3.0, except from the LLM used, which is the Llama-2-7b-chat-hf (`llama2:7b`) model. The
@@ -132,7 +132,7 @@ might be random error in judging.
 However, executing a single query pipeline pass almost took 4 minutes on my local machine. Since this is not acceptable,
 I will repeat this experiment with even smaller models.
 
-## M.A.R.S. v4.1
+## M.A.R.S. RAG Pipeline v4.1
 
 Same as v4.0, but with an even smaller model, the phi-2 model with 2.7 billion parameters (`phi:2.7b`).
 
@@ -195,7 +195,7 @@ It seems, that overall, the model is simply not powerful enough for this task.
     - as can be seen, the model answers the question in a somewhat reasonable way, but then starts to hallucinate a new
       prompt for itself
 
-## M.A.R.S. v4.2
+## M.A.R.S. RAG Pipeline v4.2
 
 Same as v4.0, but with an even smaller model, the TinyLLama-1.1B-Chat-v1.0 model with 1.1 billion
 parameters (`tinyllama:1.1b`).
@@ -219,7 +219,7 @@ some answers, which makes it very inept to the use case.
       can carry a total of four oxygen cylinders.
     - although two oxygen tanks are correct, it just invents some cylinders, which were not mentioned in the context
 
-## M.A.R.S. v5.0
+## M.A.R.S. RAG Pipeline v5.0
 
 MARS-v5.0 is based on the architecture of v3.0, but uses hybrid search instead of pure vector search.
 Hybrid search combines similarity based search (dense) with keyword based search (sparse), in this case BM25F.
@@ -241,7 +241,7 @@ docs: `Two Very High Frequency (VHF) scimitar antennas are installed ...`. This 
 suitable for sparse search, since it directly looks for the definition of a term (thus, keyword search is a very good
 approach).
 
-## M.A.R.S. v5.1
+## M.A.R.S. RAG Pipeline v5.1
 
 MARS-v5.1 has the same architecture as v5.0, but uses a window size of 5 instead of 3 for sentence window retrieval.
 
@@ -256,9 +256,9 @@ MARS-v5.1 has the same architecture as v5.0, but uses a window size of 5 instead
 Context relevance was improved a little bit, although not enough to make up for the additional 3 seconds of inference
 time. Also answer relevance dropped by 0.1, which might be random though.
 
-## M.A.R.S. v5.2
+## M.A.R.S. RAG Pipeline v5.2
 
-M.A.R.S. v5.2 is based on the architecture of v5.0, but adds a `Refine` synthesizer with custom prompts.
+M.A.R.S. RAG Pipeline v5.2 is based on the architecture of v5.0, but adds a `Refine` synthesizer with custom prompts.
 Moreover, the LLM configuration is adjusted to `temperatuer=0.3`, which makes it slightly more imaginative.
 
 The default prompts of the `Refine` synthesizer were modified by adding a single
