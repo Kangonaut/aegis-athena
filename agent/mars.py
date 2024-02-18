@@ -37,7 +37,7 @@ def get_v1_0() -> QueryPipeline:
         "Answer: {hyde_str}"
     )
 
-    llm = OpenAI(model="gpt-3.5-turbo", temperature=0.3)
+    hyde_llm = OpenAI(model="gpt-3.5-turbo", temperature=0.3)
 
     qa_prompt = PromptTemplate(
         "Context information is below.\n"
@@ -66,9 +66,11 @@ def get_v1_0() -> QueryPipeline:
         "Refined Answer: "
     )
 
+    response_synthesizer_llm = OpenAI(model="gpt-3.5-turbo", temperature=0.3)
     refine_response_synthesizer = Refine(
         text_qa_template=qa_prompt,
         refine_template=refine_prompt,
+        llm=response_synthesizer_llm,
         streaming=True,
     )
 
@@ -83,7 +85,7 @@ def get_v1_0() -> QueryPipeline:
     qp.add_modules({
         "original_input": InputComponent(),
         "hyde_prompt_template": hyde_prompt_template,
-        "hyde_llm": llm,
+        "hyde_llm": hyde_llm,
         "hyde_combined_prompt_template": hyde_combined_prompt_template,
         "weaviate_retriever": weaviate_retriever,
         "refine_response_synthesizer": refine_response_synthesizer,
