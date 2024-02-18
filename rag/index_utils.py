@@ -1,4 +1,4 @@
-from llama_index import Document, VectorStoreIndex, StorageContext, ServiceContext
+from llama_index.core import Document, VectorStoreIndex, StorageContext, ServiceContext
 
 
 def populate_index(docs: list[Document], storage_context: StorageContext | None = None,

@@ -2,7 +2,7 @@ from trulens_eval.app import App
 from trulens_eval import TruLlama, Feedback
 from trulens_eval.feedback import Groundedness, OpenAI
 
-from llama_index.query_engine import BaseQueryEngine
+from llama_index.core.query_engine import BaseQueryEngine
 
 import numpy as np
 from typing import Generator, Iterator

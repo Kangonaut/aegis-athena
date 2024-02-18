@@ -1,10 +1,9 @@
 import abc
 import time
 from typing import Iterator, Generator
-import weaviate
-from llama_index import VectorStoreIndex
 
-from llama_index.query_engine import BaseQueryEngine
+from llama_index.core.query_engine import BaseQueryEngine
+from llama_index.core.chat_engine.types import ChatMessage
 
 from spacecraft.communication.encryption import BaseEncryption
 from spacecraft.communication.message import MessageChunk

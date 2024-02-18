@@ -2,7 +2,7 @@ import streamlit as st
 import weaviate
 import os
 
-from llama_index.vector_stores import WeaviateVectorStore
+from llama_index.vector_stores.weaviate import WeaviateVectorStore
 
 
 @st.cache_resource()

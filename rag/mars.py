@@ -1,11 +1,11 @@
-from llama_index.indices.query.query_transform import HyDEQueryTransform
-from llama_index.query_engine import BaseQueryEngine, TransformQueryEngine
-from llama_index import VectorStoreIndex, ServiceContext
-from llama_index.llms import OpenAI, Ollama
-from llama_index.postprocessor import SentenceTransformerRerank, MetadataReplacementPostProcessor
-from llama_index.response_synthesizers import Refine
-from llama_index.prompts import PromptTemplate
-from llama_index.vector_stores import WeaviateVectorStore
+from llama_index.core.indices.query.query_transform import HyDEQueryTransform
+from llama_index.core.query_engine import BaseQueryEngine, TransformQueryEngine
+from llama_index.core import VectorStoreIndex, ServiceContext
+from llama_index.llms.openai import OpenAI
+from llama_index.llms.ollama import Ollama
+from llama_index.core.postprocessor import SentenceTransformerRerank, MetadataReplacementPostProcessor
+from llama_index.core.response_synthesizers import Refine
+from llama_index.core.prompts import PromptTemplate
 
 import streamlit as st
 

@@ -1,5 +1,4 @@
-from llama_index import SimpleDirectoryReader
-from llama_index import Document
+from llama_index.core import SimpleDirectoryReader, Document
 
 import os
 
