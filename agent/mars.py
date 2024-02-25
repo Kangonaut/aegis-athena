@@ -99,6 +99,7 @@ def build_agent() -> AgentRunner:
     agent = ReActAgent.from_tools(
         tools=[knowledge_base_tool],
         llm=llm,
+        max_iterations=30,
         verbose=True,
         react_chat_formatter=ReActChatFormatter.from_defaults(
             system_header=REACT_SYSTEM_HEADER,
