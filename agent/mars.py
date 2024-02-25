@@ -1,8 +1,9 @@
 from llama_index.core.agent import ReActAgent, AgentRunner, ReActChatFormatter
 from llama_index.core.tools import ToolMetadata
 from llama_index.llms.openai import OpenAI
-from llama_index.core.tools.query_engine import QueryEngineTool
+from llama_index.core.tools import FunctionTool
 
+from agent.knowledge_base_retriever import get_knowledge_base_retriever
 from rag import weaviate_utils
 from rag import mars as mars_rag
 
@@ -66,23 +67,20 @@ Below is the current conversation consisting of interleaving human and assistant
 
 
 def build_agent() -> AgentRunner:
-    rag_query_engine = mars_rag.get_v5_2()
-
-    rag_tool = QueryEngineTool(
-        query_engine=rag_query_engine,
-        metadata=ToolMetadata(
-            name="knowledge_base",
-            description="Provides information about the Aegis Athena spaceflight mission, "
-                        "the S.P.A.C.E.C.R.A.F.T. (command/service) module "
-                        "and the A.P.O.L.L.O. (lunar lander) module. "
-                        "Can be used to gather information about systems or parts."
-                        "Use a question as input to the tool."
-        ),
+    knowledge_base_retriever = get_knowledge_base_retriever()
+    knowledge_base_tool = FunctionTool.from_defaults(
+        fn=knowledge_base_retriever.retrieve,
+        name="knowledge_base",
+        description="Provides information about the Aegis Athena spaceflight mission, "
+                    "the S.P.A.C.E.C.R.A.F.T. (command/service) module "
+                    "and the A.P.O.L.L.O. (lunar lander) module. "
+                    "Can be used to gather information about systems or parts."
+                    "Use a question as input to the tool."
     )
 
     llm = OpenAI(model="gpt-4-0125-preview", temperature=0.3)
     agent = ReActAgent.from_tools(
-        tools=[rag_tool],
+        tools=[knowledge_base_tool],
         llm=llm,
         verbose=True,
         react_chat_formatter=ReActChatFormatter.from_defaults(

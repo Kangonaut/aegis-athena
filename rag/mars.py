@@ -388,7 +388,7 @@ def get_v5_2(streaming=False) -> BaseQueryEngine:
         model="BAAI/bge-reranker-base",
     )
 
-    llm = OpenAI(model="gpt-3.5-turbo", temperature=0.1)
+    llm = OpenAI(model="gpt-3.5-turbo", temperature=0.3)
     service_context = ServiceContext.from_defaults(llm=llm)
 
     qa_prompt_tmpl = (
@@ -398,7 +398,6 @@ def get_v5_2(streaming=False) -> BaseQueryEngine:
         "---------------------\n"
         "Given the context information and not prior knowledge, "
         "answer the query.\n"
-        "If the query cannot be answered using the given context, then say that.\n"  # custom
         "Please write the answer using simple and clear language.\n"  # custom
         "Query: {query_str}\n"
         "Answer: "
@@ -447,7 +446,7 @@ def get_v5_2(streaming=False) -> BaseQueryEngine:
 def get_v5_2_as_query_pipeline() -> QueryPipeline:
     weaviate_class_name: str = "SentenceWindowDocsChunk"
     similarity_top_k: int = 10
-    reranked_top_n: int = 5
+    reranked_top_n: int = 3
 
     # weaviate
     weaviate_client = weaviate_utils.get_weaviate_client()
@@ -458,7 +457,7 @@ def get_v5_2_as_query_pipeline() -> QueryPipeline:
     weaviate_retriever = weaviate_index.as_retriever(
         similarity_top_k=similarity_top_k,
         vector_store_query_mode="hybrid",
-        alpha=0,  # 1 => vector search; 0 => BM25
+        alpha=0.75,  # 1 => vector search; 0 => BM25
     )
 
     # sentence window retrieval
