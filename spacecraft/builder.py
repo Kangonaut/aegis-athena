@@ -181,7 +181,7 @@ class SpacecraftBuilder:
             name="BRAINS Controller",
             storage=disk_array,
             gpus=[gpu_0, gpu_1, gpu_2, gpu_3, gpu_4, gpu_5, gpu_6, gpu_7, gpu_8, gpu_9],
-            dispatcher=DefaultBrainsDispatcher()
+            dispatcher=DefaultBrainsDispatcher(),
         )
 
         spacecraft.parts_manager.add_many([

@@ -1,11 +1,11 @@
 import abc
 
 from spacecraft.communication.communicator import BaseCommunicator, MockCommunicator, EncryptedCommunicator, \
-    LlamaIndexQueryEngineCommunicator
+    LlamaIndexQueryEngineCommunicator, LlamaIndexAgentCommunicator
 from spacecraft.communication.encryption import VigenereCipher
 from spacecraft.communication.state import ComsState, CommunicationState, BrainsState
 
-from rag import mars
+from agent import mars
 
 
 class BaseCommunicationDispatcher(abc.ABC):
@@ -28,7 +28,7 @@ class BaseBrainsDispatcher(BaseCommunicationDispatcher):
 
 class DefaultBrainsDispatcher(BaseBrainsDispatcher):
     def dispatch(self, state: BrainsState) -> BaseCommunicator:
-        return LlamaIndexQueryEngineCommunicator(query_engine=mars.get_v5_2(streaming=True))
+        return LlamaIndexAgentCommunicator(agent_runner=mars.build_agent())
 
 
 class MockComsDispatcher(BaseCommunicationDispatcher):

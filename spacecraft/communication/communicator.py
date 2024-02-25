@@ -3,7 +3,7 @@ import time
 from typing import Iterator, Generator
 
 from llama_index.core.query_engine import BaseQueryEngine
-from llama_index.core.chat_engine.types import ChatMessage
+from llama_index.core.agent import AgentRunner
 
 from spacecraft.communication.encryption import BaseEncryption
 from spacecraft.communication.message import MessageChunk
@@ -74,4 +74,12 @@ class LlamaIndexQueryEngineCommunicator(BaseCommunicator):
     def stream(self, message: str) -> Generator[MessageChunk, None, None]:
         for chunk in self.query_engine.query(message).response_gen:
             yield MessageChunk(chunk)
-            time.sleep(0.1)
+
+
+class LlamaIndexAgentCommunicator(BaseCommunicator):
+    def __init__(self, agent_runner: AgentRunner):
+        self.agent_runner = agent_runner
+
+    def stream(self, message: str) -> Generator[MessageChunk, None, None]:
+        for chunk in self.agent_runner.stream_chat(message).response_gen:
+            yield MessageChunk(chunk)
