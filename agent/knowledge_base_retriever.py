@@ -11,14 +11,14 @@ from rag import weaviate_utils
 # similarity search
 WEAVIATE_CLASS_NAME: str = "SentenceWindowDocsChunk"
 HYBRID_SEARCH_ALPHA: float = 0.75  # 1 => vector search; 0 => BM25
-SIMILARITY_TOP_K: int = 10
+SIMILARITY_TOP_K: int = 6
 
 # reranking
 RERANKER_MODEL: str = "BAAI/bge-reranker-base"
 RERANKED_TOP_N: int = 3
 
 # HyDE
-HYDE_LLM_TEMPERATURE: float = 0.3
+HYDE_LLM_TEMPERATURE: float = 0.2
 HYDE_LLM_MODEL: str = "gpt-3.5-turbo"
 
 
