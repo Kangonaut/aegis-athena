@@ -388,7 +388,7 @@ def get_v5_2(streaming=False) -> BaseQueryEngine:
         model="BAAI/bge-reranker-base",
     )
 
-    llm = OpenAI(model="gpt-3.5-turbo", temperature=0.3)
+    llm = OpenAI(model="gpt-3.5-turbo", temperature=0.1)
     service_context = ServiceContext.from_defaults(llm=llm)
 
     qa_prompt_tmpl = (
@@ -398,6 +398,7 @@ def get_v5_2(streaming=False) -> BaseQueryEngine:
         "---------------------\n"
         "Given the context information and not prior knowledge, "
         "answer the query.\n"
+        "If the query cannot be answered using the given context, then say that.\n"  # custom
         "Please write the answer using simple and clear language.\n"  # custom
         "Query: {query_str}\n"
         "Answer: "
