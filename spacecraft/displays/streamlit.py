@@ -31,7 +31,7 @@ class StreamlitDisplay(BaseDisplay):
         content = content.replace("system:/ $", "**:violet[system]:/ $**")
 
         # replace space
-        content = content.replace(" ", "&nbsp;")
+        content = content.replace(" ", "   ")
 
         # replace newline
         content = content.replace("\n", "\n\n")
