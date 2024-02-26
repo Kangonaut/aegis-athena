@@ -6,4 +6,4 @@ font="monospace"
 gatherUsageStats = false
 
 [server]
-port = 80
+port = 8501
