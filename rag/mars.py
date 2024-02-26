@@ -363,7 +363,7 @@ def get_v5_1(streaming=False) -> BaseQueryEngine:
 @st.cache_resource()
 def get_v5_2(streaming=False) -> BaseQueryEngine:
     """
-    Same as v5.1, but uses a different synthesizer for generating the final answer.
+    Same as v5.0, but uses a different synthesizer for generating the final answer.
     In addition to that, the LLM is configured with :code:`temperature=0.3`, making it a bit more imaginative.
 
     \\
