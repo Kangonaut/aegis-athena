@@ -57,15 +57,16 @@ def init_level_page(level_name: str):
     output = spacecraft.display.flush()
     __display_output(output, curr_output_placeholder)
 
-    # add output to shell history
-    shell_history.append(output)
+    if output:
+        # add output to shell history
+        shell_history.append(output)
 
-    # add node to shell trace
-    node = ShellTraceNode(
-        timestamp=datetime.now(),
-        content=output,
-    )
-    shell_trace.append(node)
+        # add node to shell trace
+        node = ShellTraceNode(
+            timestamp=datetime.now(),
+            content=output,
+        )
+        shell_trace.append(node)
 
     # show completion status
     if level_state.is_complete():
