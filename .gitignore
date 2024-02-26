@@ -256,3 +256,7 @@ cython_debug/
 #.idea/
 
 !spacecraft/parts/
+
+# Streamlit
+
+.streamlit/config.toml

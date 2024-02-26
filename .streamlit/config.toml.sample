@@ -1,0 +1,9 @@
+[theme]
+base="dark"
+font="monospace"
+
+[browser]
+gatherUsageStats = false
+
+[server]
+port = 80
