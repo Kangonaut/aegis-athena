@@ -1,7 +1,10 @@
+from datetime import datetime
+
 import streamlit as st
-from utils import level_utils, shell_utils
+
+from telemetry.base import ShellTraceNode
+from utils import level_utils, shell_utils, environment_utils, telemetry_utils
 from functools import partial
-from . import environment as environment_utils
 
 environment_utils.load_env()
 
@@ -33,6 +36,10 @@ def init_level_page(level_name: str):
     spacecraft = level_state.spacecraft
     st.sidebar.write(f"hash: {hash(spacecraft)}")
 
+    # init shell trace
+    shell_trace = telemetry_utils.init_shell_trace(level_state.level)
+    st.sidebar.write(f"trace: {shell_trace.trace_id}")
+
     # shell history
     shell_history = shell_utils.init_shell_history(level_state.level)
     shell_utils.display_shell_history(shell_history, shell_history_container)
@@ -52,6 +59,13 @@ def init_level_page(level_name: str):
 
     # add output to shell history
     shell_history.append(output)
+
+    # add node to shell trace
+    node = ShellTraceNode(
+        timestamp=datetime.now(),
+        content=output,
+    )
+    shell_trace.append(node)
 
     # show completion status
     if level_state.is_complete():
