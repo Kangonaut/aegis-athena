@@ -1,8 +1,12 @@
 from llama_index.core.agent import ReActAgent, AgentRunner, ReActChatFormatter
 from llama_index.llms.openai import OpenAI
 from llama_index.core.tools import FunctionTool
+from llama_index.core import set_global_handler
+
+import phoenix as px
 
 from agent.knowledge_base_retriever import get_knowledge_base_retriever
+from rag.mars import get_v5_2
 
 REACT_SYSTEM_HEADER = """\
 You are an AI assistant called M.A.R.S. that is designed to help the astronaut crew on the Aegis Athena spaceflight mission.
@@ -83,7 +87,7 @@ Below is the current conversation consisting of interleaving human and assistant
 def build_agent() -> AgentRunner:
     knowledge_base_retriever = get_knowledge_base_retriever()
     knowledge_base_tool = FunctionTool.from_defaults(
-        fn=knowledge_base_retriever.retrieve,
+        fn=knowledge_base_retriever.retrieve_formatted,
         name="knowledge_base",
         description="Provides information about the Aegis Athena spaceflight mission, "
                     "the S.P.A.C.E.C.R.A.F.T. (command/service) module "
