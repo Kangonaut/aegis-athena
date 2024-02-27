@@ -1,12 +1,12 @@
-# 2 S.P.A.C.E.C.R.A.F.T.
+# 2 SPACECRAFT
 
 ## 2.1 Naming
 
-The calculator of our celestial dreams, the bearer of the torch of human curiosity that stands ready to illuminate the untouched lunar milieu, is our meticulously designed command and service module — fondly christened as "S.P.A.C.E.C.R.A.F.T.".
+The calculator of our celestial dreams, the bearer of the torch of human curiosity that stands ready to illuminate the untouched lunar milieu, is our meticulously designed command and service module — fondly christened as "SPACECRAFT".
 
-This intriguing yet purposeful acronym beholds much more than just a mission to get astronauts from Earth to the tantalizing Luna. Behind the acronym "S.P.A.C.E.C.R.A.F.T." (Superb Pod for Astronaut Carriage, Exploration, Communication, Recovery, And Future Travels) is embarked the myriad purpose the spacecraft is intended to meet.
+This intriguing yet purposeful acronym beholds much more than just a mission to get astronauts from Earth to the tantalizing Luna. Behind the acronym "SPACECRAFT" (Superb Pod for Astronaut Carriage, Exploration, Communication, Recovery, And Future Travels) is embarked the myriad purpose the spacecraft is intended to meet.
 
-At the heart of this naming lies the expansive objectives the module aims to fulfill. S.P.A.C.E.C.R.A.F.T. is a universal testament to its etymological roots:
+At the heart of this naming lies the expansive objectives the module aims to fulfill. SPACECRAFT is a universal testament to its etymological roots:
 
  - **Superb Pod:** Indicative of the model's formidable and state-of-the-art design capabilities.
 for Astronaut Carriage: Reifying its core purpose of carrying the mission's astronaut trio to the moon and back.
@@ -21,33 +21,33 @@ for Astronaut Carriage: Reifying its core purpose of carrying the mission's astr
 
 This naming was carefully chosen to communicate our ambitious project's purpose and goals, in a way that is unique, yet informative — standing as a beacon of our roboust commitment toward space travel and exploration. It is more than just an acronym, it is an embodiment of humanity's unyielding spirit of discovery and the many hopes pinned on our journey to the moon.
 
-## 2.2 Purpose and Function of the S.P.A.C.E.C.R.A.F.T. Module
+## 2.2 Purpose and Function of the SPACECRAFT Module
 
-The S.P.A.C.E.C.R.A.F.T. module embraces a dual-function profile as both a command and service module, conceiving a harmonious blend of functional efficiency and comfort — a veritable home in the cosmos for our brave trio of astronauts.
+The SPACECRAFT module embraces a dual-function profile as both a command and service module, conceiving a harmonious blend of functional efficiency and comfort — a veritable home in the cosmos for our brave trio of astronauts.
 
 ### 2.2.1 Crew Accommodation and Life Support
 
-Designed with a deep understanding of the complexities and challenges of prolonged space travel, the S.P.A.C.E.C.R.A.F.T. delivers all essential life support systems. From breathable air, temperature regulation, to waste disposal and radiation protection, every necessity has been considered and integrated meticulously. It further provisions well-designed living quarters and workstations — an epitome of in-orbit ergonomic design and habitation safety.
+Designed with a deep understanding of the complexities and challenges of prolonged space travel, the SPACECRAFT delivers all essential life support systems. From breathable air, temperature regulation, to waste disposal and radiation protection, every necessity has been considered and integrated meticulously. It further provisions well-designed living quarters and workstations — an epitome of in-orbit ergonomic design and habitation safety.
 
 ### 2.2.2 Propulsion
 
-S.P.A.C.E.C.R.A.F.T. props its heart on a cutting-edge propulsion system. This module shoulders the responsibility of performing the Hohmann Transfer, which essentially propels the craft from Earth to the Moon and vice versa, with minimal fuel expenditure. The propulsion system further makes possible the critical de-orbit maneuver enabling the re-entry process — the homecoming of our brave explorers.
+SPACECRAFT props its heart on a cutting-edge propulsion system. This module shoulders the responsibility of performing the Hohmann Transfer, which essentially propels the craft from Earth to the Moon and vice versa, with minimal fuel expenditure. The propulsion system further makes possible the critical de-orbit maneuver enabling the re-entry process — the homecoming of our brave explorers.
 
-### 2.2.3 Interaction with the A.P.O.L.L.O. Module
+### 2.2.3 Interaction with the APOLLO Module
 
-For a substantial fraction of the mission, the S.P.A.C.E.C.R.A.F.T. cohabits with A.P.O.L.L.O., the lunar lander module. While an operative duo will utilize the A.P.O.L.L.O. module for their historic voyage to the harsh lunar landscapes, one astronaut will remain aboard the S.P.A.C.E.C.R.A.F.T. module, maintaining orbit around the moon. This orbital configuration opens up avenues for off-lunar experiments, providing insights into the moon's gravitational field and broadening our lunar comprehension.
+For a substantial fraction of the mission, the SPACECRAFT cohabits with APOLLO, the lunar lander module. While an operative duo will utilize the APOLLO module for their historic voyage to the harsh lunar landscapes, one astronaut will remain aboard the SPACECRAFT module, maintaining orbit around the moon. This orbital configuration opens up avenues for off-lunar experiments, providing insights into the moon's gravitational field and broadening our lunar comprehension.
 
 ### 2.2.4 Communication Module
 
-An essential organ of the S.P.A.C.E.C.R.A.F.T. module is its cognitively advanced communication module. This integrated system enables unswerving communication channels between Earth, encapsulating the cogs of crucial information exchange in every phase of the journey. Beyond conversing with Earth, the module facilitates constant communication with the A.P.O.L.L.O. module, ensuring unremitting coordination during the mission's course.
+An essential organ of the SPACECRAFT module is its cognitively advanced communication module. This integrated system enables unswerving communication channels between Earth, encapsulating the cogs of crucial information exchange in every phase of the journey. Beyond conversing with Earth, the module facilitates constant communication with the APOLLO module, ensuring unremitting coordination during the mission's course.
 
-Envisaged in the spirit of precision and innovation, S.P.A.C.E.C.R.A.F.T. stands as an exemplary paean to human ingenuity. The careful design renditions translate into a formidable vessel intended to ferry humanity toward our closest cosmic neighbor, whilst catering to the crew's needs, ensuring their safety, and preserving our hopes for lunar exploration and beyond.
+Envisaged in the spirit of precision and innovation, SPACECRAFT stands as an exemplary paean to human ingenuity. The careful design renditions translate into a formidable vessel intended to ferry humanity toward our closest cosmic neighbor, whilst catering to the crew's needs, ensuring their safety, and preserving our hopes for lunar exploration and beyond.
 
 ## 2.3 Systems
 
 ### 2.3.1 Electrical Power System (EPS)
 
-Representing the lifeblood of all on-board operations, the Electrical Power System (EPS) breathes energy into every electrical part and function of the S.P.A.C.E.C.R.A.F.T. module.
+Representing the lifeblood of all on-board operations, the Electrical Power System (EPS) breathes energy into every electrical part and function of the SPACECRAFT module.
 
 #### 2.3.1.1 Fuel Cell
 
@@ -63,17 +63,17 @@ The Liquid Oxygen (LOX) is stored in two separate tanks, a primary and an auxili
 
 #### 2.3.1.3 Battery
 
-Having a backup system for a mission of this magnitude is not a luxury; it's a necessity. Every resource, including power and water, is critical for the lunar mission's success. Recognizing the significance of redundancy, the S.P.A.C.E.C.R.A.F.T. is equipped with a primary and auxiliary silver-zinc battery system. This system functions as an emergency power reservoir and buffer during peak consumption periods, thereby ensuring uninterrupted power supply.
+Having a backup system for a mission of this magnitude is not a luxury; it's a necessity. Every resource, including power and water, is critical for the lunar mission's success. Recognizing the significance of redundancy, the SPACECRAFT is equipped with a primary and auxiliary silver-zinc battery system. This system functions as an emergency power reservoir and buffer during peak consumption periods, thereby ensuring uninterrupted power supply.
 
 #### 2.3.1.4 EPS Controller
 
 Directing the course of the EPS is the EPS Controller, a master maestro conducting this symphony of power production, distribution, and storage. It regulates INPUT from the fuel cells and allots OUTPUT to the different systems.
 
-The EPS, with its harmonious orchestra of power production, storage systems, and well-coordinated control unit, safeguards all electrical functions on the S.P.A.C.E.C.R.A.F.T., turning the wheel of scientific discovery and human ingenuity on its journey to the moon and back.
+The EPS, with its harmonious orchestra of power production, storage systems, and well-coordinated control unit, safeguards all electrical functions on the SPACECRAFT, turning the wheel of scientific discovery and human ingenuity on its journey to the moon and back.
 
 ### 2.3.2 Service Propulsion System (SPS)
 
-The Service Propulsion System (SPS) is the powerhouse of the S.P.A.C.E.C.R.A.F.T. module, responsible for orchestrating the profound ballet of interstellar navigation and ensuring accurate course alterations during the lunar mission.
+The Service Propulsion System (SPS) is the powerhouse of the SPACECRAFT module, responsible for orchestrating the profound ballet of interstellar navigation and ensuring accurate course alterations during the lunar mission.
 
 #### 2.3.2.1 Core Functionality
 
@@ -97,15 +97,15 @@ The SPS Controller is the brain of the SPS, tasked with regulating the complex s
 
 Propellant feed is not a simple on-off operation. It requires microscopic precision in regulating the quantity of hydrazine and nitrogen tetroxide, ensuring the accurate creation of thrust. Timing, too, is crucial in these procedures. Hence, the SPS Controller performs the delicate dance of managing these elements to a timely and precise rhythm.
 
-Your journey aboard the S.P.A.C.E.C.R.A.F.T., through the vast cosmos to the lunar landscape, is driven by the powerful Service Propulsion System – a testament to humanity's ingenuity to transcend Earthly confines and reach for the stars and beyond.
+Your journey aboard the SPACECRAFT, through the vast cosmos to the lunar landscape, is driven by the powerful Service Propulsion System – a testament to humanity's ingenuity to transcend Earthly confines and reach for the stars and beyond.
 
 ### 2.3.3 Environmental Control System (ECS)
 
-Instrumental in creating a hospitable bubble in the unforgiving vacuum of space, the Environmental Control Subsystem (ECS) is a vital integrant of the S.P.A.C.E.C.R.A.F.T. module. From stable life support to protecting delicate electronic equipment, all aspects of maintaining a comfortable and safe environment for the astronauts and machine components are overseen by the ECS.
+Instrumental in creating a hospitable bubble in the unforgiving vacuum of space, the Environmental Control Subsystem (ECS) is a vital integrant of the SPACECRAFT module. From stable life support to protecting delicate electronic equipment, all aspects of maintaining a comfortable and safe environment for the astronauts and machine components are overseen by the ECS.
 
 #### 2.3.3.1 Water Management Section (WCS)
 
-A lifeline within the S.P.A.C.E.C.R.A.F.T.'s Environmental Control Subsystem, the Water Management Section (WCS), attends to the vital role of managing the spacecraft's water resources. This subsystem ensures the availability of water for diverse mission-critical applications, from hydration and meal preparation for the astronauts to cooling various electronic systems and providing for extinguishing needs in the unlikely event of a fire within the module.
+A lifeline within the SPACECRAFT's Environmental Control Subsystem, the Water Management Section (WCS), attends to the vital role of managing the spacecraft's water resources. This subsystem ensures the availability of water for diverse mission-critical applications, from hydration and meal preparation for the astronauts to cooling various electronic systems and providing for extinguishing needs in the unlikely event of a fire within the module.
 
 ##### 2.3.3.1.1 Main Water Tank
 
@@ -127,7 +127,7 @@ Following the essential principle of redundancy in space missions, a Backup Wate
 
 A technological marvel within the WCS, the WCS Controller, acts as the brain of the system. It regulates water distribution across the spacecraft, based on need, priority, and system status. It smartly allocates water resources depending on the consumption requirements, overseeing efficient use of available reserves and making necessary projections for potential needs.
 
-Each component of the WCS works together, harmonizing the regulation and distribution of water to sustain both life and machine within the S.P.A.C.E.C.R.A.F.T. The subsystem, while unassuming in comparison to the more mechanical elements of a spacecraft, underpins life and mission success in the unforgiving environment of space.
+Each component of the WCS works together, harmonizing the regulation and distribution of water to sustain both life and machine within the SPACECRAFT The subsystem, while unassuming in comparison to the more mechanical elements of a spacecraft, underpins life and mission success in the unforgiving environment of space.
 
 #### 2.3.3.2 Oxygen Supply and Cabin Pressure Control Section (OSCPCS)
 
@@ -149,7 +149,7 @@ The OSCPCS Controller is the heart of the OSCPCS operations. It constantly monit
 
 #### 2.3.3.3 Atmosphere Revitalization System (ARS)
 
-Indispensable to the livability of the S.P.A.C.E.C.R.A.F.T. module, the Atmosphere Revitalization System (ARS) upholds the health of the spacecraft's internal environment. Primarily, the ARS removes carbon dioxide from the cabin air while cooling and conditioning the air, thus maintaining a regulated, comfortable in-craft climate for the crew.
+Indispensable to the livability of the SPACECRAFT module, the Atmosphere Revitalization System (ARS) upholds the health of the spacecraft's internal environment. Primarily, the ARS removes carbon dioxide from the cabin air while cooling and conditioning the air, thus maintaining a regulated, comfortable in-craft climate for the crew.
 
 ##### 2.3.3.3.1 Loop Fan
 
@@ -169,7 +169,7 @@ With activated charcoal as its active ingredient, the odor removal canisters rel
 
 ##### 2.3.3.3.5 CO2 Removal Canister
 
-Potentially threatening levels of CO2 are effectively recaptured in CO2 removal canisters, utilizing Lithium Hydroxide (LiOH) cartridges. Both primary and backup canisters are installed to ensure consistently safe levels of CO2 within the S.P.A.C.E.C.R.A.F.T.
+Potentially threatening levels of CO2 are effectively recaptured in CO2 removal canisters, utilizing Lithium Hydroxide (LiOH) cartridges. Both primary and backup canisters are installed to ensure consistently safe levels of CO2 within the SPACECRAFT
 
 ##### 2.3.3.3.6 ARS Operation Cycle
 
@@ -188,13 +188,13 @@ Navigating the continuous operation of the intricate Atmosphere Revitalization S
 
 The ARS Controller effectively governs the rate of air circulation, manages the heat exchange process, and regulates the humidity levels within the cabin. Through its real-time analysis of cabin air, the controller directs air treatment through odor and CO2 removal canisters when necessary to maintain a clean, fresh atmosphere aboard the module.
 
-In essence, the ARS Controller exemplifies the blend of high-precision engineering and advanced programming. It stands vigilant, preserving a breathable and pleasant environment within the S.P.A.C.E.C.R.A.F.T., ultimately ensuring the health and comfort of our astronauts in their celestial voyage.
+In essence, the ARS Controller exemplifies the blend of high-precision engineering and advanced programming. It stands vigilant, preserving a breathable and pleasant environment within the SPACECRAFT, ultimately ensuring the health and comfort of our astronauts in their celestial voyage.
 
 #### 2.3.3.4 Heat Transport Section (HTS)
 
 A critical aspect of spacecraft management, the Heat Transport System, uses a water-glycol solution to cool temperature-sensitive equipment such as batteries and electronic gear requiring active thermal control. This solution circulates within the cooling loops, absorbing excess heat from the equipment mounted on cold plates and rails. The heat absorbed is then transferred to the space radiators for ejection, thus maintaining optimal thermal conditions.
 
-Spacecraft is continuously subjected to solar radiation, necessitating constant heat rejection. Moreover, to distribute the sun's heat more evenly across the spacecraft and avoid solar concentration points, the S.P.A.C.E.C.R.A.F.T. is initiated into a slow spin. Through this action, all sides of the spacecraft receive equal solar exposure.
+Spacecraft is continuously subjected to solar radiation, necessitating constant heat rejection. Moreover, to distribute the sun's heat more evenly across the spacecraft and avoid solar concentration points, the SPACECRAFT is initiated into a slow spin. Through this action, all sides of the spacecraft receive equal solar exposure.
 
 With the accurate metrics provided by the cabin thermometers and the protective function of the MLI, the Heat Transport Section expertly balances the complex variables of temperature regulation. It assures the safety of both astronauts and sensitive equipment, substantiating reliable mission execution as our astronauts traverse the imperious expanse of space.
 
@@ -220,54 +220,54 @@ Accurate temperature reading is vital in the intricate management of spacecraft 
 
 ##### 2.3.3.4.6 Multi-Layer Insulation (MLI)
 
-The MLI wraps the spacecraft, acting as a protective layer against both solar radiation heat and the bitter cold of the shadows. This insulation empowers the S.P.A.C.E.C.R.A.F.T. to maintain a steady internal temperature.
+The MLI wraps the spacecraft, acting as a protective layer against both solar radiation heat and the bitter cold of the shadows. This insulation empowers the SPACECRAFT to maintain a steady internal temperature.
 
 ##### 2.3.3.4.7 HTS Controller
 
-At the heart of the Heat Transport Section (HTS) operations is the HTS Controller - an intelligent unit engineered to manage the intricate environment of the S.P.A.C.E.C.R.A.F.T. The controller meticulously oversees the heat transport system, ensuring that the module's interior maintains optimal operating temperatures.
+At the heart of the Heat Transport Section (HTS) operations is the HTS Controller - an intelligent unit engineered to manage the intricate environment of the SPACECRAFT The controller meticulously oversees the heat transport system, ensuring that the module's interior maintains optimal operating temperatures.
 
 The HTS Controller directs the regulation of coolants within the single-phased loops, instructing the pumps to adjust the flow based on the current needs of the thermal system, primarily dictated by the electronic equipment's conditions and cabin air temperature.
 
 Relying on the data from the cabin thermometers, the HTS Controller also oversees the slow spin of the spacecraft for even solar exposure, ensuring that no single area is exposed to sustained solar heat, which could create potentially hazardous hotspots.
 
-In summary, the HTS Controller exemplifies our vigilant dedication to providing a safe and consistent environment aboard the S.P.A.C.E.C.R.A.F.T, thus ensuring the comfort and safety of our astronauts during their expedition into the lunar sphere.
+In summary, the HTS Controller exemplifies our vigilant dedication to providing a safe and consistent environment aboard the SPACECRAFT, thus ensuring the comfort and safety of our astronauts during their expedition into the lunar sphere.
 
 Collectively, these subsystems work in harmony under the ECS, sculpting a safe and hospitable environment within the spacecraft. As we venture further from our home, the ECS stands out as a testament to human ingenuity, creating an Earth-like sanctuary that shields us from the harsh conditions of space travel.
 
 ### 2.3.4 Communications System (COMS)
 
-Ensuring seamless and secure communication between the astronauts, the lunar lander, and mission control on Earth is a paramount challenge adeptly handled by the Communications System (COMS). The system provides a seamless conduit for data and voice communications between the various components of the mission, including the S.P.A.C.E.C.R.A.F.T. and A.P.O.L.L.O. modules as well as long-range communication with Earth.
+Ensuring seamless and secure communication between the astronauts, the lunar lander, and mission control on Earth is a paramount challenge adeptly handled by the Communications System (COMS). The system provides a seamless conduit for data and voice communications between the various components of the mission, including the SPACECRAFT and APOLLO modules as well as long-range communication with Earth.
 
 #### 2.3.4.1 VHF Scimitar Antennas
 
-Two Very High Frequency (VHF) scimitar antennas are installed on the S.P.A.C.E.C.R.A.F.T. to facilitate short-range communication with the A.P.O.L.L.O. module. These antennas offer reliable communication during those critical moments of lunar descent and ascent when the lander is disconnected from the main module. One antenna serves as the primary communication line, while the second serves as a backup ensuring fail-safe communication.
+Two Very High Frequency (VHF) scimitar antennas are installed on the SPACECRAFT to facilitate short-range communication with the APOLLO module. These antennas offer reliable communication during those critical moments of lunar descent and ascent when the lander is disconnected from the main module. One antenna serves as the primary communication line, while the second serves as a backup ensuring fail-safe communication.
 
 #### 2.3.4.2 Steerable Unified S-band High-Gain Antenna
 
-For extensive range communication with Earth, an Unified S-band (USB) High-Gain antenna is used. This antenna, functioning with the Unified S-band (USB) system, is steerable, allowing it to maintain optimal alignment with Earth regardless of the S.P.A.C.E.C.R.A.F.T's orientation. This antenna ensures unhindered voice and data communication across the vast expanse of space separating the S.P.A.C.E.C.R.A.F.T from the control centre on Earth.
+For extensive range communication with Earth, an Unified S-band (USB) High-Gain antenna is used. This antenna, functioning with the Unified S-band (USB) system, is steerable, allowing it to maintain optimal alignment with Earth regardless of the SPACECRAFT's orientation. This antenna ensures unhindered voice and data communication across the vast expanse of space separating the SPACECRAFT from the control centre on Earth.
 
 #### 2.3.4.3 COMS Controller
 
-The COMS Controller sits at the heart of the Communications System. It orchestrates which antenna is in use, necessitating manual change by the crew when communication needs shift between Earth and the A.P.O.L.L.O. module.
+The COMS Controller sits at the heart of the Communications System. It orchestrates which antenna is in use, necessitating manual change by the crew when communication needs shift between Earth and the APOLLO module.
 
 Significantly, the COMS Controller also maintains the integrity and security of the communications. It employs a Vigenère Cipher and a Pre-shared Key (PSK) for digital cryptology, encrypting and decrypting communications to ensure their privacy and protection from potential eavesdroppers.
 
-In essence, the COMS system significantly aids mission success, reinforcing near real-time and secure communication links between S.P.A.C.E.C.R.A.F.T. module, the A.P.O.L.L.O. module, and mission control on Earth, fostering efficiency, safety, and unity in mission activities throughout the lunar expedition.
+In essence, the COMS system significantly aids mission success, reinforcing near real-time and secure communication links between SPACECRAFT module, the APOLLO module, and mission control on Earth, fostering efficiency, safety, and unity in mission activities throughout the lunar expedition.
 
 #### 2.3.5 Binary Regulated Artifical Intelligence Network System (BRAINS)
 
-Serving as the cerebral backbone of the S.P.A.C.E.C.R.A.F.T., the Binary Regulated Artificial Intelligence Network System (BRAINS) is the comprehensive hardware setup that brings the onboard AI Assistant, M.A.R.S., to operational life. It nests all the components foundational to execute the complex tasks assigned to M.A.R.S., making it a wonder of computational craft and machine intelligence.
+Serving as the cerebral backbone of the SPACECRAFT, the Binary Regulated Artificial Intelligence Network System (BRAINS) is the comprehensive hardware setup that brings the onboard AI Assistant, MARS, to operational life. It nests all the components foundational to execute the complex tasks assigned to MARS, making it a wonder of computational craft and machine intelligence.
 
 ##### 2.3.5.1 GPU Cluster
 
-The neurosynaptic core of BRAINS, the GPU Cluster, forms the subnet of the system that facilitates the advanced neural network architecture behind M.A.R.S.'s machine intelligence. Built around a framework of 10 high-performance H100 Tensor-Core-GPUs, these individual processing units come together to form a potent collective neural network compute platform, granting the onboard AI the power to perform with impressive speed and analytical precision.
+The neurosynaptic core of BRAINS, the GPU Cluster, forms the subnet of the system that facilitates the advanced neural network architecture behind MARS's machine intelligence. Built around a framework of 10 high-performance H100 Tensor-Core-GPUs, these individual processing units come together to form a potent collective neural network compute platform, granting the onboard AI the power to perform with impressive speed and analytical precision.
 
 ##### 2.3.5.2 Disk Array running RAID
 
-Mirroring the potent memory recall and storage capacity of the human brain, BRAINS utilizes a sophisticated disk array employing Redundant Array of Independent/Inexpensive Disk (RAID) technology. This specialized setup stores the vast knowledge base on which M.A.R.S. relies to provide expert guidance and perform complex decision-making processes.
+Mirroring the potent memory recall and storage capacity of the human brain, BRAINS utilizes a sophisticated disk array employing Redundant Array of Independent/Inexpensive Disk (RAID) technology. This specialized setup stores the vast knowledge base on which MARS relies to provide expert guidance and perform complex decision-making processes.
 
-The BRAINS is a marvel of artificial intelligence engineering that ably supports the complicated tasks that M.A.R.S. needs to execute. It combines the delicate balance of immense computational power with the capacity of high-volume data management, creating a potent AI network dedicated to the successful outcome of the Aegis Athena mission.
+The BRAINS is a marvel of artificial intelligence engineering that ably supports the complicated tasks that MARS needs to execute. It combines the delicate balance of immense computational power with the capacity of high-volume data management, creating a potent AI network dedicated to the successful outcome of the Aegis Athena mission.
 
 ##### 2.3.5.3 BRAINS Controller
 
-Operating as the system's governing body, the BRAINS Controller manages and orchestrates all operations within the BRAINS. Critical in ensuring that all subsystems work in perfect harmony, the controller ensures that M.A.R.S.'s needs and tasks are expertly balanced and executed, ensuring optimal AI performance throughout the mission.
+Operating as the system's governing body, the BRAINS Controller manages and orchestrates all operations within the BRAINS. Critical in ensuring that all subsystems work in perfect harmony, the controller ensures that MARS's needs and tasks are expertly balanced and executed, ensuring optimal AI performance throughout the mission.

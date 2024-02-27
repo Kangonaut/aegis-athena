@@ -2,21 +2,21 @@
 
 ## 3.1 Introduction
 
-The Aegis Athena space mission is an illustrious epitome of such a pursuit. Primarily destined to accomplish a monumental milestone of delivering the first human astronaut to the lunar surface, this visionary mission is governed by a sophisticated piece of technology known as the S.P.A.C.E.C.R.A.F.T. console.
+The Aegis Athena space mission is an illustrious epitome of such a pursuit. Primarily destined to accomplish a monumental milestone of delivering the first human astronaut to the lunar surface, this visionary mission is governed by a sophisticated piece of technology known as the SPACECRAFT console.
 
-This highly innovative system adopts a dual-purpose role, integrating the essential features of both a command model and a service module. This strategically harmonious blend of utilitarian efficiency and comforting resources paves the way for an environment conducive for the astronaut-trio executing this expedition, turning it into a virtual sanctuary amidst the vast cosmos. The S.P.A.C.E.C.R.A.F.T. console operates with a plethora of commands, designed to modify the inherent system configurations and retrieve state-of-the-art status information. Such telemetry data is indubitably critical in assessing the spacecraft's performance and securing the triumphant fruition of the mission's objectives.
+This highly innovative system adopts a dual-purpose role, integrating the essential features of both a command model and a service module. This strategically harmonious blend of utilitarian efficiency and comforting resources paves the way for an environment conducive for the astronaut-trio executing this expedition, turning it into a virtual sanctuary amidst the vast cosmos. The SPACECRAFT console operates with a plethora of commands, designed to modify the inherent system configurations and retrieve state-of-the-art status information. Such telemetry data is indubitably critical in assessing the spacecraft's performance and securing the triumphant fruition of the mission's objectives.
 
 ## 3.2 Command Overview
 
 Each command embedded in this system meticulously rides on the principles of intuitive design and effective execution, quintessential to ensure the seamless operation of any space mission. This sophisticated league of commands ensures a detailed real-time assessment of the mission parameters, thus contributing to the overall success of the mission.
 
-- `list`: This instruction serves as an easy access point to the complete collection of S.P.A.C.E.C.R.A.F.T. systems and their components. By invoking this command, the astronauts or mission control can quickly glance through the comprehensive list of operational systems present within the S.P.A.C.E.C.R.A.F.T. module.
+- `list`: This instruction serves as an easy access point to the complete collection of SPACECRAFT systems and their components. By invoking this command, the astronauts or mission control can quickly glance through the comprehensive list of operational systems present within the SPACECRAFT module.
 
 - `details`: The `details` command dives deeper into the nitty-gritty of individual components. On execution, this command supplies an exhaustive overview of a specific component's current status, presenting data like operating condition, temperature, parameter-specific data, and more. The `details` command aids in comprehensive internal audits and system diagnostics.
 
 - `ask`: The `ask` command interfaces with the onboard AI assistant M.A.R.S., enabling communication. It can be utilized to request data interpretation, system status, resource allocation plans, scenario-based suggestions, and more. This instruction vitalises the interaction with M.A.R.S., effectively turning it into an accessible fount of real-time system analytics and advice.
 
-- `transmit`: Vital for the collaboration between S.P.A.C.E.C.R.A.F.T and mission control on Earth, the `transmit` command sends internal system data outward. It envelops a vast spectrum of missions; from sending regular status updates, conveying diagnostics data, transmitting critical alarms, or streaming live telemetry feed. Seamless operation of the `transmit` command is elemental in keeping the mission control up-to-date and facilitating ground-assisted decisions.
+- `transmit`: Vital for the collaboration between SPACECRAFT and mission control on Earth, the `transmit` command sends internal system data outward. It envelops a vast spectrum of missions; from sending regular status updates, conveying diagnostics data, transmitting critical alarms, or streaming live telemetry feed. Seamless operation of the `transmit` command is elemental in keeping the mission control up-to-date and facilitating ground-assisted decisions.
 
 - `set`: Among the most versatile commands, `set` allows for a multitude of system and component-specific configurations. Be it setting the operational frequencies of communication antennas or defining the relationship between key system components, the `set` command is the right tool. It gives astronauts and command centers a degree of control, enabling the adjustment of system parameters on-the-go based on immediate requirements and mission objectives.
 
@@ -38,7 +38,7 @@ The command elegantly simplifies the user interaction by applying the `list` inv
 
 ### 3.3.3 Listing Parts
 
-Utilizing the `list parts` command generates a detailed, systematic listing of all the integral components of the S.P.A.C.E.C.R.A.F.T. console. Each part is represented by its unique ID, composed of 2 bytes encoded as 4 hexadecimal digits, complemented by the part's name and a real-time status display.
+Utilizing the `list parts` command generates a detailed, systematic listing of all the integral components of the SPACECRAFT console. Each part is represented by its unique ID, composed of 2 bytes encoded as 4 hexadecimal digits, complemented by the part's name and a real-time status display.
 
 ```
 system:/ $ list parts
@@ -82,7 +82,7 @@ The communicated status of each component or system can be categorised into one 
 - `MALFUNC`: There is a compromise or anomaly in the component's or system's performance due to a malfunction.
 - `OFFLINE`: The component or system is at a non-operational stage being offline.
 
-Hence, the `list` command provides an encompassing bird's-eye view of the operational health of vital elements making up the S.P.A.C.E.C.R.A.F.T. console. By ensuring real-time performance tracking and early detection of malfunctions, it contributes significantly to the mission's overall success and efficiency.
+Hence, the `list` command provides an encompassing bird's-eye view of the operational health of vital elements making up the SPACECRAFT console. By ensuring real-time performance tracking and early detection of malfunctions, it contributes significantly to the mission's overall success and efficiency.
 
 ## 3.4 The `details` Command
 3.4.1 Purpose
@@ -146,7 +146,7 @@ In this case, the additional information output includes the IDs of the Graphic 
 
 ### 3.5.1 Purpose
 
-The `transmit` command represents a quintessential component of the command suite by facilitating communication between the spacecraft and the mission control on Earth as well as the A.P.O.L.L.O. module. Specifically, this command is designed to send data using the spacecraft's Communication (COMS) controller along with the configured equipment, i.e., the antenna. By enabling the conveyance of vital information and updates, the `transmit` command plays an instrumental role in guaranteeing seamless connectivity during the entire span of the mission.
+The `transmit` command represents a quintessential component of the command suite by facilitating communication between the spacecraft and the mission control on Earth as well as the APOLLO module. Specifically, this command is designed to send data using the spacecraft's Communication (COMS) controller along with the configured equipment, i.e., the antenna. By enabling the conveyance of vital information and updates, the `transmit` command plays an instrumental role in guaranteeing seamless connectivity during the entire span of the mission.
 
 ### 3.5.2 Syntax
 
@@ -192,9 +192,9 @@ In summary, the `transmit` command embodies an invaluable facilitator of communi
 
 ### 3.6.1 Purpose
 
-The `ask` command acts as a conduit to the spacecraft's advanced onboard Artificial Intelligence (AI) assistant known as M.A.R.S. This command's primary function is to prompt M.A.R.S with queries or command messages by leveraging the capabilities of the Binary Regulated Artificial Intelligence Network System (BRAINS), thus creating an efficient, reliable interface between the crew and the operational features of the S.P.A.C.E.C.R.A.F.T.
+The `ask` command acts as a conduit to the spacecraft's advanced onboard Artificial Intelligence (AI) assistant known as M.A.R.S. This command's primary function is to prompt M.A.R.S with queries or command messages by leveraging the capabilities of the Binary Regulated Artificial Intelligence Network System (BRAINS), thus creating an efficient, reliable interface between the crew and the operational features of the SPACECRAFT
 
-M.A.R.S., run on BRAINS, represents a marvel of computational craft and machine intelligence. Serving as the cerebral backbone of the S.P.A.C.E.C.R.A.F.T., BRAINS is the comprehensive hardware setup that brings M.A.R.S to operational life. It nests all the components foundational to execute the complex tasks assigned to M.A.R.S., enhancing the overall operational efficiency and decision-making process of the mission.
+M.A.R.S., run on BRAINS, represents a marvel of computational craft and machine intelligence. Serving as the cerebral backbone of the SPACECRAFT, BRAINS is the comprehensive hardware setup that brings M.A.R.S to operational life. It nests all the components foundational to execute the complex tasks assigned to M.A.R.S., enhancing the overall operational efficiency and decision-making process of the mission.
 
 ### 3.6.2 Syntax
 
@@ -264,7 +264,7 @@ This section will delve into more specifics about individual parts and correspon
 
 #### 3.7.4.1 ECS Controller
 
-Orchestrating a hospitable environment amidst the unforgiving vacuum of space, the Environmental Control System (ECS) Controller is a pivotal element in the S.P.A.C.E.C.R.A.F.T. module. It oversees the maintenance of a comfortable and safe environment for both astronauts and delicate electronic components onboard the spacecraft. This task envelopes four essential subsystems: the Water Management Section (WCS), the Oxygen Supply and Cabin Pressure Control Section (OSCPCS), the Atmosphere Revitalization System (ARS), and the Heat Transport Section (HTS). Each of these requires specific configurations via the `set` command to function harmoniously.
+Orchestrating a hospitable environment amidst the unforgiving vacuum of space, the Environmental Control System (ECS) Controller is a pivotal element in the SPACECRAFT module. It oversees the maintenance of a comfortable and safe environment for both astronauts and delicate electronic components onboard the spacecraft. This task envelopes four essential subsystems: the Water Management Section (WCS), the Oxygen Supply and Cabin Pressure Control Section (OSCPCS), the Atmosphere Revitalization System (ARS), and the Heat Transport Section (HTS). Each of these requires specific configurations via the `set` command to function harmoniously.
 
 ##### 3.7.4.1.1 WCS Controller Configuration
 
@@ -314,7 +314,7 @@ set <PART-ID> hts <PART-ID>
 
 Here, the first `<PART-ID>` signifies the ECS Controller’s ID, while the second `<PART-ID>` points to a specific HTS Controller's ID.
 
-In summary, the ECS Controller's specific configurations enrich its operational capacity, creating a well-regulated, comfortable, and safe environment for both the astronauts and their delicate machine components during the mission. This fine-tuned command and control on various systems within the ECS underscore the viability and robustness of the S.P.A.C.E.C.R.A.F.T. mission.
+In summary, the ECS Controller's specific configurations enrich its operational capacity, creating a well-regulated, comfortable, and safe environment for both the astronauts and their delicate machine components during the mission. This fine-tuned command and control on various systems within the ECS underscore the viability and robustness of the SPACECRAFT mission.
 
 #### 3.7.4.2 OSCPCS Controller
 
@@ -345,11 +345,11 @@ set <PART-ID> ln2 <PART-ID>
 
 In this command, the first `<PART-ID>` denotes the OSCPCS Controller's ID, while the second `<PART-ID>` corresponds to the ID of the specific LN2 Tank to be assigned to the controller.
 
-In essence, part-specific configurations for the OSCPCS Controller allow for a remarkable level of customization and control, key to efficient operation and astronaut safety in the life-supporting systems onboard the S.P.A.C.E.C.R.A.F.T.
+In essence, part-specific configurations for the OSCPCS Controller allow for a remarkable level of customization and control, key to efficient operation and astronaut safety in the life-supporting systems onboard the SPACECRAFT
 
 #### 3.7.4.3 HTS Controller
 
-The Heat Transport Section (HTS) Controller, a key component of the S.P.A.C.E.C.R.A.F.T. module, is renowned for its meticulous management of the intricate environment within the spacecraft. It regulates crucial systems by managing the heat transport system to maintain optimal operational temperatures. Specific configurations via the `set` command ensure its efficient function.
+The Heat Transport Section (HTS) Controller, a key component of the SPACECRAFT module, is renowned for its meticulous management of the intricate environment within the spacecraft. It regulates crucial systems by managing the heat transport system to maintain optimal operational temperatures. Specific configurations via the `set` command ensure its efficient function.
 
 ##### 3.7.4.3.1 Thermometer Configuration
 
@@ -363,11 +363,11 @@ set <PART-ID> therm <PART-ID>
 
 In this command, the first `<PART-ID>` corresponds to the ID of the HTS Controller, while the second `<PART-ID>` denotes the ID of the specific thermometer to be linked.
 
-In summary, the specific configurations for the HTS Controller make it a powerful overseer, ensuring every corner of the spacecraft maintains optimal operating temperatures. This close regulation ensures the safety and comfort of astronauts and the excellent operational condition of sensitive onboard equipment. The customizable commands and control over various systems associated with the HTS Controller drive the capability and reliability of the S.P.A.C.E.C.R.A.F.T mission.
+In summary, the specific configurations for the HTS Controller make it a powerful overseer, ensuring every corner of the spacecraft maintains optimal operating temperatures. This close regulation ensures the safety and comfort of astronauts and the excellent operational condition of sensitive onboard equipment. The customizable commands and control over various systems associated with the HTS Controller drive the capability and reliability of the SPACECRAFT mission.
 
 #### 3.7.4.4 ARS Controller
 
-The Atmosphere Revitalization System (ARS) Controller is a critical component of the S.P.A.C.E.C.R.A.F.T. module. It meticulously oversees the health of the spacecraft's internal environment, removing carbon dioxide, controlling humidity, and conditioning air. To ensure an optimal, comfortable in-craft climate, the ARS Controller relies on specific configurations via the `set` command.
+The Atmosphere Revitalization System (ARS) Controller is a critical component of the SPACECRAFT module. It meticulously oversees the health of the spacecraft's internal environment, removing carbon dioxide, controlling humidity, and conditioning air. To ensure an optimal, comfortable in-craft climate, the ARS Controller relies on specific configurations via the `set` command.
 
 ##### 3.7.4.4.1 Loop Fan Configuration:
 
@@ -429,11 +429,11 @@ set <PART-ID> co2rem <PART-ID>
 
 Here, the first `<PART-ID>` indicates the ARS Controller's ID, and the second `<PART-ID>` signifies a designated CO2 removal canister's ID.
 
-Overall, these specific configurations enable the ARS Controller to demonstrate its blend of high-precision engineering and advanced programming, preserving a breathable and pleasant environment within the S.P.A.C.E.C.R.A.F.T. This level of control ensures the health and comfort of our astronauts in their celestial voyage.
+Overall, these specific configurations enable the ARS Controller to demonstrate its blend of high-precision engineering and advanced programming, preserving a breathable and pleasant environment within the SPACECRAFT This level of control ensures the health and comfort of our astronauts in their celestial voyage.
 
 #### 3.7.4.5 WCS Controller
 
-Acting as a lifeline within the S.P.A.C.E.C.R.A.F.T.'s Environmental Control Subsystem, the Water Management Section (WCS) Controller plays a vital role in managing the spacecraft's water resources. The WCS caters to various mission-critical applications, from astronaut hydration and meal preparation to cooling various electronic systems and providing extinguishing resources in case of a fire emergency. The WCS Controller efficient function depends on specific configurations via the `set` command.
+Acting as a lifeline within the SPACECRAFT's Environmental Control Subsystem, the Water Management Section (WCS) Controller plays a vital role in managing the spacecraft's water resources. The WCS caters to various mission-critical applications, from astronaut hydration and meal preparation to cooling various electronic systems and providing extinguishing resources in case of a fire emergency. The WCS Controller efficient function depends on specific configurations via the `set` command.
 
 ##### 3.7.4.5.1 Water Pump Configuration
 
@@ -465,7 +465,7 @@ In this setup, the first `<PART-ID>` corresponds to the COMS Controller's ID, an
 
 ##### 3.7.4.6.1 Antenna Configuration
 
-For communications with Earth or the A.P.O.L.L.O module, different antennas are required. The COMS Controller determines which antenna is in use. To set a specific antenna for use by the COMS Controller, the `set` command is applied:
+For communications with Earth or the APOLLO module, different antennas are required. The COMS Controller determines which antenna is in use. To set a specific antenna for use by the COMS Controller, the `set` command is applied:
 
 ```
 set <PART-ID> antenna <PART-ID>
@@ -473,11 +473,11 @@ set <PART-ID> antenna <PART-ID>
 
 Here, the first `<PART-ID>` denotes the COMS Controller's ID, while the second `<PART-ID>` identifies a specific antenna's ID for use.
 
-Hence, through these precise configurations, the COMS Controller empowers the Communications System to offer secure and uninterrupted communication links between the S.P.A.C.E.C.R.A.F.T. module, the A.P.O.L.L.O. module, and mission control on Earth, thereby ensuring mission success.
+Hence, through these precise configurations, the COMS Controller empowers the Communications System to offer secure and uninterrupted communication links between the SPACECRAFT module, the APOLLO module, and mission control on Earth, thereby ensuring mission success.
 
 #### 3.7.4.7 EPS Controller
 
-The Electrical Power System (EPS) serves as a lifeline for all electronic activities within the S.P.A.C.E.C.R.A.F.T. module. Central to the EPS's operations is the EPS Controller, which manages power production, distribution, and storage. Particular configurations with the `set` command, detailed below, further enhance the functionality and performance of the EPS Controller.
+The Electrical Power System (EPS) serves as a lifeline for all electronic activities within the SPACECRAFT module. Central to the EPS's operations is the EPS Controller, which manages power production, distribution, and storage. Particular configurations with the `set` command, detailed below, further enhance the functionality and performance of the EPS Controller.
 
 ##### 3.7.4.7.1 Fuel Cell Configuration
 
@@ -499,7 +499,7 @@ set <PART-ID> bat <PART-ID>
 
 In this command, the first `<PART-ID>` represents the EPS Controller's ID, while the second `<PART-ID>` identifies the specific battery's ID to be set for use.
 
-Interpreting and implementing these configurations, the EPS controller effectively directs power activity within the S.P.A.C.E.C.R.A.F.T. module. As such, it ensures the robust functioning of the spacecraft's electrical system, substantiating the reliability and success of the lunar mission.
+Interpreting and implementing these configurations, the EPS controller effectively directs power activity within the SPACECRAFT module. As such, it ensures the robust functioning of the spacecraft's electrical system, substantiating the reliability and success of the lunar mission.
 
 #### 3.7.4.8 SPS Controller
 
@@ -547,7 +547,7 @@ The BRAINS Controller stands at the helm of the integral AI network, marshalling
 
 #### 3.7.4.10 Water Pump
 
-As an essential part of the Water Management Section, the Water Pump performs a critical role in maintaining the health and well-being of our astronauts and assuring the functional longevity of various thermal management systems in the S.P.A.C.E.C.R.A.F.T module. Deft manipulation of the pump's settings and functions is key in mission management. This section aims to guide users on how to customize the water pump configurations using the `set` command.
+As an essential part of the Water Management Section, the Water Pump performs a critical role in maintaining the health and well-being of our astronauts and assuring the functional longevity of various thermal management systems in the SPACECRAFT module. Deft manipulation of the pump's settings and functions is key in mission management. This section aims to guide users on how to customize the water pump configurations using the `set` command.
 
 ##### 3.7.4.10.1 Tank configuration
 
@@ -559,13 +559,13 @@ set <PART-ID> tank <PART-ID>
 
 The first `<PART-ID>` represents the water pump's designated identifier, while the second `<PART-ID>` signals the specific ID of the water tank intended for use.
 
-This customizable linkage between the water pump and a specified tank allows for dynamic water distribution management within the S.P.A.C.E.C.R.A.F.T. module. It facilitates adjustable operational parameters that could, for instance, switch water sources based on degradation considerations or strategically automate resource utilization in response to mission-specific requirements.
+This customizable linkage between the water pump and a specified tank allows for dynamic water distribution management within the SPACECRAFT module. It facilitates adjustable operational parameters that could, for instance, switch water sources based on degradation considerations or strategically automate resource utilization in response to mission-specific requirements.
 
 Inextricably linked to both human survival factors and the optimal functioning of thermal control systems, the water pump carves out a unique role in ensuring mission success. With controllable configurations that facilitate tailor-made solutions, the pump's capabilities can be adapted optimally to serve the dynamic needs of the ambitious Aegis Athena mission.
 
 #### 3.7.4.11 Water Tank
 
-A mission-critical subsystem within the S.P.A.C.E.C.R.A.F.T. module, the Water Management Section (WCS) houses the significant Water Tank - safeguarding our most vital life-giving resource for the duration of the mission. The health and satisfaction of our astronauts, as well as the smooth operation of the spacecraft's electronic systems, hinge largely on meticulous control of the water tank and its contents. This section provides guidance on how to customize the water tank's configurations using the `set` command.
+A mission-critical subsystem within the SPACECRAFT module, the Water Management Section (WCS) houses the significant Water Tank - safeguarding our most vital life-giving resource for the duration of the mission. The health and satisfaction of our astronauts, as well as the smooth operation of the spacecraft's electronic systems, hinge largely on meticulous control of the water tank and its contents. This section provides guidance on how to customize the water tank's configurations using the `set` command.
 
 ##### 3.7.4.11.1 Water Supply Linkage
 
@@ -583,7 +583,7 @@ The water tank forms a cornerstone in the edifice of onboard resource management
 
 #### 3.7.4.12 Fuel Cell
 
-The Energy Production System (EPS) is the beating heart of all onboard operations of the S.P.A.C.E.C.R.A.F.T. module, with the Fuel Cell playing a pivotal role in this critical subsystem. Acting in unison, these fuel cells tirelessly generate electricity through a controlled chemical reaction involving hydrogen and oxygen. Furthermore, in the unforgiving and unpredictable environment of space, a third fuel cell backups the system, prepared to take over at a moment's notice. This section elaborates how to configure the essential connections between the fuel cell and its required inputs using the `set` command.
+The Energy Production System (EPS) is the beating heart of all onboard operations of the SPACECRAFT module, with the Fuel Cell playing a pivotal role in this critical subsystem. Acting in unison, these fuel cells tirelessly generate electricity through a controlled chemical reaction involving hydrogen and oxygen. Furthermore, in the unforgiving and unpredictable environment of space, a third fuel cell backups the system, prepared to take over at a moment's notice. This section elaborates how to configure the essential connections between the fuel cell and its required inputs using the `set` command.
 
 ##### 3.7.4.12.1 Liquid Oxygen (LOX) Linkage
 
@@ -635,7 +635,7 @@ With the accurate configuration of the fuel and oxidizer inputs, the Aerojet AJ1
 
 #### 3.7.4.14 Antenna
 
-As our astronauts traverse the unfathomable reaches of space, maintaining seamless and reliable communication lines is vital. Both the VHF Scimitar Antennas and the steerable Unified S-band High-Gain Antenna equipped on the S.P.A.C.E.C.R.A.F.T are a quintessential element of this communication network. These antennas facilitate short-range and extended communications, respectively, ensuring undisrupted contact with the mission control center on Earth and the A.P.O.L.L.O module.
+As our astronauts traverse the unfathomable reaches of space, maintaining seamless and reliable communication lines is vital. Both the VHF Scimitar Antennas and the steerable Unified S-band High-Gain Antenna equipped on the SPACECRAFT are a quintessential element of this communication network. These antennas facilitate short-range and extended communications, respectively, ensuring undisrupted contact with the mission control center on Earth and the APOLLO module.
 
 This section provides the necessary guidance to configure the frequency range for these antennas using the `set` command.
 
@@ -649,4 +649,4 @@ set <PART-ID> hz <HERTZ>
 
 In this command syntax, the first `<PART-ID>` refers to the identifier affiliated to the antenna for which the frequency is to be set. This could be either the VHF Scimitar Antenna (for short-range communications) or the Unified S-band High-Gain Antenna (for long-range communications). The `<HERTZ>` parameter specifies the desired operational frequency of the antenna, measured in hertz.
 
-Through prudent use of this command, mission specialists can ensure optimal communication links between Earth, the S.P.A.C.E.C.R.A.F.T., and the A.P.O.L.L.O. module. The correct frequency set-up bolsters efficient data transmission, underpinning the mission's uninterrupted real-time communication, critical decision-making processes, and contributing overall to the successful completion of the Aegis Athena expedition.
+Through prudent use of this command, mission specialists can ensure optimal communication links between Earth, the SPACECRAFT, and the APOLLO module. The correct frequency set-up bolsters efficient data transmission, underpinning the mission's uninterrupted real-time communication, critical decision-making processes, and contributing overall to the successful completion of the Aegis Athena expedition.

@@ -78,14 +78,14 @@ Given the mission's utilitarian approach and the geopolitical imperative of bein
 
 However, it must be stressed that this doesn't exclude efforts directed toward ensuring a safe return. The Athena spacecraft, at the helm of which our intrepid astronauts will guide us through this grand endeavor, is embedded with advanced life support systems, top-tier engineering protocols for challenging situations, and a robust design that stands ready to weather the unpredictable conditions of space and atmospheric re-entry. Yet, the realities and the overall priorities of the mission necessitate this lower priority status for the safe return leg of the mission.
 
-### 1.3.7 Testing and Evaluation of the Artificial Intelligence System M.A.R.S
+### 1.3.7 Testing and Evaluation of the Artificial Intelligence System MARS
 
-One of the most capital innovations employed in the Aegis Athena mission is the utilization of an Artificial Intelligence (AI) system onboard the spacecraft named "M.A.R.S". Deciding to sever ties with the traditional and cumbersome approach of maintaining hefty technical manuals, we introduce M.A.R.S. - an AI-assistant engineered to streamline all procedural and technical aspects on-demand, thus eliminating the need for manual search through extensive documentation.
+One of the most capital innovations employed in the Aegis Athena mission is the utilization of an Artificial Intelligence (AI) system onboard the spacecraft named "MARS". Deciding to sever ties with the traditional and cumbersome approach of maintaining hefty technical manuals, we introduce MARS - an AI-assistant engineered to streamline all procedural and technical aspects on-demand, thus eliminating the need for manual search through extensive documentation.
 
-In the unfortunate event of the initial crew's fatal accident, M.A.R.S. turns from a simple convenience tool to an indispensable companion for the newly assigned astronauts. Without the opportunity of the previous extensive training, M.A.R.S is not just an assistant but rather transforms into an expert guide and reliable partner for the crew.
+In the unfortunate event of the initial crew's fatal accident, MARS turns from a simple convenience tool to an indispensable companion for the newly assigned astronauts. Without the opportunity of the previous extensive training, MARS is not just an assistant but rather transforms into an expert guide and reliable partner for the crew.
 
-Given this context, an additional secondary objective has intuitively presented itself - the thorough testing and evaluation of M.A.R.S.' effectiveness while on the lunar mission.
+Given this context, an additional secondary objective has intuitively presented itself - the thorough testing and evaluation of MARS' effectiveness while on the lunar mission.
 
-M.A.R.S.' introduction brings forth a breakthrough in how space missions are approached and carried out. As a system, it eradicates the demanding task of manually scanning through numerous documentation pages to find solutions or understand systems better. However, as it stands, testing and evaluating the effectiveness of M.A.R.S. is paramount to ensure this amalgamation of advanced technology and innovation delivers optimally, thus contributing to the successful accomplishment of Aegis Athena.
+MARS' introduction brings forth a breakthrough in how space missions are approached and carried out. As a system, it eradicates the demanding task of manually scanning through numerous documentation pages to find solutions or understand systems better. However, as it stands, testing and evaluating the effectiveness of MARS is paramount to ensure this amalgamation of advanced technology and innovation delivers optimally, thus contributing to the successful accomplishment of Aegis Athena.
 
 Priority: Medium
