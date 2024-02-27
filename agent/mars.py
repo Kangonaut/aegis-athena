@@ -129,6 +129,8 @@ Below is the current conversation consisting of interleaving human and assistant
 
 """
 
+AGENT_LLM_MODEL: str = "gpt-3.5-turbo-0125"
+
 
 def build_agent() -> AgentRunner:
     knowledge_base_retriever = get_knowledge_base_retriever()
@@ -142,7 +144,7 @@ def build_agent() -> AgentRunner:
                     "Use a question as input to the tool."
     )
 
-    llm = OpenAI(model="gpt-4-0125-preview", temperature=0.3)
+    llm = OpenAI(model=AGENT_LLM_MODEL, temperature=0.3)
     agent = ReActAgent.from_tools(
         tools=[knowledge_base_tool],
         llm=llm,
