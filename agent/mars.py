@@ -1,8 +1,58 @@
+import streamlit as st
+from llama_index.core import VectorStoreIndex
+
 from llama_index.core.agent import ReActAgent, AgentRunner, ReActChatFormatter
 from llama_index.llms.openai import OpenAI
 from llama_index.core.tools import FunctionTool
+from llama_index.postprocessor.cohere_rerank import CohereRerank
 
-from agent.knowledge_base_retriever import get_knowledge_base_retriever
+from agent.knowledge_base.retriever.mars import MarsKnowledgeBaseRetriever
+from rag import weaviate_utils
+
+# HyDE
+HYDE_LLM_TEMPERATURE: float = 0.2
+HYDE_LLM_MODEL: str = "gpt-3.5-turbo-0125"
+
+# similarity search
+WEAVIATE_CLASS_NAME: str = "SentenceWindowDocsChunk"
+RETRIEVER_HYBRID_SEARCH_ALPHA: float = 0.75  # 1 => vector search; 0 => BM25
+RETRIEVER_SIMILARITY_TOP_K: int = 6
+
+# reranking
+RERANK_TOP_N: int = 3
+RERANK_MODEL: str = "rerank-english-v2.0"
+
+
+@st.cache_resource
+def get_knowledge_base_retriever():
+    # HyDE
+    hyde_llm = OpenAI(
+        model=HYDE_LLM_MODEL,
+        temperature=HYDE_LLM_TEMPERATURE,
+    )
+
+    # retriever
+    weaviate_client = weaviate_utils.get_weaviate_client()
+    vector_store = weaviate_utils.as_vector_store(weaviate_client, WEAVIATE_CLASS_NAME)
+    index = VectorStoreIndex.from_vector_store(vector_store)
+    retriever = index.as_retriever(
+        similarity_top_k=RETRIEVER_SIMILARITY_TOP_K,
+        vector_store_query_mode="hybrid",
+        alpha=RETRIEVER_HYBRID_SEARCH_ALPHA,
+    )
+
+    # reranker
+    reranker = CohereRerank(
+        top_n=RERANK_TOP_N,
+        model=RERANK_MODEL,
+    )
+
+    return MarsKnowledgeBaseRetriever.from_defaults(
+        hyde_llm=hyde_llm,
+        reranker=reranker,
+        retriever=retriever,
+    )
+
 
 REACT_SYSTEM_HEADER = """\
 You are an AI assistant called M.A.R.S. that is designed to help the astronaut crew on the Aegis Athena spaceflight mission.
