@@ -2,11 +2,16 @@ from llama_index.core import SimpleDirectoryReader, Document
 
 import os
 
+from rag.reader.custom_markdown_reader import CustomMarkdownReader
+
 
 def load_data_dir(dir_path: str) -> list[Document]:
     dir_path: str = os.path.join(dir_path)
     reader = SimpleDirectoryReader(
         input_dir=dir_path,
+        file_extractor={
+            ".md": CustomMarkdownReader.from_defaults(),
+        },
         required_exts=[".md"],
     )
     return reader.load_data()
@@ -30,5 +35,5 @@ def join_grouped_documents(grouped_documents: dict[str, list[Document]]) -> dict
     Joins grouped documents into a single document object.
     """
     return {key: Document(
-        text="\n\n".join(map(lambda x: x.text, documents))
+        text="".join(map(lambda x: x.text, documents))
     ) for key, documents in grouped_documents.items()}
