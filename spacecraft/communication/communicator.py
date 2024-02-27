@@ -81,5 +81,12 @@ class LlamaIndexAgentCommunicator(BaseCommunicator):
         self.agent_runner = agent_runner
 
     def stream(self, message: str) -> Generator[MessageChunk, None, None]:
-        for chunk in self.agent_runner.stream_chat(message).response_gen:
-            yield MessageChunk(chunk)
+        print(f"agent hash: {hash(self.agent_runner)}")
+        print(f"agent memory: {self.agent_runner.memory}")
+
+        # NOTE: stream_chat is faulty
+        # for chunk in self.agent_runner.stream_chat(message).response_gen:
+        #     yield MessageChunk(chunk)
+
+        response = self.agent_runner.chat(message)
+        yield MessageChunk(content=response.response)

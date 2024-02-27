@@ -27,8 +27,11 @@ class BaseBrainsDispatcher(BaseCommunicationDispatcher):
 
 
 class DefaultBrainsDispatcher(BaseBrainsDispatcher):
+    def __init__(self):
+        self._communicator = LlamaIndexAgentCommunicator(agent_runner=mars.build_agent())
+
     def dispatch(self, state: BrainsState) -> BaseCommunicator:
-        return LlamaIndexAgentCommunicator(agent_runner=mars.build_agent())
+        return self._communicator
 
 
 class MockComsDispatcher(BaseCommunicationDispatcher):

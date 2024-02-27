@@ -129,7 +129,9 @@ Below is the current conversation consisting of interleaving human and assistant
 
 """
 
-AGENT_LLM_MODEL: str = "gpt-3.5-turbo-0125"
+# AGENT_LLM_MODEL: str = "gpt-3.5-turbo-0125"
+# AGENT_LLM_MODEL: str = "gpt-3.5-turbo-0613"
+AGENT_LLM_MODEL: str = "gpt-4-0125-preview"
 
 
 def build_agent() -> AgentRunner:
@@ -148,7 +150,7 @@ def build_agent() -> AgentRunner:
     agent = ReActAgent.from_tools(
         tools=[knowledge_base_tool],
         llm=llm,
-        max_iterations=30,
+        max_iterations=50,
         verbose=True,
         react_chat_formatter=ReActChatFormatter.from_defaults(
             system_header=REACT_SYSTEM_HEADER,
