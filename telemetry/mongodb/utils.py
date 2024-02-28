@@ -5,6 +5,8 @@ from pymongo.collection import Collection
 import os
 import streamlit as st
 
+DEFAULT_DB_NAME: str = "aegis-athena-telemetry"
+
 
 @st.cache_resource
 def get_client() -> MongoClient:
@@ -15,6 +17,6 @@ def get_client() -> MongoClient:
 
 
 @st.cache_resource
-def get_database() -> Database:
+def get_database(db_name: str = DEFAULT_DB_NAME) -> Database:
     client = get_client()
-    return client["aegis-athena-shell-telemetry"]
+    return client[db_name]
