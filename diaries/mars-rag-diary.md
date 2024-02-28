@@ -1,6 +1,6 @@
-# M.A.R.S. RAG Diary
+# MARS RAG Diary
 
-## M.A.R.S. RAG Pipeline v1.0
+## MARS RAG Pipeline v1.0
 
 This version utilizes a basic RAG setup, consisting of a Weaviate vector database and the `gpt-3.5-turbo` model for
 synthesis.
@@ -20,7 +20,7 @@ relevance, due to the fact that although the answer is provided in one of the re
 which are less important to the query.
 This might be solved by using a reranker.
 
-## M.A.R.S. RAG Pipeline v1.1
+## MARS RAG Pipeline v1.1
 
 The same architecture as v1.0, but utilizing the `gpt-4` model for synthesis.
 
@@ -34,7 +34,7 @@ The same architecture as v1.0, but utilizing the `gpt-4` model for synthesis.
 
 Using a more advanced model, does not seem to drastically increase the overall performance of this basic RAG pipline.
 
-## M.A.R.S. RAG Pipeline v1.2
+## MARS RAG Pipeline v1.2
 
 The same architecture as v1.0, but before the retrieved nodes are passed as context to the LLM, they are reranked using
 the `SentenceTransformerRerank` module and the `BAAI/bge-reranker-base` transformer model from FlagEmbedding.
@@ -51,7 +51,7 @@ As can be seen, the approach improved the context relevance metric, which also c
 This makes sense, since a more relevant context makes it easier to form an answer that is backed up by mentioned
 context.
 
-## M.A.R.S. RAG Pipeline v2.0
+## MARS RAG Pipeline v2.0
 
 This version uses sentence window retrieval, in order to give the synthesizer more context and make the retrieval step
 more precise.
@@ -74,7 +74,7 @@ Regarding the decrease of answer relevance, after looking through the samples th
 the LLMs evaluation, since they all answered the query fairly well. Thus, I don't think this really has an effect on
 answer relevance.
 
-## M.A.R.S. RAG Pipeline v3.0
+## MARS RAG Pipeline v3.0
 
 The architecture is based on v2.0, but adds the HyDE query transformation method before the retrieval step.
 HyDE (Hypothetical Document Embedding) generates a hypothetical answer to the user query first, which is then used as
@@ -113,9 +113,9 @@ Looking at some actual examples that were had a better answer relevance score, t
 of the rather small dataset size of just 20 questions. However, since running evals with GPT-4 as a feedback LLM is
 pretty expensive, I presently cannot afford to use a larger evaluation dataset.
 
-## M.A.R.S. RAG Pipeline v4.0
+## MARS RAG Pipeline v4.0
 
-This version of M.A.R.S. is used to try out how well the pipeline performs using smaller models.
+This version of MARS is used to try out how well the pipeline performs using smaller models.
 The architecture is the same as v3.0, except from the LLM used, which is the Llama-2-7b-chat-hf (`llama2:7b`) model. The
 model is being run locally on an Ollama server instance.
 
@@ -132,7 +132,7 @@ might be random error in judging.
 However, executing a single query pipeline pass almost took 4 minutes on my local machine. Since this is not acceptable,
 I will repeat this experiment with even smaller models.
 
-## M.A.R.S. RAG Pipeline v4.1
+## MARS RAG Pipeline v4.1
 
 Same as v4.0, but with an even smaller model, the phi-2 model with 2.7 billion parameters (`phi:2.7b`).
 
@@ -152,7 +152,7 @@ It seems, that overall, the model is simply not powerful enough for this task.
     - question: What commands can be used to diagnose problems of unknown origin?
     - answer:
         ```text
-        The details command is an effective tool for diagnosing problems of unknown origin. By providing a comprehensive overview of a specific component's current status, it aids in identifying any anomalies or malfunctions that may be causing issues within the system. Additionally, the ask command can also assist in gathering more information and insights from the onboard AI assistant M.A.R.S., which can provide valuable context and suggestions for troubleshooting.
+        The details command is an effective tool for diagnosing problems of unknown origin. By providing a comprehensive overview of a specific component's current status, it aids in identifying any anomalies or malfunctions that may be causing issues within the system. Additionally, the ask command can also assist in gathering more information and insights from the onboard AI assistant MARS, which can provide valuable context and suggestions for troubleshooting.
         ```
 - example of the model going crazy:
     - question: How many oxygen tanks does the S.P.A.C.E.C.R.A.F.T. module have?
@@ -195,7 +195,7 @@ It seems, that overall, the model is simply not powerful enough for this task.
     - as can be seen, the model answers the question in a somewhat reasonable way, but then starts to hallucinate a new
       prompt for itself
 
-## M.A.R.S. RAG Pipeline v4.2
+## MARS RAG Pipeline v4.2
 
 Same as v4.0, but with an even smaller model, the TinyLLama-1.1B-Chat-v1.0 model with 1.1 billion
 parameters (`tinyllama:1.1b`).
@@ -219,7 +219,7 @@ some answers, which makes it very inept to the use case.
       can carry a total of four oxygen cylinders.
     - although two oxygen tanks are correct, it just invents some cylinders, which were not mentioned in the context
 
-## M.A.R.S. RAG Pipeline v5.0
+## MARS RAG Pipeline v5.0
 
 MARS-v5.0 is based on the architecture of v3.0, but uses hybrid search instead of pure vector search.
 Hybrid search combines similarity based search (dense) with keyword based search (sparse), in this case BM25F.
@@ -241,7 +241,7 @@ docs: `Two Very High Frequency (VHF) scimitar antennas are installed ...`. This 
 suitable for sparse search, since it directly looks for the definition of a term (thus, keyword search is a very good
 approach).
 
-## M.A.R.S. RAG Pipeline v5.1
+## MARS RAG Pipeline v5.1
 
 MARS-v5.1 has the same architecture as v5.0, but uses a window size of 5 instead of 3 for sentence window retrieval.
 
@@ -256,9 +256,9 @@ MARS-v5.1 has the same architecture as v5.0, but uses a window size of 5 instead
 Context relevance was improved a little bit, although not enough to make up for the additional 3 seconds of inference
 time. Also answer relevance dropped by 0.1, which might be random though.
 
-## M.A.R.S. RAG Pipeline v5.2
+## MARS RAG Pipeline v5.2
 
-M.A.R.S. RAG Pipeline v5.2 is based on the architecture of v5.0, but adds a `Refine` synthesizer with custom prompts.
+MARS RAG Pipeline v5.2 is based on the architecture of v5.0, but adds a `Refine` synthesizer with custom prompts.
 Moreover, the LLM configuration is adjusted to `temperatuer=0.3`, which makes it slightly more imaginative.
 
 The default prompts of the `Refine` synthesizer were modified by adding a single
@@ -278,3 +278,61 @@ As can be seen, both groundedness and answer relevance has significantly improve
 simple answers are easier to understand for the feedback model.
 Since this is probably also true for real life users, I think this is an actual improvement and a relevant change for
 the RAG pipeline.
+
+## Auto-Merging Retrieval
+
+Context quality can be improved retrieving based on embeddings of individual sentences
+and then replacing them with parent blocks.
+
+This is controlled via a threshold value `simple_ratio_thresh=0.3` (ratio of nodes in the parent block).
+
+### Example: "main objective"
+
+- sentence based retrieval:
+
+```text
+Node #0:
+1.2 Main Objective
+
+The mission's central aim is decidedly explicit - to facilitate humanity's maiden voyage to the lunar surface.
+
+Node #1:
+Securing their faith in our collective strength against an adversary, whose priorities are primarily driven by monetary motivations, is paramount.
+
+Node #2:
+While central, the successful completion of this objective does not necessarily encompass a failsafe protocol for the safe return of the pioneering astronauts to our terrestrial home.
+
+Node #3:
+Therefore, as a contingency, a set of doppelgängers have been enlisted to present to the public in the event of partial mission success.
+
+Node #4:
+These objectives fuel our quest for expansive knowledge and dominance.
+
+Node #5:
+While it would be ill-advised and counter-productive to deny the possibility of mission errors, it is imperative for the morale and unity of our nation that the astronauts are perceived to have returned safely.
+```
+
+- after merging:
+
+```text
+Node #0:
+1.2 Main Objective
+
+The mission's central aim is decidedly explicit - to facilitate humanity's maiden voyage to the lunar surface. While central, the successful completion of this objective does not necessarily encompass a failsafe protocol for the safe return of the pioneering astronauts to our terrestrial home.
+
+Our approach is rooted in principles of utilitarian thought. Our commitment is first and foremost to our nation and its people. Securing their faith in our collective strength against an adversary, whose priorities are primarily driven by monetary motivations, is paramount.
+
+While it would be ill-advised and counter-productive to deny the possibility of mission errors, it is imperative for the morale and unity of our nation that the astronauts are perceived to have returned safely. Therefore, as a contingency, a set of doppelgängers have been enlisted to present to the public in the event of partial mission success.
+
+
+Node #1:
+1.3. Secondary Mission Objectives and Details
+
+While the key aspiration of Aegis Athena revolves around the first human's journey and landing on the lunar sphere, an array of complementary objectives exists in harmony, further complementing the mission's primary focus. These objectives fuel our quest for expansive knowledge and dominance.
+```
+
+### Example: "How to check SPACECRAFT status?"
+
+```text
+
+```
