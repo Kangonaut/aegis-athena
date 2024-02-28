@@ -36,7 +36,6 @@ class MarsKnowledgeBaseRetriever(QueryPipelineKnowledgeBaseRetriever):
             hyde_llm: LLM,
             retriever: BaseRetriever,
             reranker: BaseNodePostprocessor,
-            sentence_window_post_proc: MetadataReplacementPostProcessor,
     ) -> None:
         qp = QueryPipeline()
         qp.add_modules({
@@ -46,7 +45,6 @@ class MarsKnowledgeBaseRetriever(QueryPipelineKnowledgeBaseRetriever):
             "hyde_combined_prompt_template": hyde_combined_prompt_template,
             "retriever": retriever,
             "reranker": reranker,
-            "sentence_window_post_proc": sentence_window_post_proc,
         })
 
         # hyde
@@ -56,11 +54,8 @@ class MarsKnowledgeBaseRetriever(QueryPipelineKnowledgeBaseRetriever):
         qp.add_link("original_input", "hyde_combined_prompt_template", dest_key="query_str")
         qp.add_link("hyde_combined_prompt_template", "retriever")
 
-        # sentence window retrieval
-        qp.add_link("retriever", "sentence_window_post_proc", dest_key="nodes")
-
         # reranker
-        qp.add_link("sentence_window_post_proc", "reranker", dest_key="nodes")
+        qp.add_link("retriever", "reranker", dest_key="nodes")
         qp.add_link("original_input", "reranker", dest_key="query_str")
 
         super().__init__(
@@ -79,8 +74,6 @@ class MarsKnowledgeBaseRetriever(QueryPipelineKnowledgeBaseRetriever):
 
             hyde_prompt_template: PromptTemplate | None = None,
             hyde_combined_prompt_template: PromptTemplate | None = None,
-
-            sentence_window_post_proc: MetadataReplacementPostProcessor | None = None,
     ) -> "MarsKnowledgeBaseRetriever":
         return cls(
             hyde_llm=hyde_llm,
@@ -91,8 +84,4 @@ class MarsKnowledgeBaseRetriever(QueryPipelineKnowledgeBaseRetriever):
 
             hyde_prompt_template=hyde_prompt_template or DEFAULT_HYDE_PROMPT_TEMPLATE,
             hyde_combined_prompt_template=hyde_combined_prompt_template or DEFAULT_HYDE_COMBINED_PROMPT_TEMPLATE,
-
-            sentence_window_post_proc=sentence_window_post_proc or MetadataReplacementPostProcessor(
-                target_metadata_key=DEFAULT_SENTENCE_WINDOW_RETRIEVAL_TARGET_METADATA_KEY,
-            ),
         )
