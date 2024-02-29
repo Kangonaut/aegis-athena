@@ -4,8 +4,10 @@ from openai.resources.completions import Completions
 from openai.resources.chat.completions import Completions as ChatCompletions
 
 from usage.base.observer import BaseUsageObserver
+from usage.base.types import UsageEntry
 from usage.base.usage_store import BaseUsageStore
-from usage.openai.types import OpenAIUsageEntry
+
+SERVICE_NAME: str = "openai"
 
 
 class OpenAIUsageObserver(BaseUsageObserver):
@@ -34,9 +36,10 @@ class OpenAIUsageObserver(BaseUsageObserver):
 
             # store entry
             self._store.add_entry(
-                entry=OpenAIUsageEntry(
+                entry=UsageEntry(
                     model=model,
                     num_tokens=num_tokens,
+                    service=SERVICE_NAME,
                 )
             )
 

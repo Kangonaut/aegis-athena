@@ -1,11 +1,11 @@
 from abc import ABC, abstractmethod
 
-from usage.base.types import BaseUsageEntry, UsageAggregation
+from usage.base.types import UsageEntry, UsageAggregation
 
 
 class BaseUsageStore(ABC):
     @abstractmethod
-    def add_entry(self, entry: BaseUsageEntry) -> None:
+    def add_entry(self, entry: UsageEntry) -> None:
         pass
 
     @property
@@ -14,7 +14,7 @@ class BaseUsageStore(ABC):
         pass
 
     @abstractmethod
-    def get_model_entries(self, model_id: str) -> list[BaseUsageEntry] | None:
+    def get_model_entries(self, model_id: str) -> list[UsageEntry] | None:
         pass
 
     def aggregate_usage(self) -> dict[str, UsageAggregation]:
@@ -24,7 +24,7 @@ class BaseUsageStore(ABC):
         entries = self.get_model_entries(model_id)
         return UsageAggregation(
             model=entries[0].model,
-            service_id=entries[0].service_id,
+            service=entries[0].service,
             total_num_tokens=sum(
                 map(lambda e: e.num_tokens, entries)
             ),

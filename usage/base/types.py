@@ -1,27 +1,23 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 
 from pydantic import BaseModel, Field
 
 
-class BaseUsageEntry(ABC, BaseModel):
+class UsageEntry(BaseModel):
     model: str = Field()
     num_tokens: int = Field()
-
-    @property
-    @abstractmethod
-    def service_id(self) -> str:
-        pass
+    service: str = Field()
 
     @property
     def model_id(self) -> str:
-        return f"{self.service_id}-{self.model}"
+        return f"{self.service}-{self.model}"
 
 
 class UsageAggregation(BaseModel):
     model: str = Field()
     total_num_tokens: int = Field()
-    service_id: str = Field()
+    service: str = Field()
 
     @property
     def model_id(self) -> str:
-        return f"{self.service_id}-{self.model}"
+        return f"{self.service}-{self.model}"
