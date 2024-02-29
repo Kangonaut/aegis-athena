@@ -5,7 +5,8 @@ from pydantic import BaseModel, Field
 
 class UsageEntry(BaseModel):
     model: str = Field()
-    num_tokens: int = Field()
+    num_input_tokens: int = Field()
+    num_output_tokens: int = Field()
     service: str = Field()
 
     @property
@@ -15,7 +16,8 @@ class UsageEntry(BaseModel):
 
 class UsageAggregation(BaseModel):
     model: str = Field()
-    total_num_tokens: int = Field()
+    num_input_tokens: int = Field()
+    num_output_tokens: int = Field()
     service: str = Field()
 
     @property

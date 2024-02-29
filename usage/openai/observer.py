@@ -32,13 +32,15 @@ class OpenAIUsageObserver(BaseUsageObserver):
 
             # extract properties
             model = result.model
-            num_tokens = result.usage.total_tokens
+            num_input_tokens = result.usage.prompt_tokens
+            num_output_tokens = result.usage.completion_tokens
 
             # store entry
             self._store.add_entry(
                 entry=UsageEntry(
                     model=model,
-                    num_tokens=num_tokens,
+                    num_input_tokens=num_input_tokens,
+                    num_output_tokens=num_output_tokens,
                     service=SERVICE_NAME,
                 )
             )

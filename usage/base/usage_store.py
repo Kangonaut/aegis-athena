@@ -22,10 +22,17 @@ class BaseUsageStore(ABC):
 
     def aggregate_model_usage(self, model_id: str) -> UsageAggregation | None:
         entries = self.get_model_entries(model_id)
+
+        # sum up token values
+        input_token_sum: int = 0
+        output_token_sum: int = 0
+        for entry in entries:
+            input_token_sum += entry.num_input_tokens
+            output_token_sum += entry.num_output_tokens
+
         return UsageAggregation(
             model=entries[0].model,
             service=entries[0].service,
-            total_num_tokens=sum(
-                map(lambda e: e.num_tokens, entries)
-            ),
+            num_input_tokens=input_token_sum,
+            num_output_tokens=output_token_sum,
         ) if entries else None
