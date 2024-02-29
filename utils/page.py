@@ -3,10 +3,11 @@ from datetime import datetime
 import streamlit as st
 
 from telemetry.base import ShellTraceNode
-from utils import level_utils, shell_utils, environment_utils, telemetry_utils
+from utils import level_utils, shell_utils, environment_utils, telemetry_utils, usage_utils
 from functools import partial
 
 environment_utils.load_env()
+usage_utils.init_usage_tracking()
 
 
 def __display_output(content: str, placeholder):
