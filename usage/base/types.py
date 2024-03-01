@@ -1,4 +1,5 @@
 from abc import abstractmethod
+from datetime import datetime
 
 from pydantic import BaseModel, Field
 
@@ -8,6 +9,7 @@ class UsageEntry(BaseModel):
     num_input_tokens: int = Field()
     num_output_tokens: int = Field()
     service: str = Field()
+    timestamp: datetime = Field(default_factory=datetime.utcnow)
 
     @property
     def model_id(self) -> str:
