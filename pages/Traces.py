@@ -1,6 +1,7 @@
-from telemetry.base import BaseShellTrace
 from utils import telemetry_utils
 import streamlit as st
+
+st.title("Traces")
 
 manager = telemetry_utils.get_telemetry_manager()
 trace_ids: list[str] = manager.get_all_trace_ids()
