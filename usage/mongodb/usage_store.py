@@ -73,6 +73,5 @@ class MongoDBUsageStore(BaseUsageStore):
         for doc in result:
             doc.pop("model_id")
             entry = UsageEntry(**doc)
-            print(f"entry: {entry}")
             entries.append(entry)
         return entries
