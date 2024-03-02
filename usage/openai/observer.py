@@ -6,8 +6,7 @@ from openai.resources.chat.completions import Completions as ChatCompletions
 from usage.base.observer import BaseUsageObserver
 from usage.base.types import UsageEntry
 from usage.base.usage_store import BaseUsageStore
-
-SERVICE_NAME: str = "openai"
+from usage.openai.types import SERVICE_NAME
 
 
 class OpenAIUsageObserver(BaseUsageObserver):
