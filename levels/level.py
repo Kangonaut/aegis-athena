@@ -53,7 +53,7 @@ As I finish the last of the chicken, I can't help but humorously contemplate if,
 
 level_2_builder = SpacecraftBuilder()
 level_2_builder.configured_secret = "1234"
-level_2_builder.actual_secret = "apollo"
+level_2_builder.actual_secret = "advancedpodforouterspacelunarlandingoperations"
 level_2 = Level(
     name="Level 2 - What about god?",
     prolog="""I find myself floating languidly towards my sleeping quarters. Exhaustion is starting to seep into my bones, a testament to the long, eventful day spent onboard the S.P.A.C.E.C.R.A.F.T. – a series of seemingly unending crises. All I yearn for is a good night’s rest. However, just as I’m about to encase myself within my anti-gravity sleeping bag, my heart sinks.
