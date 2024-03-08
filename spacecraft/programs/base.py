@@ -40,8 +40,6 @@ class BaseProgram(abc.ABC):
         part = self._parts_manager.get(part_id)
         if part is None:
             raise ProgramKeyError(f"{part_id} is not a valid part ID")
-        if part.status == PartStatus.OFFLINE:
-            raise ProgramException(f"part is offline")
         return part
 
     @abc.abstractmethod
