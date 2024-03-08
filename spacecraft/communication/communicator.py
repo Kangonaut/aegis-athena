@@ -82,6 +82,9 @@ class LlamaIndexChatEngineCommunicator(BaseCommunicator):
         self.chat_engine = chat_engine
 
     def stream(self, message: str) -> Generator[MessageChunk, None, None]:
+        # response to indicate to the user that the request is being handled
+        yield MessageChunk("thinking ...\n")
+
         response = self.chat_engine.chat(message)
         yield MessageChunk(response.response)
 
