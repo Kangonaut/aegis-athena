@@ -2,6 +2,7 @@ import abc
 import time
 from typing import Iterator, Generator
 
+from llama_index.core.chat_engine.types import BaseChatEngine
 from llama_index.core.query_engine import BaseQueryEngine
 from llama_index.core.agent import AgentRunner
 
@@ -76,14 +77,20 @@ class LlamaIndexQueryEngineCommunicator(BaseCommunicator):
             yield MessageChunk(chunk)
 
 
+class LlamaIndexChatEngineCommunicator(BaseCommunicator):
+    def __init__(self, chat_engine: BaseChatEngine):
+        self.chat_engine = chat_engine
+
+    def stream(self, message: str) -> Generator[MessageChunk, None, None]:
+        response = self.chat_engine.chat(message)
+        yield MessageChunk(response.response)
+
+
 class LlamaIndexAgentCommunicator(BaseCommunicator):
     def __init__(self, agent_runner: AgentRunner):
         self.agent_runner = agent_runner
 
     def stream(self, message: str) -> Generator[MessageChunk, None, None]:
-        print(f"agent hash: {hash(self.agent_runner)}")
-        print(f"agent memory: {self.agent_runner.memory}")
-
         # NOTE: stream_chat is faulty
         # for chunk in self.agent_runner.stream_chat(message).response_gen:
         #     yield MessageChunk(chunk)
