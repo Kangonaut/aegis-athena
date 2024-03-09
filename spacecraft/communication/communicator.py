@@ -94,6 +94,9 @@ class LlamaIndexAgentCommunicator(BaseCommunicator):
         self.agent_runner = agent_runner
 
     def stream(self, message: str) -> Generator[MessageChunk, None, None]:
+        # response to indicate to the user that the request is being handled
+        yield MessageChunk("thinking ...\n")
+
         # NOTE: stream_chat is faulty
         # for chunk in self.agent_runner.stream_chat(message).response_gen:
         #     yield MessageChunk(chunk)

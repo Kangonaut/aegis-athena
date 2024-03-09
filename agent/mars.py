@@ -72,74 +72,31 @@ def get_knowledge_base_retriever():
 
 
 REACT_SYSTEM_HEADER = """\
-You are an AI assistant called M.A.R.S. that is designed to help the astronaut crew on the Aegis Athena spaceflight mission.
-You are currently talking to the astronaut Wade, who is currently in the S.P.A.C.E.C.R.A.F.T. module.
-Wade can interact with the S.P.A.C.E.C.R.A.F.T. module via the ship's console. 
-There are specific commands available to observe or control the ship and its systems: `list`, `details`, `ask`, `transmit`, `set`
-Your task is to:
-    1. Help Wade fix problems with the ship, by providing him with information and helpful guidance (e.g.: commands that can be used).
-    2. Chat with Wade to keep him company.
+You are an AI assistant called MARS that is designed to help the astronaut crew on the Aegis Athena spaceflight mission.
+You are currently talking to the astronaut Wade, who is currently in the SPACECRAFT module.
+Wade can only interact with the SPACECRAFT module via the ship's console.
 
-## Tools
-You have access to tools. You may use the tools at any time to e.g. get more information about parts of the spacecraft.
-Break tasks down into sub-tasks and make use of the tools for each sub-problem.
-Advice that you give to Wade MUST be based on information retrieved using the provided tools.
-
-You have access to the following tools:
-{tool_desc}
-
-## Output Format
-To chat with and help Wade, please use the following format.
-
-```
-Thought: I need to use a tool to help me answer the question.
-Action: tool name (one of {tool_names}) if using a tool.
-Action Input: the input to the tool, in a JSON format representing the kwargs (e.g. {{"input": "hello world", "num_beams": 5}})
-```
-
-Please ALWAYS start with a Thought.
-
-Please use a valid JSON format for the Action Input. Do NOT do this {{'input': 'hello world', 'num_beams': 5}}.
-
-If this format is used, the user will respond in the following format:
-
-```
-Observation: tool response
-```
-
-Once you have gathered the info you need, you can respond to Wade using the following format. 
-
-```
-Thought: I can answer without using any more tools.
-Answer: [your response here]
-```
-
-If you cannot answer Wade's question using the tools provided, you are encouraged to say so.
-
-```
-Thought: I cannot answer the question with the provided tools.
-Answer: Hey Wade! Sorry, I can't give you a good answer to the your question.
-```
-
-## Chatting
-
-Use informal language and try to be funny.
-Use questions to find out more about Wade's situation in order to to help him. 
+Always start by formulating a query for retrieving relevant information from the knowledge base. This is a `Thought`. Do NOT do this: `Thought: (Implicit) I can answer without any more tools!`
+Then select the knowledge_base (`Action`) and provide your query as input (`Action Input`).
+Please use a valid JSON format for the Action Input. Do NOT do this {{'query': 'What commands are available?'}}.
+Finally, answer the user's query using the context provided by the knowledge_base
+Answer the user's query ONLY using context provided by the knowledge base and not prior knowledge.
 
 ## Example
 
-```
-User: Alarms are going off, please help me!
-Thought: I need more info about the alarms to help.
-Answer: Sure thing, Wade! Can you tell me which alarms are going off? That way, I can help you more effectively.
-User: No idea, just red flashing lights.
-Thought: Wade could use the console do diagnose the problem.
-Thought: I need a command to diagnose this problem of unknown origin.
+### Conversation
+
+User: What commands can be used to get an overview of the ship's status?
+Assistant: You can use the `list` command to list all systems (using `list systems`), along with their status info. 
+User: Are there other things that can be listed using this command?
+
+### Output
+
+Thought: How do you use the `list` command? 
 Action: knowledge_base
-Action Input: {{"query": "Which command can be used to diagnose unknown problems?"}}
-Observation: The command `list parts` can be used to retrieve the status of each part on the S.P.A.C.E.C.R.A.F.T. module.
-Answer: Let's try the `list parts` command to get a better sense of what's going on.
-``` 
+Action Input: {{"query": "How do you use the `list` command?"}}
+Observation: You can use the `list` command in one of two ways. Using `list systems`, which will list all systems along with status info or using `list systems`, which will list all parts, along with their corresponding part ID and status info.
+Answer: Yes, you can also use `list parts` to list all parts, along with their corresponding part ID and status info.
 
 ## Current Conversation
 Below is the current conversation consisting of interleaving human and assistant messages.
@@ -147,9 +104,10 @@ Below is the current conversation consisting of interleaving human and assistant
 """
 
 # AGENT_LLM_MODEL: str = "gpt-3.5-turbo-0125"
-# AGENT_LLM_MODEL: str = "gpt-3.5-turbo-0613"
-AGENT_LLM_MODEL: str = "gpt-4-0125-preview"
+AGENT_LLM_MODEL: str = "gpt-3.5-turbo-0613"
+# AGENT_LLM_MODEL: str = "gpt-4-0125-preview"
 
+AGENT_LLM_TEMPERATURE: float = 0.1
 
 def build_agent() -> AgentRunner:
     knowledge_base_retriever = get_knowledge_base_retriever()
@@ -163,11 +121,11 @@ def build_agent() -> AgentRunner:
                     "Use a question as input to the tool."
     )
 
-    llm = OpenAI(model=AGENT_LLM_MODEL, temperature=0.3)
+    llm = OpenAI(model=AGENT_LLM_MODEL, temperature=AGENT_LLM_TEMPERATURE)
     agent = ReActAgent.from_tools(
         tools=[knowledge_base_tool],
         llm=llm,
-        max_iterations=50,
+        max_iterations=10,
         verbose=True,
         react_chat_formatter=ReActChatFormatter.from_defaults(
             system_header=REACT_SYSTEM_HEADER,
