@@ -20,10 +20,10 @@ RETRIEVER_HYBRID_SEARCH_ALPHA: float = 0.85  # 1 => vector search; 0 => BM25
 RETRIEVER_SIMILARITY_TOP_K: int = 15
 
 # auto-merging retrieval
-AUTO_MERGING_RATION_THRESHOLD: float = 0.2
+AUTO_MERGING_RATION_THRESHOLD: float = 0.1
 
 # reranking
-RERANK_TOP_N: int = 3
+RERANK_TOP_N: int = 5
 RERANK_MODEL: str = "rerank-english-v2.0"
 
 
