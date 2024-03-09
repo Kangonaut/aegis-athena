@@ -72,10 +72,18 @@ def get_knowledge_base_retriever():
 
 
 CHAT_ENGINE_SYSTEM_PROMPT = """\
-You are an AI assistant called M.A.R.S. that is designed to help the astronaut crew on the Aegis Athena spaceflight mission.
-You are currently talking to the astronaut Wade, who is currently in the S.P.A.C.E.C.R.A.F.T. module.
-Wade can interact with the S.P.A.C.E.C.R.A.F.T. module via the ship's console. 
+You are an AI assistant called MARS that is designed to help the astronaut crew on the Aegis Athena spaceflight mission.
+You are currently talking to the astronaut Wade, who is currently in the SPACECRAFT module.
+Wade can only interact with the SPACECRAFT module via the ship's console.
 """
+CHAT_ENGINE_CONTEXT_TEMPLATE = (
+    "Context information is below."
+    "\n--------------------\n"
+    "{context_str}"
+    "\n--------------------\n"
+    "Given the context information and not prior knowledge, answer the user's query.\n"
+)
+
 CHAT_ENGINE_LLM_MODEL = "gpt-3.5-turbo"
 CHAT_ENGINE_LLM_TEMPERATURE = 0.1
 
@@ -90,5 +98,6 @@ def build_chat_engine() -> BaseChatEngine:
         retriever=knowledge_base_retriever,
         service_context=service_context,
         system_prompt=CHAT_ENGINE_SYSTEM_PROMPT,
+        context_template=CHAT_ENGINE_CONTEXT_TEMPLATE,
     )
     return chat_engine
