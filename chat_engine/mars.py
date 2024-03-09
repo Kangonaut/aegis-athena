@@ -1,7 +1,7 @@
 import streamlit as st
 
 from llama_index.core import VectorStoreIndex, StorageContext, ServiceContext
-from llama_index.core.chat_engine import ContextChatEngine
+from llama_index.core.chat_engine import ContextChatEngine, CondensePlusContextChatEngine
 from llama_index.core.retrievers import AutoMergingRetriever
 from llama_index.core.chat_engine.types import BaseChatEngine
 from llama_index.llms.openai import OpenAI
@@ -76,7 +76,7 @@ You are an AI assistant called MARS that is designed to help the astronaut crew 
 You are currently talking to the astronaut Wade, who is currently in the SPACECRAFT module.
 Wade can only interact with the SPACECRAFT module via the ship's console.
 """
-CHAT_ENGINE_CONTEXT_TEMPLATE = (
+CHAT_ENGINE_CONTEXT_PROMPT = (
     "Context information is below."
     "\n--------------------\n"
     "{context_str}"
@@ -94,10 +94,17 @@ def build_chat_engine() -> BaseChatEngine:
     service_context = ServiceContext.from_defaults(
         llm=llm
     )
-    chat_engine = ContextChatEngine.from_defaults(
+    # chat_engine = ContextChatEngine.from_defaults(
+    #     retriever=knowledge_base_retriever,
+    #     service_context=service_context,
+    #     system_prompt=CHAT_ENGINE_SYSTEM_PROMPT,
+    #     context_template=CHAT_ENGINE_CONTEXT_TEMPLATE,
+    # )
+    chat_engine = CondensePlusContextChatEngine.from_defaults(
         retriever=knowledge_base_retriever,
-        service_context=service_context,
+        llm=llm,
         system_prompt=CHAT_ENGINE_SYSTEM_PROMPT,
-        context_template=CHAT_ENGINE_CONTEXT_TEMPLATE,
+        # context_prompt=CHAT_ENGINE_CONTEXT_PROMPT,
+        verbose=True,
     )
     return chat_engine

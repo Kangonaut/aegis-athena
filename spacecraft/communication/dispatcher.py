@@ -5,7 +5,8 @@ from spacecraft.communication.communicator import BaseCommunicator, MockCommunic
 from spacecraft.communication.encryption import VigenereCipher
 from spacecraft.communication.state import ComsState, CommunicationState, BrainsState
 
-from agent import mars
+from agent import mars as mars_agent
+from chat_engine import mars as mars_chat_engine
 
 
 class BaseCommunicationDispatcher(abc.ABC):
@@ -28,7 +29,8 @@ class BaseBrainsDispatcher(BaseCommunicationDispatcher):
 
 class DefaultBrainsDispatcher(BaseBrainsDispatcher):
     def __init__(self):
-        self._communicator = LlamaIndexAgentCommunicator(agent_runner=mars.build_agent())
+        # self._communicator = LlamaIndexAgentCommunicator(agent_runner=mars_agent.build_agent())
+        self._communicator = LlamaIndexChatEngineCommunicator(chat_engine=mars_chat_engine.build_chat_engine())
 
     def dispatch(self, state: BrainsState) -> BaseCommunicator:
         return self._communicator
