@@ -103,8 +103,8 @@ Below is the current conversation consisting of interleaving human and assistant
 
 """
 
-# AGENT_LLM_MODEL: str = "gpt-3.5-turbo-0125"
-AGENT_LLM_MODEL: str = "gpt-3.5-turbo-0613"
+AGENT_LLM_MODEL: str = "gpt-3.5-turbo-0125"
+# AGENT_LLM_MODEL: str = "gpt-3.5-turbo-0613"
 # AGENT_LLM_MODEL: str = "gpt-4-0125-preview"
 
 AGENT_LLM_TEMPERATURE: float = 0.1
