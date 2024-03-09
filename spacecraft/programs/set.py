@@ -162,7 +162,7 @@ class SetProgram(BaseProgram):
 
         # check if part is controllable
         if not part.controllable:
-            raise ProgramValueError(f"part {part_id} does not answer; unable to complete task")
+            raise ProgramValueError(f"part {part_id} does not respond; unable to complete task")
 
         # call handler
         if key in self.__HANDLERS:
