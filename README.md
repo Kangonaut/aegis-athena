@@ -13,7 +13,13 @@ TODO
 
 ## Technologies
 
-TODO
+- [LlamaIndex](https://docs.llamaindex.ai/en/stable/): framework for implementing RAG pipelines and LLM Agents
+- [Streamlit](https://docs.streamlit.io/): web app framework for AI/ML engineers and data scientist 
+- [Pydantic](https://docs.pydantic.dev/latest/): data validation library
+- [TruLens](https://github.com/truera/trulens/): RAG evaluation framework
+- [Arize Phoenix](https://docs.arize.com/phoenix/): AI observability framework
+- [Ollama](https://ollama.com/): running LLM locally
+- [MongoDB](https://www.mongodb.com/docs/): document DB
 
 ## Contributing
 
