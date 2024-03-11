@@ -13,7 +13,7 @@ TODO
 
 ## Retrieval Augmented Generation
 
-![RAG pipeline](docs/rag-pipeline.svg)
+![RAG pipeline](docs/rag-pipeline.png)
 
 ## Technologies
 
