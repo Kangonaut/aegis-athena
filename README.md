@@ -11,6 +11,10 @@
 
 TODO
 
+## Retrieval Augmented Generation
+
+![RAG pipeline](docs/rag-pipeline.svg)
+
 ## Technologies
 
 - [LlamaIndex](https://docs.llamaindex.ai/en/stable/): framework for implementing RAG pipelines and LLM Agents
