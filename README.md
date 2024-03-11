@@ -9,7 +9,9 @@
 
 ## Welcome!
 
-TODO
+**Aegis Athena** is a little side-project for showcasing the capabilities of RAG. The user is thrown into an completely unknown environment (a spaceship) and is given the task of solving a unknown problem in that environment. An LLM powered RAG pipeline is supposed to aid the user in solving that problem by providing answers to the user's questions concerning this specific domain.
+
+This is why I used a simpler, less capable pipeline architecture.
 
 ## Retrieval Augmented Generation
 
