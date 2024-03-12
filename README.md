@@ -17,7 +17,7 @@ Although I achieved much better results, when using custom ReAct-like LLM agents
 
 This is why I used a simpler, less capable pipeline architecture.
 
-## Retrieval Augmented Generation
+## Retrieval Augmented Generation (RAG) Pipeline
 
 ![RAG pipeline](docs/rag-pipeline.png)
 
@@ -47,6 +47,34 @@ This is why I used a simpler, less capable pipeline architecture.
 - [Arize Phoenix](https://docs.arize.com/phoenix/): AI observability framework
 - [Ollama](https://ollama.com/): running LLM locally
 - [MongoDB](https://www.mongodb.com/docs/): document DB
+
+## Showcase
+
+<div align="center">
+    <img src="showcase/screenshot-01.png" width="640"/>
+    <p>The AI assistant provides the user with information about potential reasons for the <code>OFFLINE</code> status of the LN2 tank and possible solutions for identifying and resolving the underlyling problem.</p>
+</div>
+
+---
+
+<div align="center">
+    <img src="showcase/screenshot-02.png" width="640"/>
+    <p>The user retrieves status information of all systems.</p>
+</div>
+
+---
+
+<div align="center">
+    <img src="showcase/screenshot-04.png" width="640"/>
+    <p>The AI assistant provides the user with information about potential reasons for the <code>MALFUNC</code> status of the ECS system and possible solutions for identifying the underlyling problem.</p>
+</div>
+
+---
+
+<div align="center">
+    <img src="showcase/screenshot-03.png" width="640"/>
+    <p>The user retrieves detailed information of the ECS controller.</p>
+</div>
 
 ## Contributing
 
