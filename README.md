@@ -51,28 +51,28 @@ This is why I used a simpler, less capable pipeline architecture.
 ## Showcase
 
 <div align="center">
-    <img src="showcase/screenshot-01.png" width="640" style="box-shadow: 0px 0px 10px orange"/>
+    <img src="showcase/screenshot-01.png" width="640"/>
     <p>The AI assistant provides the user with information about potential reasons for the <code>OFFLINE</code> status of the LN2 tank and possible solutions for identifying and resolving the underlyling problem.</p>
 </div>
 
 ---
 
 <div align="center">
-    <img src="showcase/screenshot-02.png" width="640" style="box-shadow: 0px 0px 10px orange"/>
+    <img src="showcase/screenshot-02.png" width="640"/>
     <p>The user retrieves status information of all systems.</p>
 </div>
 
 ---
 
 <div align="center">
-    <img src="showcase/screenshot-04.png" width="640" style="box-shadow: 0px 0px 10px orange"/>
+    <img src="showcase/screenshot-04.png" width="640"/>
     <p>The AI assistant provides the user with information about potential reasons for the <code>MALFUNC</code> status of the ECS system and possible solutions for identifying the underlyling problem.</p>
 </div>
 
 ---
 
 <div align="center">
-    <img src="showcase/screenshot-03.png" width="640" style="box-shadow: 0px 0px 10px orange"/>
+    <img src="showcase/screenshot-03.png" width="640"/>
     <p>The user retrieves detailed information of the ECS controller.</p>
 </div>
 
