@@ -21,6 +21,12 @@ This is why I used a simpler, less capable pipeline architecture.
 
 ![RAG pipeline](docs/rag-pipeline.png)
 
+## Data Preparation
+
+1. The documentation consists of multiple Markdown files. Firstly, these files are parsed using a custom Markdown reader (inherits the LlamaIndex `BaseReader` base class). This reader splits the documentation into `Nodes`, where each node represents a subsection with title and content. These **Block Chunks** represent the root nodes for the **Auto-Merging Retriever**.
+1. In the next step, **Hierarchical Node Parsing** is used to split these root nodes into individual sentences using a custom sentence parser. The resulting **Sentence Chunks** reference their parent node, so that they can be merged and replaced by the **Auto-Merging Retriever**. The sentence boundaries are determined using the NLTK `PunktSentenceTokenizer`.
+1. The root nodes are stored in a **MongoDB** instance, since there is no need to perform similarity search on them. However, the leaf nodes are being retrieved using similarity search (actually hybrid search, which also utilizes similarity search), which is why there are stored in a **Weaviate** instance, alongside their vector embedding representation. This two-level setup, follows the approach of retrieving based on a smaller context, which intuitively makes retrieval more precise and adding surrounding context, in order to give the LLM more information. This principle is used in several advanced RAG methods, like Sentence-Window Retrieval or in this case: Auto-Merging Retrieval. 
+
 ## Technologies
 
 - [LlamaIndex](https://docs.llamaindex.ai/en/stable/): framework for implementing RAG pipelines and LLM Agents
