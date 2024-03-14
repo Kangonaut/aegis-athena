@@ -100,8 +100,8 @@ class SetProgram(BaseProgram):
                 "bat": partial(self.__handle_set_part, attribute_name="battery"),
             },
             SpsController: {
-                "engine": partial(self.__handle_set_part, attribute_name="engine"),
-                "gimbal": partial(self.__handle_set_part, attribute_name="gimbal"),
+                "eng": partial(self.__handle_set_part, attribute_name="engine"),
+                "gmbl": partial(self.__handle_set_part, attribute_name="gimbal"),
             },
         }
 
