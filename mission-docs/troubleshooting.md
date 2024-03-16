@@ -79,3 +79,9 @@ Here is a list of available options for the `<KEY>` parameter for each *parent* 
 - engine:
     - `fuel`: fuel tank
     - `oxi`: oxidizer tank
+
+## 4.5 Changing the encryption key of the COMS module
+
+The COMS module automatically encrypts and decrypts all communications traffic using a Vigenere cipher. The secret used for encryption is a PSK (Pre-Shared Key) that is only accessible for personal with a security level of INSANE or higher. Thus, the entire crew are granted a level of UNBELIEVABLE, which is one above INSANE. As a matter of fact, the captain is actually ranked at level UNGODLY (2 level above UNBELIEVABLE). For security reasons, the crew is informed about this system, as well as the PSK before launch and explicitly prohibited from persisting it in any phisical or digital form. To avoid information leak to the system developers, the PSK is not pre-configured before flight, since physical access would still allow them to access the debug console. The entire effort of strict security policies and advanced encryption is justified when examining the reports on activities of the adversarial intelligence program.
+
+The PSKs are strings of alphanumeric (only English alphabeth) characters that should be easy to remember for the crew. In order to change the PSK configuration, we first need to identify the part ID of the COMS controller by issuing the `list parts` command. Next, the command `set <CONTROLLER-ID> pwd <PSK>` can be used to set the new PSK value for encryption. From now on, the PSK value is used when using the `transmit <CONTROLLER-ID> <MESSAGE>` command.

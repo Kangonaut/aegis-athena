@@ -1,6 +1,6 @@
 # 5 APOLLO
 
-# 5.1 Naming
+## 5.1 Naming
 
 The acronym APOLLO (Advanced Pod for Outer-space Lunar Landing Operations) indicates both the function of this vessel, as well as the divine complexity of such an ambitious mission.
 
