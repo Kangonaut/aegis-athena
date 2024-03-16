@@ -1,8 +1,8 @@
-# Troubleshooting
+# 4 Troubleshooting
 
 This section provides simple guides for common problems or errors that can occur on the SPACECRAFT module.
 
-## Alarms
+## 4.1 Alarms
 
 If the SPACECRAFT is in a non-nominal state, it will activate the alarm system, in order to signal the need of immediate action to the crew onboard. The alarm system does not indicate what has gone wrong, but merely that something has gone badly wrong. To ensure that the crew is unable to ignore the alarm, the system consists of an auditive component, i.e. loud annoying beeping and also a visual component, i.e. flashing red lights that will fill the whole cabin. 
 
@@ -10,7 +10,7 @@ In the unfortunate scenario, that the alarms are indeed activated, the crew is r
 
 Although this was requested by the crew multiple times, leading up to the launch, the alarm system does not have a manual override, thus cannot be shut off manually. This is a design decision made to ensure that critical errors CANNOT and WILL NOT be ignored.
 
-## System Status: `MALFUNC`
+## 4.2 System Status: `MALFUNC`
 
 A system can be malfunctioning (console output: `MALFUNC`) for a wide variety of reasons. Usually, this means that one of its subcomponents is in a non-nominal state. A subcomponent can be both another system (e.g.: ARS is a subsystem of ECS), or a particular part that is of vital importance to the system (e.g.: the fuel cell is used to generate electric power, thus a subcomponent of the EPS). 
 
@@ -20,7 +20,7 @@ Next we can use the `details` command to investigate which parts the controller 
 
 We can now go on to investigate these parts (i.e. the parts the controller depends on) to check (again using the `details` command) if any of them are faulty, thus represent the origin of our problem. By issuing `details e06e`, we can see that the thermometer has status `OFFLINE`, thus indeed being the problem origin.
 
-## Part Status: `OFFLINE`
+## 4.3 Part Status: `OFFLINE`
 
 If a device's status is shown as `OFFLINE`, this can have one of two reasons:
 
@@ -28,7 +28,7 @@ The first possibility is that the device is simply powered off, which can simply
 
 The second possibility is that the part is actually faulty, which means that it cannot be controlled via the console anymore. If this is the case, the attempt to power the part on will result in the error message: `part <PART-ID> does not respond; unable to complete task`. Since the SPACECRAFT is designed to be controlled only from this console, there are no manual controls or overrides, which means that the part is rendered useless. In such a case, we need to investigate whether there is a backup for that part and then change the configuration of the particular controller to use the backup part.
 
-## Switch to a Backup Part
+## 4.4 Switch to a Backup Part
 
 The main reason for switching to part's backup, is a device malfunction (`MALFUNC`). That being said, of course the crew always has the option to switch to a backup, no matter the situation. This is important, since the SPACESHIP does not perform such an operation automatically. Thus, in case of a failure, the crew has to manually reconfigure the ship.
 
