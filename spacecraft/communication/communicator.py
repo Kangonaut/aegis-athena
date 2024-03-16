@@ -78,6 +78,8 @@ class LlamaIndexQueryEngineCommunicator(BaseCommunicator):
 
 
 class LlamaIndexChatEngineCommunicator(BaseCommunicator):
+    MESSAGE_CHUNK_TIMEOUT: float = 0.1
+
     def __init__(self, chat_engine: BaseChatEngine):
         self.chat_engine = chat_engine
 
@@ -86,7 +88,9 @@ class LlamaIndexChatEngineCommunicator(BaseCommunicator):
         yield MessageChunk("thinking ...\n")
 
         response = self.chat_engine.chat(message)
-        yield MessageChunk(response.response)
+        for chunk in response.response.split():
+            yield MessageChunk(chunk + " ")
+            time.sleep(self.MESSAGE_CHUNK_TIMEOUT)
 
 
 class LlamaIndexAgentCommunicator(BaseCommunicator):
