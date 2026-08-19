@@ -1,6 +1,6 @@
 # 1 Aegis Athena - Introduction
 
-Aegis Athena is a notable designation for an ambitious space venture orchestrated by the esteemed Terrestrial Human's Republic.
+Aegis Athena is a notable dgesignation for an ambitious space venture orchestrated by the esteemed Terrestrial Human's Republic.
 
 ## 1.1 Mission Statement
 
